@@ -2,6 +2,8 @@
 
 Premium personal portfolio site built with **Next.js 14 (App Router)**, **Tailwind CSS**, **Framer Motion**, and **TypeScript**. Dark, glassmorphic, fully animated, and Vercel-ready.
 
+Live Link: https://sameed-portfolio-2026.vercel.app/
+
 ## Stack
 
 - Next.js 14 · App Router
