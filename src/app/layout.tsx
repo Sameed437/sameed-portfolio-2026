@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import Cursor from '@/components/Cursor';
-import NoiseOverlay from '@/components/NoiseOverlay';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Assistant from '@/components/Assistant';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -12,22 +11,25 @@ const inter = Inter({
   display: 'swap',
 });
 
-const playfair = Playfair_Display({
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-mono',
   display: 'swap',
+  weight: ['400', '500'],
 });
 
 const SITE_URL = 'https://sameed-chaudhary.vercel.app';
+const TITLE = 'Sameed Chaudhary — Frontend & WordPress Developer';
+const DESCRIPTION =
+  'Frontend and WordPress developer in Lahore building fast, search-visible websites — React, Next.js, WooCommerce, and SEO-led growth engineering.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Sameed Chaudhary — Frontend & WordPress Developer | Growth Engineer',
+    default: TITLE,
     template: '%s · Sameed Chaudhary',
   },
-  description:
-    'I build modern, performance-driven websites and web applications with a focus on clean design, SEO optimization, and premium user experiences.',
+  description: DESCRIPTION,
   keywords: [
     'Sameed Chaudhary',
     'Frontend Developer',
@@ -35,44 +37,31 @@ export const metadata: Metadata = {
     'Growth Engineer',
     'Next.js',
     'React',
-    'Tailwind',
+    'WooCommerce',
     'SEO',
     'Lahore',
   ],
   authors: [{ name: 'Sameed Chaudhary' }],
   creator: 'Sameed Chaudhary',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
     siteName: 'Sameed Chaudhary',
-    title: 'Sameed Chaudhary — Frontend & WordPress Developer | Growth Engineer',
-    description:
-      'Premium portfolio of Sameed Chaudhary — frontend, WordPress, and growth engineering.',
-    images: [
-      {
-        url: '/og.png',
-        width: 1200,
-        height: 630,
-        alt: 'Sameed Chaudhary — Portfolio',
-      },
-    ],
+    title: TITLE,
+    description: DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sameed Chaudhary — Frontend & WordPress Developer',
-    description:
-      'I build modern, performance-driven websites with clean design and SEO at the core.',
-    images: ['/og.png'],
+    title: TITLE,
+    description: DESCRIPTION,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0A',
+  themeColor: '#FBFAF7',
   width: 'device-width',
   initialScale: 1,
 };
@@ -83,13 +72,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-ink-900 text-bone antialiased">
-        <Cursor />
-        <NoiseOverlay />
+    <html lang="en" className={`no-js ${inter.variable} ${mono.variable}`}>
+      <head>
+        {/*
+          Runs before first paint. If scripting is disabled the class stays
+          and the CSS keeps every .reveal block visible, so the page still
+          reads fine without JS.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.remove('no-js')",
+          }}
+        />
+      </head>
+      <body className="bg-paper text-ink antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <main className="relative z-10">{children}</main>
+        <main id="main">{children}</main>
         <Footer />
+        <Assistant />
       </body>
     </html>
   );

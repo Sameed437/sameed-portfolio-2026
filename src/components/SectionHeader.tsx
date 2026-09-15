@@ -1,36 +1,34 @@
-import SectionReveal from './SectionReveal';
+import Reveal from './Reveal';
 
 type Props = {
+  /** Two-digit index shown in the margin, e.g. "02". */
+  index: string;
   eyebrow: string;
   title: string;
   description?: string;
-  align?: 'left' | 'center';
 };
 
 export default function SectionHeader({
+  index,
   eyebrow,
   title,
   description,
-  align = 'left',
 }: Props) {
   return (
-    <SectionReveal
-      className={`mb-12 max-w-2xl md:mb-16 ${
-        align === 'center' ? 'mx-auto text-center' : ''
-      }`}
-    >
-      <span className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-600/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-violet-300">
-        <span className="h-1 w-1 rounded-full bg-violet-400" />
-        {eyebrow}
-      </span>
-      <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
-        <span className="text-gradient">{title}</span>
+    <Reveal className="mb-12 md:mb-16">
+      <div className="flex items-baseline gap-4">
+        <span className="label">{index}</span>
+        <span className="label">{eyebrow}</span>
+        <span className="h-px flex-1 bg-rule" />
+      </div>
+      <h2 className="mt-6 max-w-3xl text-title font-medium text-balance text-ink">
+        {title}
       </h2>
       {description && (
-        <p className="mt-5 text-base leading-relaxed text-bone/65 text-pretty md:text-lg">
+        <p className="mt-5 max-w-prose text-lead text-pretty text-ink-muted">
           {description}
         </p>
       )}
-    </SectionReveal>
+    </Reveal>
   );
 }
