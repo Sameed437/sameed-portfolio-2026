@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --paper: #fbfaf7;
-  --ink: #14130f;
-  --rule: #e3e0d6;
-  --accent: #b2451f;
+  color-scheme: dark;
+  --base: #08090b;
+  --fg: #f2f3f5;
+  --line: #22262e;
+  --accent: #e8a33d;
 }
 
 * {
@@ -16,14 +16,13 @@
 
 html {
   scroll-behavior: smooth;
-  /* keep anchored sections clear of the sticky header */
   scroll-padding-top: 5.5rem;
 }
 
 html,
 body {
-  background-color: var(--paper);
-  color: var(--ink);
+  background-color: var(--base);
+  color: var(--fg);
   font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,15 +34,31 @@ body {
 }
 
 ::selection {
-  background: #f0d9cd;
-  color: var(--ink);
+  background: rgba(232, 163, 61, 0.28);
+  color: #fff;
 }
 
-/* Visible, on-brand focus ring for keyboard users only */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 3px;
+}
+
+/* Scrollbar, tuned to the dark surface rather than left default-light */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d10;
+}
+::-webkit-scrollbar-thumb {
+  background: #262b34;
+  border-radius: 8px;
+  border: 2px solid #0b0d10;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #343a45;
 }
 
 @layer utilities {
@@ -54,45 +69,81 @@ body {
     text-wrap: pretty;
   }
 
-  /* Small uppercase editorial label */
   .label {
-    @apply font-mono text-[11px] uppercase tracking-label text-ink-faint;
+    @apply font-mono text-[11px] uppercase tracking-label text-fg-faint;
   }
 
-  /* Page shell */
   .shell {
     @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
   }
 
-  /* Hairline rule used throughout */
-  .hairline {
-    @apply border-t border-rule;
+  /* Card surface used across work, services and experience */
+  .card {
+    @apply border border-line bg-surface shadow-card transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-line hover:bg-surface-raised hover:shadow-lift;
   }
 
-  /* Underline-on-hover link, editorial style */
-  .link-u {
-    @apply relative inline-block text-ink transition-colors hover:text-accent;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    transition: background-size 0.3s ease, color 0.2s ease;
+  /*
+    Ambient hero light. A single static radial gradient — no canvas, no
+    per-frame work, no blur filter animation.
+  */
+  .hero-glow {
+    background:
+      radial-gradient(
+        60rem 40rem at 15% -10%,
+        rgba(232, 163, 61, 0.14),
+        transparent 60%
+      ),
+      radial-gradient(
+        48rem 32rem at 85% 0%,
+        rgba(232, 163, 61, 0.06),
+        transparent 55%
+      );
   }
-  .link-u:hover,
-  .link-u:focus-visible {
-    background-size: 100% 1px;
+
+  /* Faint technical grid, masked out toward the bottom */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+  }
+
+  .accent-rule {
+    background: linear-gradient(
+      90deg,
+      var(--accent),
+      rgba(232, 163, 61, 0) 70%
+    );
+  }
+
+  /* Edge fade for the tool marquee */
+  .fade-x {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 }
 
 /*
-  Scroll reveal. Pure CSS transition toggled by a single shared
-  IntersectionObserver — no animation library, no per-frame JS.
+  Scroll reveal: one shared IntersectionObserver plus a CSS transition.
+  No animation library, no per-frame JS.
 */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(18px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -103,7 +154,7 @@ body {
   will-change: auto;
 }
 
-/* No JS / no observer support: never leave content invisible */
+/* Never leave content invisible when scripting is unavailable */
 .no-js .reveal {
   opacity: 1;
   transform: none;
@@ -117,6 +168,10 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .animate-marquee,
+  .animate-pulseDot {
+    animation: none !important;
   }
   *,
   *::before,

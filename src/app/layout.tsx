@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Assistant from '@/components/Assistant';
+import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,10 +19,9 @@ const mono = JetBrains_Mono({
   weight: ['400', '500'],
 });
 
-const SITE_URL = 'https://sameed-chaudhary.vercel.app';
-const TITLE = 'Sameed Chaudhary — Frontend & WordPress Developer';
+const TITLE = 'Sameed Chaudhary — AI Marketing Engineer';
 const DESCRIPTION =
-  'Frontend and WordPress developer in Lahore building fast, search-visible websites — React, Next.js, WooCommerce, and SEO-led growth engineering.';
+  'AI Marketing Engineer in Lahore. I build AI automation systems that research, write and publish marketing content at scale — Claude pipelines, n8n workflows, SEO systems and growth experiments.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,13 +32,15 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   keywords: [
     'Sameed Chaudhary',
-    'Frontend Developer',
-    'WordPress Developer',
+    'AI Marketing Engineer',
+    'Marketing Automation',
+    'AI Content Automation',
+    'n8n',
+    'Claude AI',
     'Growth Engineer',
-    'Next.js',
-    'React',
-    'WooCommerce',
     'SEO',
+    'Next.js',
+    'WordPress',
     'Lahore',
   ],
   authors: [{ name: 'Sameed Chaudhary' }],
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#FBFAF7',
+  themeColor: '#08090B',
   width: 'device-width',
   initialScale: 1,
 };
@@ -85,10 +87,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-paper text-ink antialiased">
+      <body className="bg-base text-fg antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-base"
         >
           Skip to content
         </a>

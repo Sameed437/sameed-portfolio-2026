@@ -5,6 +5,7 @@ import {
   FAQS,
   PROFILE,
   PROJECTS,
+  SERVICES,
   SKILL_GROUPS,
   STATS,
 } from './data';
@@ -218,6 +219,33 @@ function buildFacts(): Fact[] {
   });
 
   facts.push({
+    id: 'aiwork',
+    weight: 1.35,
+    keywords: kw('ai automation automate pipeline pipelines llm claude agent workflow workflows n8n marketing engineer'),
+    answer: {
+      text: 'His core work is AI content automation. BlogBolt is a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — and delivers the post into WordPress as a reviewable draft. At Marham he also builds AI solutions with Claude and external APIs — including agent-based workflows — alongside blog-automation workflows in n8n.',
+    },
+  });
+
+  for (const s of SERVICES) {
+    facts.push({
+      id: `service:${s.title}`,
+      weight: 1.2,
+      keywords: kw(s.title, s.items.join(' ')),
+      answer: { text: `${s.title} — ${s.blurb}` },
+    });
+  }
+
+  facts.push({
+    id: 'services',
+    weight: 1.2,
+    keywords: kw('services offer offering help hire what do deliver'),
+    answer: {
+      text: SERVICES.map((x) => `${x.title}: ${x.blurb}`).join(' '),
+    },
+  });
+
+  facts.push({
     id: 'skills',
     weight: 1.3,
     keywords: kw('skills stack tech technologies tools proficient good'),
@@ -238,7 +266,7 @@ function buildFacts(): Fact[] {
   // One fact per individual technology, cross-referenced to real projects
   for (const group of SKILL_GROUPS) {
     for (const item of group.items) {
-      const needle = normalise(item).split(' ')[0];
+      const needle = normalise(item);
       const related = PROJECTS.filter((p) =>
         p.tags.some((t) => normalise(t).includes(needle))
       ).map((p) => p.title);
@@ -249,7 +277,7 @@ function buildFacts(): Fact[] {
         keywords: kw(item),
         answer: {
           text:
-            `Yes — ${item} is part of his ${group.title.toLowerCase()} toolkit.` +
+            `Yes — ${item} is part of his ${group.title} toolkit.` +
             (related.length ? ` You can see it in ${list(related.slice(0, 3))}.` : ''),
         },
       });
@@ -262,7 +290,7 @@ function buildFacts(): Fact[] {
     keywords: kw('seo search ranking rankings organic traffic keywords keyword onpage visibility ctr'),
     answer: {
       text:
-        'SEO runs through most of his work. He does keyword research and on-page optimisation — meta tags, internal linking, URL structure, formatting — and refreshes existing content to lift rankings and CTR. At Marham he ships SEO-led content systems and built blog-automation workflows in n8n; the AI Blog Automation Engine automates a 7-phase SEO content pipeline end to end.',
+        'SEO runs through most of his work. He does keyword research and on-page optimisation — meta tags, internal linking, URL structure, formatting — and refreshes existing content to lift rankings and CTR. At Marham he ships SEO-led content systems and built blog-automation workflows in n8n; BlogBolt automates a 7-phase SEO content pipeline end to end.',
     },
   });
 
@@ -282,7 +310,7 @@ function buildFacts(): Fact[] {
       const related = PROJECTS.filter((x) => x.tags.includes(tag)).map((x) => x.title);
       facts.push({
         id: `tag:${tag}`,
-        weight: 1.4,
+        weight: 1.18,
         keywords: kw(tag),
         answer: { text: `Yes — ${tag} shows up in his work: ${list(related)}.` },
       });
@@ -398,14 +426,14 @@ const GREETING = /^(hi|hey|hello|yo|salam|assalam|good (morning|afternoon|evenin
 const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate)\b/i;
 
 export const SUGGESTIONS = [
-  'What is his experience?',
-  'Does he know React?',
+  'What does an AI Marketing Engineer do?',
+  'What is BlogBolt?',
+  'What AI work does he do at Marham?',
   'Is he available for work?',
-  'Tell me about Cure Abroad',
-  'What does he do at Marham?',
+  'What is his experience?',
 ];
 
-export const GREETING_MESSAGE = `Hi — I can answer questions about ${PROFILE.firstName}'s work, stack and experience. Everything I say comes straight from his portfolio data, so I won't guess.`;
+export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s AI automation work, his stack, or his experience. Everything I say comes straight from his portfolio data, so I won't guess.`;
 
 export function ask(query: string): Answer {
   const trimmed = query.trim();
