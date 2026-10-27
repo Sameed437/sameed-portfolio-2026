@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Assistant from '@/components/Assistant';
+import BackToTop from '@/components/BackToTop';
 import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
@@ -19,9 +20,9 @@ const mono = JetBrains_Mono({
   weight: ['400', '500'],
 });
 
-const TITLE = 'Sameed Chaudhary — AI Marketing Engineer';
+const TITLE = 'Sameed Chaudhary — AI Marketing & Web Engineer';
 const DESCRIPTION =
-  'AI Marketing Engineer in Lahore. I build AI automation systems that research, write and publish marketing content at scale — Claude pipelines, n8n workflows, SEO systems and growth experiments.';
+  'AI Marketing & Web Engineer based in Lahore. I build headless WooCommerce stores (like Almari PK) with React & Next.js frontends, and AI automation systems with Claude, Python, and n8n.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -33,13 +34,16 @@ export const metadata: Metadata = {
   keywords: [
     'Sameed Chaudhary',
     'AI Marketing Engineer',
+    'Headless WooCommerce',
+    'Almari PK',
+    'Next.js 14',
+    'React',
     'Marketing Automation',
     'AI Content Automation',
     'n8n',
     'Claude AI',
     'Growth Engineer',
     'SEO',
-    'Next.js',
     'WordPress',
     'Lahore',
   ],
@@ -76,11 +80,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`no-js ${inter.variable} ${mono.variable}`}>
       <head>
-        {/*
-          Runs before first paint. If scripting is disabled the class stays
-          and the CSS keeps every .reveal block visible, so the page still
-          reads fine without JS.
-        */}
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.remove('no-js')",
@@ -98,6 +97,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <Assistant />
+        <BackToTop />
       </body>
     </html>
   );

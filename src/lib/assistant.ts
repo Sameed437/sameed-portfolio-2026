@@ -43,6 +43,8 @@ const PHRASES: [RegExp, string][] = [
   [/\bword\s*press\b/g, 'wordpress'],
   [/\bwoo\s*commerce\b/g, 'woocommerce'],
   [/\btail\s*wind\b/g, 'tailwind'],
+  [/\balmari\s*pk\b/g, 'almaripk'],
+  [/\balmaripk\.com\b/g, 'almaripk'],
 ];
 
 const SYNONYMS: Record<string, string> = {
@@ -58,64 +60,79 @@ const SYNONYMS: Record<string, string> = {
   ui: 'frontend',
   ux: 'design',
   job: 'work',
-  jobs: 'work',
-  role: 'work',
-  roles: 'work',
-  employer: 'work',
-  company: 'work',
-  companies: 'work',
-  career: 'experience',
-  background: 'experience',
-  history: 'experience',
-  portfolio: 'projects',
-  project: 'projects',
-  built: 'projects',
-  build: 'projects',
-  made: 'projects',
   hire: 'available',
-  hiring: 'available',
-  freelance: 'available',
-  availability: 'available',
-  contact: 'email',
-  reach: 'email',
-  mail: 'email',
-  study: 'education',
-  studied: 'education',
-  degree: 'education',
-  university: 'education',
-  college: 'education',
-  school: 'education',
-  lives: 'location',
-  based: 'location',
-  skill: 'skills',
-  stack: 'skills',
-  tech: 'skills',
-  technologies: 'skills',
-  technology: 'skills',
-  tools: 'skills',
-  experienced: 'experience',
-  years: 'experience',
-  year: 'experience',
+  available: 'available',
   cv: 'resume',
-  marketing: 'marketing',
-  ai: 'ai',
+  repo: 'github',
+  source: 'github',
+  codebase: 'github',
+  store: 'ecommerce',
+  shop: 'ecommerce',
+  almari: 'almaripk',
 };
 
 const STOPWORDS = new Set([
-  'a', 'an', 'and', 'any', 'are', 'as', 'at', 'be', 'been', 'but', 'by', 'can',
-  'did', 'do', 'does', 'for', 'from', 'get', 'got', 'has', 'have', 'he', 'her',
-  'him', 'his', 'how', 'i', 'if', 'in', 'is', 'it', 'its', 'me', 'much', 'my',
-  'of', 'on', 'or', 'she', 'so', 'some', 'tell', 'that', 'the', 'their', 'them',
-  'then', 'there', 'these', 'they', 'this', 'to', 'us', 'was', 'we', 'were',
-  'what', 'whats', 'which', 'will', 'with', 'would', 'you', 'your',
-  'about', 'also', 'more', 'many', 'please', 'give', 'show', 'need', 'want',
-  'use', 'uses', 'used', 'where', 'when', 'why', 'know', 'knows', 'familiar',
+  'a',
+  'about',
+  'an',
+  'and',
+  'are',
+  'as',
+  'at',
+  'be',
+  'by',
+  'can',
+  'do',
+  'does',
+  'for',
+  'from',
+  'has',
+  'have',
+  'he',
+  'him',
+  'his',
+  'how',
+  'i',
+  'in',
+  'is',
+  'it',
+  'its',
+  'me',
+  'my',
+  'of',
+  'on',
+  'or',
+  'our',
+  'sameed',
+  'so',
+  'tell',
+  'that',
+  'the',
+  'their',
+  'there',
+  'this',
+  'to',
+  'was',
+  'we',
+  'what',
+  'where',
+  'which',
+  'who',
+  'will',
+  'with',
+  'you',
+  'your',
 ]);
 
 function normalise(input: string): string {
   let s = input.toLowerCase();
-  for (const [re, to] of PHRASES) s = s.replace(re, to);
-  return s.replace(/[^a-z0-9+#\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  for (const [regex, replacement] of PHRASES) {
+    s = s.replace(regex, replacement);
+  }
+  return s
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .replace(/[\s-]+/g, ' ')
+    .trim();
 }
 
 function expand(token: string): string | null {
@@ -172,7 +189,7 @@ function buildFacts(): Fact[] {
     weight: 1.3,
     keywords: kw('available hire hiring freelance open opportunities work roles fulltime contract start notice'),
     answer: {
-      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to both freelance projects and full-time roles, and usually replies within 24 hours.`,
+      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to both freelance client projects (including headless e-commerce builds, AI automation, and web development) and full-time roles, usually replying within 24 hours.`,
       links: [MAILTO],
     },
   });
@@ -182,28 +199,52 @@ function buildFacts(): Fact[] {
     weight: 1.2,
     keywords: kw('location live lahore pakistan remote relocate timezone onsite hybrid'),
     answer: {
-      text: `He is based in ${PROFILE.location}. He has worked on-site, hybrid and fully remote — the Kynbix and Intersoft roles were both remote.`,
+      text: `He is based in ${PROFILE.location}. He has worked on-site, hybrid and fully remote with clients internationally across the UK, US, and Pakistan.`,
     },
   });
 
   facts.push({
     id: 'contact',
     weight: 1.2,
-    keywords: kw('email contact message linkedin github socials connect touch'),
+    keywords: kw('email contact message linkedin github socials connect touch reach'),
     answer: {
-      text: `The fastest way to reach him is email — ${PROFILE.email}. He is also on LinkedIn and GitHub.`,
+      text: `The fastest way to reach him is email — ${PROFILE.email}. You can also connect on LinkedIn or view his work and repositories on GitHub.`,
       links: [
         MAILTO,
         { label: 'LinkedIn', href: PROFILE.socials.linkedin },
-        { label: 'GitHub', href: PROFILE.socials.github },
+        { label: 'GitHub Profile', href: PROFILE.socials.github },
+        { label: 'GitHub Repo (2026)', href: PROFILE.socials.githubRepo },
       ],
+    },
+  });
+
+  facts.push({
+    id: 'github',
+    weight: 1.4,
+    keywords: kw('github repo repository source code git open source sameed437 sameed-portfolio-2026'),
+    answer: {
+      text: `His GitHub profile is ${PROFILE.socials.github}. The complete open-source repository for this portfolio is hosted at ${PROFILE.socials.githubRepo}.`,
+      links: [
+        { label: 'GitHub Repository', href: PROFILE.socials.githubRepo },
+        { label: 'GitHub Profile', href: PROFILE.socials.github },
+      ],
+    },
+  });
+
+  facts.push({
+    id: 'almaripk',
+    weight: 1.45,
+    keywords: kw('almaripk almari store ecommerce headless woocommerce fashion client retail pakistan'),
+    answer: {
+      text: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built the frontend in React and Next.js 14, backed by WooCommerce and WordPress REST/GraphQL APIs, featuring instant catalog search, sub-second page loads, a real-time cart drawer, and localized checkout.',
+      links: [{ label: 'Visit almaripk.com', href: 'https://almaripk.com' }],
     },
   });
 
   facts.push({
     id: 'stats',
     weight: 1.1,
-    keywords: kw('experience long seniority level clients delivered numbers senior junior'),
+    keywords: kw('experience long seniority level clients delivered numbers senior junior metrics'),
     answer: {
       text: `${list(STATS.map((s) => `${s.value} ${s.label.toLowerCase()}`))}. He has worked across ${EXPERIENCE.length} companies, currently as ${EXPERIENCE[0].role} at ${EXPERIENCE[0].company}.`,
     },
@@ -212,9 +253,9 @@ function buildFacts(): Fact[] {
   facts.push({
     id: 'titles',
     weight: 1.15,
-    keywords: kw('title titles marketing ai engineer growth seo specialist developer what does do'),
+    keywords: kw('title titles marketing ai engineer growth seo specialist developer what does do ecommerce'),
     answer: {
-      text: `He works as a ${list(PROFILE.rotatingTitles)} — in practice that means building the site, then making it rank and convert. His current title is ${EXPERIENCE[0].role} at ${EXPERIENCE[0].company}.`,
+      text: `He works as a ${list(PROFILE.rotatingTitles)} — in practice that means engineering high-speed frontends (like headless WooCommerce stores), building AI marketing automations, and running data-driven growth experiments.`,
     },
   });
 
@@ -223,7 +264,7 @@ function buildFacts(): Fact[] {
     weight: 1.35,
     keywords: kw('ai automation automate pipeline pipelines llm claude agent workflow workflows n8n marketing engineer'),
     answer: {
-      text: 'His core work is AI content automation. BlogBolt is a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — and delivers the post into WordPress as a reviewable draft. At Marham he also builds AI solutions with Claude and external APIs — including agent-based workflows — alongside blog-automation workflows in n8n.',
+      text: 'His AI automation work spans custom Python pipelines and n8n workflows. BlogBolt is a Python pipeline with a Next.js control panel running a 7-phase SEO workflow with Claude (research, outline, draft, on-page SEO, image selection, formatting, publish) pushing drafts into WordPress. At Marham, he builds AI solutions with Claude and APIs including agent-based workflows alongside n8n automations.',
     },
   });
 
@@ -290,12 +331,11 @@ function buildFacts(): Fact[] {
     keywords: kw('seo search ranking rankings organic traffic keywords keyword onpage visibility ctr'),
     answer: {
       text:
-        'SEO runs through most of his work. He does keyword research and on-page optimisation — meta tags, internal linking, URL structure, formatting — and refreshes existing content to lift rankings and CTR. At Marham he ships SEO-led content systems and built blog-automation workflows in n8n; BlogBolt automates a 7-phase SEO content pipeline end to end.',
+        'SEO runs through all his web and content work. He conducts keyword research, search intent mapping, and on-page technical optimization — meta tags, internal linking, schema, URL structure — and refreshes existing content to lift organic rankings and CTR.',
     },
   });
 
-  // Technologies that appear in project tags but not in the skills list —
-  // Python, OpenCV, Claude and friends — still deserve a real answer.
+  // Technologies that appear in project tags
   const skillTokens = SKILL_GROUPS.flatMap((g) =>
     g.items.map((i) => new Set(kw(i)))
   );
@@ -312,7 +352,7 @@ function buildFacts(): Fact[] {
         id: `tag:${tag}`,
         weight: 1.18,
         keywords: kw(tag),
-        answer: { text: `Yes — ${tag} shows up in his work: ${list(related)}.` },
+        answer: { text: `Yes — ${tag} is used in his work: ${list(related)}.` },
       });
     }
   }
@@ -321,11 +361,11 @@ function buildFacts(): Fact[] {
   for (const p of PROJECTS) {
     facts.push({
       id: `project:${p.title}`,
-      weight: 1.15,
-      keywords: kw(p.title, p.tags.join(' '), p.badge ?? ''),
+      weight: 1.2,
+      keywords: kw(p.title, p.tags.join(' '), p.badge ?? '', p.domain ?? ''),
       answer: {
         text: `${p.title} — ${p.description} Stack: ${list(p.tags)}.`,
-        links: p.href ? [{ label: 'Visit site', href: p.href }] : undefined,
+        links: p.href ? [{ label: `Visit ${p.domain ?? p.title}`, href: p.href }] : undefined,
       },
     });
   }
@@ -333,11 +373,9 @@ function buildFacts(): Fact[] {
   facts.push({
     id: 'projects',
     weight: 1.2,
-    keywords: kw('projects showcase examples case studies samples portfolio'),
+    keywords: kw('projects showcase examples case studies samples portfolio work'),
     answer: {
-      text: `He has ${PROJECTS.length} projects listed, including ${list(
-        PROJECTS.slice(0, 3).map((p) => p.title)
-      )}. Ask about any of them by name for the detail.`,
+      text: `He has ${PROJECTS.length} projects showcased with full interface snapshots, including Almari PK (headless WooCommerce store), BlogBolt (AI content automation), Wonderlyf, and Cure Abroad. Ask about any project for details!`,
     },
   });
 
@@ -380,9 +418,9 @@ function buildFacts(): Fact[] {
 
   facts.push({
     id: 'resume',
-    keywords: kw('resume download pdf document'),
+    keywords: kw('resume download pdf document cv'),
     answer: {
-      text: 'Everything on this page is his up-to-date experience. For a formal CV, email him directly and he will send one over.',
+      text: 'Everything on this page represents his up-to-date experience. For a formal CV or custom client portfolio PDF, email him directly.',
       links: [MAILTO],
     },
   });
@@ -426,14 +464,14 @@ const GREETING = /^(hi|hey|hello|yo|salam|assalam|good (morning|afternoon|evenin
 const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate)\b/i;
 
 export const SUGGESTIONS = [
+  'What is Almari PK (almaripk.com)?',
+  'What is BlogBolt and how does it work?',
+  'Where can I see his GitHub repository?',
   'What does an AI Marketing Engineer do?',
-  'What is BlogBolt?',
-  'What AI work does he do at Marham?',
-  'Is he available for work?',
-  'What is his experience?',
+  'Is he available for freelance client work?',
 ];
 
-export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s AI automation work, his stack, or his experience. Everything I say comes straight from his portfolio data, so I won't guess.`;
+export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s headless e-commerce builds (like almaripk.com), AI marketing pipelines, or GitHub repository. Everything I say comes straight from his real portfolio.`;
 
 export function ask(query: string): Answer {
   const trimmed = query.trim();
@@ -441,20 +479,19 @@ export function ask(query: string): Answer {
 
   if (GREETING.test(trimmed) && trimmed.length < 24) {
     return {
-      text: `Hello. Ask me about ${PROFILE.firstName}'s experience, his stack, a specific project, or whether he is available.`,
+      text: `Hello. Ask me about ${PROFILE.firstName}'s projects (like Almari PK or BlogBolt), his tech stack, GitHub repo, or availability.`,
     };
   }
 
   if (THANKS.test(trimmed) && trimmed.length < 32) {
     return {
-      text: `Any time. If you want to reach him directly, ${PROFILE.email} is the fastest route.`,
+      text: `Any time! If you want to reach him directly, ${PROFILE.email} is the fastest route.`,
       links: [MAILTO],
     };
   }
 
   const tokens = tokenise(trimmed);
   if (tokens.length === 0) {
-    // Nothing substantive to match on — almost always "tell me about him".
     return { text: BIO.join(' ') };
   }
 
@@ -464,7 +501,7 @@ export function ask(query: string): Answer {
 
   if (ranked.length === 0) {
     return {
-      text: `That isn't in his portfolio data, so I'd rather not guess. He can answer directly at ${PROFILE.email}. You could also ask me about his experience, stack, projects, or availability.`,
+      text: `That isn't in his portfolio data, so I'd rather not guess. He can answer directly at ${PROFILE.email}. You could also ask about Almari PK, BlogBolt, his stack, or his GitHub repository.`,
       links: [MAILTO],
     };
   }

@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github } from 'lucide-react';
 import { PROFILE, STATS, SKILL_GROUPS } from '@/lib/data';
 import Reveal from './Reveal';
 import Counter from './Counter';
@@ -8,7 +8,7 @@ const TOOLS = SKILL_GROUPS.flatMap((g) => g.items);
 export default function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden">
-      {/* ambient light + technical grid — both static CSS, no canvas */}
+      {/* ambient light + technical grid */}
       <div aria-hidden className="hero-glow absolute inset-0 -z-10" />
       <div aria-hidden className="grid-lines absolute inset-0 -z-10 opacity-70" />
 
@@ -28,8 +28,8 @@ export default function Hero() {
             {PROFILE.title}
           </p>
           <h1 className="mt-4 max-w-4xl text-display font-semibold text-balance text-fg">
-            I engineer <span className="text-accent">AI content systems</span> that
-            scale marketing.
+            I engineer <span className="text-accent">AI content systems</span> &amp;{' '}
+            <span className="text-accent">headless stores</span>.
           </h1>
         </Reveal>
 
@@ -43,7 +43,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-all hover:bg-accent-dim hover:shadow-glow"
+              className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-all duration-300 hover:bg-accent-dim hover:shadow-glow hover:-translate-y-0.5"
             >
               See the work
               <ArrowRight
@@ -53,15 +53,28 @@ export default function Hero() {
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface px-6 py-3.5 text-sm font-medium text-fg transition-all hover:border-accent/40 hover:bg-surface-raised"
+              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface px-6 py-3.5 text-sm font-medium text-fg transition-all duration-300 hover:border-accent/40 hover:bg-surface-raised hover:-translate-y-0.5"
             >
               What I do
+            </a>
+            <a
+              href={PROFILE.socials.githubRepo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-md border border-line/80 bg-surface/70 px-4 py-3 text-sm font-medium text-fg-muted transition-all duration-300 hover:border-accent/40 hover:text-accent hover:-translate-y-0.5"
+            >
+              <Github size={16} className="text-fg-faint transition-colors group-hover:text-accent" />
+              <span>GitHub Repo</span>
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </a>
             <a
               href={PROFILE.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 px-1 text-sm text-fg-muted transition-colors hover:text-accent"
+              className="group inline-flex items-center gap-1.5 px-2 text-sm text-fg-muted transition-colors hover:text-accent"
             >
               LinkedIn
               <ArrowUpRight
@@ -75,7 +88,7 @@ export default function Hero() {
         <Reveal delay={320}>
           <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:mt-20 md:grid-cols-4">
             {STATS.map((s) => (
-              <div key={s.label} className="bg-surface p-6 md:p-7">
+              <div key={s.label} className="bg-surface p-6 md:p-7 transition-colors hover:bg-surface-raised">
                 <dd className="text-3xl font-semibold tracking-tight text-fg md:text-4xl">
                   <Counter value={s.value} />
                 </dd>
@@ -96,7 +109,7 @@ export default function Hero() {
             {[...TOOLS, ...TOOLS].map((t, i) => (
               <li
                 key={t + i}
-                className="whitespace-nowrap font-mono text-xs uppercase tracking-label text-fg-faint"
+                className="whitespace-nowrap font-mono text-xs uppercase tracking-label text-fg-faint hover:text-accent transition-colors cursor-default"
               >
                 {t}
               </li>

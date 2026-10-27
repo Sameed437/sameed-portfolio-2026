@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Github, Mail, MapPin } from 'lucide-react';
 import { PROFILE } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
@@ -11,7 +11,8 @@ const FIELD =
 
 const CHANNELS = [
   { label: 'LinkedIn', value: '/in/sameed-chaudhary', href: PROFILE.socials.linkedin },
-  { label: 'GitHub', value: '@Sameed437', href: PROFILE.socials.github },
+  { label: 'GitHub Profile', value: '@Sameed437', href: PROFILE.socials.github },
+  { label: 'Repository', value: 'Sameed437/sameed-portfolio-2026', href: PROFILE.socials.githubRepo },
 ];
 
 export default function Contact() {
@@ -51,8 +52,8 @@ export default function Contact() {
         <SectionHeader
           index="06"
           eyebrow="Contact"
-          title="Let's build the system that ships your marketing."
-          description="Open to freelance projects and full-time roles. Tell me what you're building — I usually reply within 24 hours."
+          title="Let's build the system that scales your business."
+          description="Open to freelance client projects (headless e-commerce, AI automation, full-stack builds) and full-time engineering roles. Tell me what you're building — I usually reply within 24 hours."
         />
 
         <div className="grid gap-6 md:grid-cols-12">
@@ -142,7 +143,7 @@ export default function Contact() {
                   name="subject"
                   value={form.subject}
                   onChange={set('subject')}
-                  placeholder="AI content automation for our blog"
+                  placeholder="Headless WooCommerce store or AI automation"
                   className={FIELD + ' mt-2'}
                 />
               </div>
@@ -158,7 +159,7 @@ export default function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={set('message')}
-                  placeholder="A few lines about what you need…"
+                  placeholder="Tell me about your project, timeline, and goals…"
                   className={FIELD + ' mt-2 resize-none'}
                 />
               </div>
@@ -166,7 +167,7 @@ export default function Contact() {
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-all hover:bg-accent-dim hover:shadow-glow"
+                  className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-all hover:bg-accent-dim hover:shadow-glow shadow-glow"
                 >
                   Send message
                 </button>

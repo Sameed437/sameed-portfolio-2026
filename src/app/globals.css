@@ -41,24 +41,24 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
-/* Scrollbar, tuned to the dark surface rather than left default-light */
+/* Scrollbar, tuned to the dark surface */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: #090b0e;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262b34;
+  background: #232832;
   border-radius: 8px;
-  border: 2px solid #0b0d10;
+  border: 2px solid #090b0e;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #343a45;
+  background: #363d4c;
 }
 
 @layer utilities {
@@ -77,33 +77,33 @@ body {
     @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
   }
 
-  /* Card surface used across work, services and experience */
+  /* Card surface with ultra-smooth spring ease */
   .card {
     @apply border border-line bg-surface shadow-card transition-all duration-300;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-hover {
-    @apply hover:-translate-y-1 hover:border-line hover:bg-surface-raised hover:shadow-lift;
+    @apply hover:-translate-y-1.5 hover:border-accent/40 hover:bg-surface-raised hover:shadow-lift;
   }
 
   /*
-    Ambient hero light. A single static radial gradient — no canvas, no
-    per-frame work, no blur filter animation.
+    Ambient hero light.
   */
   .hero-glow {
     background:
       radial-gradient(
         60rem 40rem at 15% -10%,
-        rgba(232, 163, 61, 0.14),
+        rgba(232, 163, 61, 0.15),
         transparent 60%
       ),
       radial-gradient(
         48rem 32rem at 85% 0%,
-        rgba(232, 163, 61, 0.06),
+        rgba(232, 163, 61, 0.08),
         transparent 55%
       );
   }
 
-  /* Faint technical grid, masked out toward the bottom */
+  /* Technical grid */
   .grid-lines {
     background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -135,15 +135,14 @@ body {
 }
 
 /*
-  Scroll reveal: one shared IntersectionObserver plus a CSS transition.
-  No animation library, no per-frame JS.
+  Smooth scroll reveal
 */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -154,10 +153,24 @@ body {
   will-change: auto;
 }
 
-/* Never leave content invisible when scripting is unavailable */
 .no-js .reveal {
   opacity: 1;
   transform: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,7 +183,8 @@ body {
     transition: none;
   }
   .animate-marquee,
-  .animate-pulseDot {
+  .animate-pulseDot,
+  .animate-fadeIn {
     animation: none !important;
   }
   *,

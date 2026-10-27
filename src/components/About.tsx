@@ -10,7 +10,7 @@ export default function About() {
         <SectionHeader
           index="03"
           eyebrow="About"
-          title="I build the system, not just the page."
+          title="I build the full system, from headless storefronts to AI pipelines."
         />
 
         <div className="grid gap-12 md:grid-cols-12 md:gap-14">
@@ -20,10 +20,10 @@ export default function About() {
                 aria-hidden
                 className="absolute -inset-3 -z-10 rounded-2xl bg-accent/10 blur-2xl"
               />
-              <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line bg-surface">
+              <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line bg-surface shadow-card">
                 <Image
                   src="/sameed.jpg"
-                  alt={PROFILE.name + ', AI Marketing Engineer'}
+                  alt={PROFILE.name + ', AI Marketing & Web Engineer'}
                   fill
                   sizes="(max-width: 768px) 90vw, 400px"
                   priority
@@ -44,32 +44,34 @@ export default function About() {
           <Reveal className="md:col-span-7" delay={120}>
             <div className="space-y-5 text-lead text-pretty text-fg-muted">
               <p>
-                I&apos;m an AI Marketing Engineer based in {PROFILE.location}. I
-                build the automation that produces marketing content — and the
-                experiments that prove whether it works.
+                I&apos;m an AI Marketing &amp; Web Engineer based in {PROFILE.location}. I
+                build the automation that produces marketing content, engineer high-speed
+                headless e-commerce stores, and run the experimentation loops that make them convert.
               </p>
               <p>
-                My flagship project is{' '}
-                <span className="text-fg">BlogBolt</span>: a
-                Python pipeline with a Next.js control panel that runs a
-                seven-phase SEO content workflow with Claude — research,
-                outline, draft, on-page SEO, image selection with auto
-                alt-text, format, publish — and lands the result in WordPress
-                as a reviewable draft.
+                In headless e-commerce, I recently prepared{' '}
+                <a
+                  href="https://almaripk.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-fg font-semibold hover:text-accent transition-colors underline underline-offset-4 decoration-accent/40"
+                >
+                  Almari PK (almaripk.com)
+                </a>{' '}
+                for a client — a modern full-stack headless store pairing a Next.js 14 / React frontend with a headless WooCommerce &amp; WordPress API backend for instant catalog filtering and streamlined checkouts.
               </p>
               <p>
-                At <span className="text-fg">Marham</span> I build n8n
-                automations, run UI experiments and A/B tests on key product
-                pages, and ship SEO-led content systems that compound traffic
-                over time. The engineering background — Next.js, React,
-                WordPress, WooCommerce — is what lets me build the thing rather
-                than brief someone else to.
+                My flagship AI project is <span className="text-fg font-medium">BlogBolt</span>: a
+                Python pipeline with a Next.js control panel that runs a seven-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — landing drafts directly in WordPress.
+              </p>
+              <p>
+                At <span className="text-fg font-medium">Marham</span> I engineer AI solutions with Claude and APIs, automate publishing via n8n workflows, run UI experiments and A/B tests on key product flows, and scale organic reach with structured SEO systems.
               </p>
             </div>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
               {SKILL_GROUPS.map((group) => (
-                <div key={group.title} className="bg-surface p-5 md:p-6">
+                <div key={group.title} className="bg-surface p-5 md:p-6 transition-colors hover:bg-surface-raised">
                   <h3 className="font-mono text-[11px] uppercase tracking-label text-accent">
                     {group.title}
                   </h3>

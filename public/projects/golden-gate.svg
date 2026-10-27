@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="ggHeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181318"/>
+      <stop offset="100%" stop-color="#2D1A22"/>
+    </linearGradient>
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E07A5F"/>
+      <stop offset="100%" stop-color="#F4A261"/>
+    </linearGradient>
+    <filter id="ggShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#0C0A0D"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1200" height="34" fill="#070508"/>
+  <text x="600" y="22" fill="#E07A5F" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">
+    GOLDEN GATE ACCOUNTING · HIGH PERFORMANCE EDITORIAL BUSINESS WEBSITE
+  </text>
+
+  <!-- Navbar -->
+  <rect x="0" y="34" width="1200" height="68" fill="#131015" stroke="#251E28" stroke-width="1"/>
+  <rect x="50" y="52" width="32" height="32" rx="4" fill="#E07A5F"/>
+  <path d="M56 74 L66 58 L76 74 Z" fill="#0C0A0D"/>
+  <text x="94" y="74" fill="#FFFFFF" font-family="serif" font-size="20" font-weight="700">GOLDEN GATE</text>
+  <text x="260" y="74" fill="#E07A5F" font-family="sans-serif" font-size="12" font-weight="700">ADVISORY</text>
+
+  <g font-family="sans-serif" font-size="13" font-weight="600" fill="#9CA3AF">
+    <text x="560" y="73">FIRM PROFILE</text>
+    <text x="690" y="73">PRACTICE AREAS</text>
+    <text x="840" y="73">INSIGHTS</text>
+    <text x="960" y="73">CONTACT</text>
+  </g>
+  <rect x="1050" y="52" width="105" height="32" rx="6" fill="#E07A5F"/>
+  <text x="1102" y="73" fill="#0C0A0D" font-family="sans-serif" font-size="12" font-weight="800" text-anchor="middle">ENGAGE</text>
+
+  <!-- Hero Section -->
+  <rect x="40" y="122" width="1120" height="260" rx="16" fill="url(#ggHeroGrad)" stroke="#3D252E" stroke-width="1" filter="url(#ggShadow)"/>
+  
+  <text x="80" y="170" fill="#E07A5F" font-family="monospace" font-size="12" font-weight="700" letter-spacing="2">SAN FRANCISCO BAY AREA · FINANCIAL ADVISORY</text>
+  <text x="80" y="215" fill="#FFFFFF" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700">Principled Accounting for</text>
+  <text x="80" y="255" fill="#FFFFFF" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700">Visionary Enterprises.</text>
+  
+  <text x="80" y="295" fill="#B39DA5" font-family="sans-serif" font-size="14">
+    Tailored corporate advisory, tax mitigation strategies, and certified financial audits.
+  </text>
+
+  <rect x="80" y="325" width="170" height="40" rx="6" fill="url(#roseGold)"/>
+  <text x="165" y="350" fill="#0C0A0D" font-family="sans-serif" font-size="13" font-weight="800" text-anchor="middle">EXPLORE SOLUTIONS</text>
+
+  <!-- Right Visual / Lighthouse 100 Pill -->
+  <g transform="translate(800, 150)">
+    <rect width="320" height="204" rx="12" fill="#151016" stroke="#33222B" stroke-width="1"/>
+    <text x="24" y="36" fill="#E07A5F" font-family="sans-serif" font-size="12" font-weight="700">LIGHTHOUSE PERFORMANCE</text>
+    
+    <text x="24" y="78" fill="#4ADE80" font-family="monospace" font-size="36" font-weight="800">100</text>
+    <text x="110" y="70" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="700">Perfect Speed Index</text>
+    <text x="110" y="86" fill="#8E7883" font-family="sans-serif" font-size="11">0.4s Largest Contentful Paint</text>
+
+    <line x1="24" y1="110" x2="296" y2="110" stroke="#2B1A23" stroke-width="1"/>
+
+    <text x="24" y="140" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="600">Editorial WordPress Build</text>
+    <text x="24" y="160" fill="#8E7883" font-family="sans-serif" font-size="11">Clean DOM hierarchy, zero render bloat</text>
+    <text x="24" y="185" fill="#E07A5F" font-family="monospace" font-size="11 font-weight=700">A+ Security Grade</text>
+  </g>
+
+  <!-- 3 Service Columns -->
+  <g transform="translate(40, 420)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="#141016" stroke="#2B1E29" stroke-width="1" filter="url(#ggShadow)"/>
+    <text x="24" y="50" fill="#E07A5F" font-family="sans-serif" font-size="12" font-weight="700">01 / CORPORATE TAX</text>
+    <text x="24" y="85" fill="#FFFFFF" font-family="serif" font-size="20" font-weight="700">Strategic Tax Architecture</text>
+    <text x="24" y="120" fill="#9E8D95" font-family="sans-serif" font-size="13">
+      Multi-entity structure planning, R&amp;D credit claims, and federal and California state filings.
+    </text>
+  </g>
+
+  <g transform="translate(425, 420)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="#141016" stroke="#2B1E29" stroke-width="1" filter="url(#ggShadow)"/>
+    <text x="24" y="50" fill="#E07A5F" font-family="sans-serif" font-size="12" font-weight="700">02 / AUDIT &amp; ASSURANCE</text>
+    <text x="24" y="85" fill="#FFFFFF" font-family="serif" font-size="20" font-weight="700">Financial Statement Audits</text>
+    <text x="24" y="120" fill="#9E8D95" font-family="sans-serif" font-size="13">
+      Independent review for stakeholders, venture financing validation, and GAAP compliance certification.
+    </text>
+  </g>
+
+  <g transform="translate(810, 420)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="#141016" stroke="#2B1E29" stroke-width="1" filter="url(#ggShadow)"/>
+    <text x="24" y="50" fill="#E07A5F" font-family="sans-serif" font-size="12" font-weight="700">03 / M&amp;A DUE DILIGENCE</text>
+    <text x="24" y="85" fill="#FFFFFF" font-family="serif" font-size="20" font-weight="700">Transaction Advisory</text>
+    <text x="24" y="120" fill="#9E8D95" font-family="sans-serif" font-size="13">
+      Quality of earnings reporting, balance sheet normalization, and post-close integration accounting.
+    </text>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Github, Menu, X } from 'lucide-react';
 import { NAV_LINKS, PROFILE } from '@/lib/data';
 
 export default function Navbar() {
@@ -16,7 +16,6 @@ export default function Navbar() {
       raf = 0;
       const y = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      // Drive the progress bar via style directly — no re-render per pixel.
       if (barRef.current) {
         const p = max > 0 ? y / max : 0;
         barRef.current.style.transform = 'scaleX(' + p + ')';
@@ -56,15 +55,15 @@ export default function Navbar() {
   return (
     <header
       className={
-        'sticky top-0 z-40 transition-colors duration-300 ' +
+        'sticky top-0 z-40 transition-all duration-300 ' +
         (stuck
-          ? 'border-b border-line bg-base/85 backdrop-blur-md'
+          ? 'border-b border-line bg-base/85 backdrop-blur-md shadow-card'
           : 'border-b border-transparent')
       }
     >
       <div className="shell flex h-16 items-center justify-between gap-6 md:h-20">
         <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-7 w-7 place-items-center rounded bg-accent font-mono text-xs font-bold text-base">
+          <span className="grid h-7 w-7 place-items-center rounded bg-accent font-mono text-xs font-bold text-base transition-transform group-hover:scale-105">
             S
           </span>
           <span className="hidden text-sm font-semibold tracking-tight text-fg transition-colors group-hover:text-accent sm:block">
@@ -77,7 +76,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-fg-muted transition-colors hover:text-fg"
+              className="text-sm text-fg-muted transition-colors duration-200 hover:text-fg"
             >
               {l.label}
             </a>
@@ -85,9 +84,21 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* GitHub Repo Button */}
+          <a
+            href={PROFILE.socials.githubRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="grid h-9 w-9 place-items-center rounded-md border border-line bg-surface text-fg-muted transition-all duration-200 hover:border-accent/40 hover:bg-surface-raised hover:text-accent"
+            title="View sameed-portfolio-2026 on GitHub"
+            aria-label="GitHub Repository"
+          >
+            <Github size={17} />
+          </a>
+
           <a
             href={'mailto:' + PROFILE.email}
-            className="hidden rounded-md bg-accent px-4 py-2 text-sm font-medium text-base transition-colors hover:bg-accent-dim sm:inline-block"
+            className="hidden rounded-md bg-accent px-4 py-2 text-sm font-medium text-base transition-colors duration-200 hover:bg-accent-dim sm:inline-block shadow-glow"
           >
             Hire me
           </a>
@@ -107,12 +118,12 @@ export default function Navbar() {
       <div
         ref={barRef}
         aria-hidden
-        className="h-px origin-left bg-accent"
+        className="h-px origin-left bg-accent transition-transform duration-75"
         style={{ transform: 'scaleX(0)' }}
       />
 
       {open && (
-        <div className="border-t border-line bg-base lg:hidden">
+        <div className="border-t border-line bg-base/95 backdrop-blur-md lg:hidden animate-fadeIn">
           <nav className="shell flex flex-col py-2" aria-label="Mobile">
             {NAV_LINKS.map((l) => (
               <a
@@ -124,6 +135,16 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
+            <a
+              href={PROFILE.socials.githubRepo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 border-b border-line-soft py-4 text-base text-fg-muted transition-colors hover:text-accent"
+            >
+              <Github size={18} />
+              GitHub Repo (sameed-portfolio-2026)
+            </a>
             <a
               href={'mailto:' + PROFILE.email}
               onClick={() => setOpen(false)}

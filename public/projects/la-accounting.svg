@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="laHeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="amberGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <filter id="laShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#0B0F17"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1200" height="34" fill="#070A10"/>
+  <text x="600" y="22" fill="#FBBF24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">
+    LAACCOUNTINGPRO.COM — LOS ANGELES VIRTUAL ACCOUNTING &amp; HIGH-CONVERSION LEAD FUNNEL
+  </text>
+
+  <!-- Navbar -->
+  <rect x="0" y="34" width="1200" height="68" fill="#131B29" stroke="#232E42" stroke-width="1"/>
+  <rect x="50" y="52" width="34" height="32" rx="4" fill="#F59E0B"/>
+  <text x="67" y="74" fill="#0B0F17" font-family="sans-serif" font-size="18" font-weight="900" text-anchor="middle">LA</text>
+  <text x="96" y="74" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800">ACCOUNTING</text>
+  <text x="236" y="74" fill="#F59E0B" font-family="sans-serif" font-size="14" font-weight="700">PRO</text>
+
+  <g font-family="sans-serif" font-size="13" font-weight="600" fill="#9CA3AF">
+    <text x="540" y="73">SERVICES</text>
+    <text x="650" y="73">YEAR-END CLEANUP</text>
+    <text x="820" y="73">TAX RESOLUTION</text>
+    <text x="960" y="73">CASE STUDIES</text>
+  </g>
+  <rect x="1050" y="52" width="110" height="32" rx="6" fill="#F59E0B"/>
+  <text x="1105" y="73" fill="#0B0F17" font-family="sans-serif" font-size="12" font-weight="800" text-anchor="middle">CALL NOW</text>
+
+  <!-- Hero Section with Dual Lead-Gen Funnel -->
+  <rect x="40" y="122" width="1120" height="270" rx="16" fill="url(#laHeroGrad)" stroke="#2B3648" stroke-width="1" filter="url(#laShadow)"/>
+  
+  <text x="80" y="170" fill="#FBBF24" font-family="sans-serif" font-size="12" font-weight="700" letter-spacing="2">TOP-RATED LOS ANGELES BOOKKEEPING &amp; TAX FIRM</text>
+  <text x="80" y="215" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800">Get Your Books Done Right.</text>
+  <text x="80" y="255" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800">Never Worry About Tax Season.</text>
+  <text x="80" y="295" fill="#9CA3AF" font-family="sans-serif" font-size="14">
+    Catch up months of overdue bookkeeping in days. Maximize deductions and save thousands.
+  </text>
+
+  <rect x="80" y="325" width="180" height="42" rx="6" fill="url(#amberGold)"/>
+  <text x="170" y="351" fill="#0B0F17" font-family="sans-serif" font-size="13" font-weight="800" text-anchor="middle">CLAIM FREE TAX REVIEW</text>
+
+  <!-- Lead Capture Form Card on Right -->
+  <g transform="translate(730, 142)">
+    <rect width="390" height="230" rx="12" fill="#111827" stroke="#374151" stroke-width="1"/>
+    <text x="24" y="34" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="700">Request Instant Consultation</text>
+    <text x="24" y="52" fill="#9CA3AF" font-family="sans-serif" font-size="11">Get an expert quote within 2 hours</text>
+
+    <!-- Inputs -->
+    <rect x="24" y="68" width="342" height="34" rx="6" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
+    <text x="36" y="89" fill="#9CA3AF" font-family="sans-serif" font-size="12">Full Name</text>
+
+    <rect x="24" y="112" width="342" height="34" rx="6" fill="#1F2937" stroke="#4B5563" stroke-width="1"/>
+    <text x="36" y="133" fill="#9CA3AF" font-family="sans-serif" font-size="12">Work Email or Phone</text>
+
+    <rect x="24" y="160" width="342" height="40" rx="6" fill="#F59E0B"/>
+    <text x="195" y="185" fill="#0B0F17" font-family="sans-serif" font-size="13" font-weight="800" text-anchor="middle">SCHEDULE FREE CALL →</text>
+  </g>
+
+  <!-- Metrics Bar -->
+  <g transform="translate(40, 420)">
+    <rect width="1120" height="80" rx="12" fill="#131B29" stroke="#232E42" stroke-width="1"/>
+    <g transform="translate(60, 26)">
+      <text x="0" y="24" fill="#F59E0B" font-family="monospace" font-size="28" font-weight="800">500+</text>
+      <text x="110" y="16" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">LA Businesses</text>
+      <text x="110" y="32" fill="#6B7280" font-family="sans-serif" font-size="11">Served Since 2021</text>
+    </g>
+    <g transform="translate(360, 26)">
+      <text x="0" y="24" fill="#10B981" font-family="monospace" font-size="28" font-weight="800">$4.2M+</text>
+      <text x="130" y="16" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">Tax Deductions</text>
+      <text x="130" y="32" fill="#6B7280" font-family="sans-serif" font-size="11">Identified for Clients</text>
+    </g>
+    <g transform="translate(680, 26)">
+      <text x="0" y="24" fill="#3B82F6" font-family="monospace" font-size="28" font-weight="800">48h</text>
+      <text x="80" y="16" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">Cleanup Turnaround</text>
+      <text x="80" y="32" fill="#6B7280" font-family="sans-serif" font-size="11">For Past Due Months</text>
+    </g>
+    <g transform="translate(940, 26)">
+      <text x="0" y="24" fill="#F59E0B" font-family="monospace" font-size="28" font-weight="800">4.9 ★</text>
+      <text x="90" y="16" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">Google Rating</text>
+      <text x="90" y="32" fill="#6B7280" font-family="sans-serif" font-size="11">140+ Client Reviews</text>
+    </g>
+  </g>
+
+  <!-- 3 Pillars -->
+  <g transform="translate(40, 520)">
+    <rect x="0" y="0" width="350" height="190" rx="12" fill="#111827" stroke="#252F40" stroke-width="1"/>
+    <text x="24" y="44" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="700">Year-End Catch-Up</text>
+    <text x="24" y="70" fill="#9CA3AF" font-family="sans-serif" font-size="12">
+      Behind on your accounting? We reconcile back-taxes, unfiled statements, and messy spreadsheets.
+    </text>
+    <text x="24" y="140" fill="#F59E0B" font-family="sans-serif" font-size="12" font-weight="700">Fixed Flat Rates →</text>
+  </g>
+
+  <g transform="translate(425, 520)">
+    <rect x="0" y="0" width="350" height="190" rx="12" fill="#111827" stroke="#252F40" stroke-width="1"/>
+    <text x="24" y="44" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="700">Full Monthly Bookkeeping</text>
+    <text x="24" y="70" fill="#9CA3AF" font-family="sans-serif" font-size="12">
+      Continuous accounts maintenance, invoice handling, automated bank syncing and P&amp;L reports.
+    </text>
+    <text x="24" y="140" fill="#F59E0B" font-family="sans-serif" font-size="12" font-weight="700">Plans from $299/mo →</text>
+  </g>
+
+  <g transform="translate(810, 520)">
+    <rect x="0" y="0" width="350" height="190" rx="12" fill="#111827" stroke="#252F40" stroke-width="1"/>
+    <text x="24" y="44" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="700">Strategic Tax Prep</text>
+    <text x="24" y="70" fill="#9CA3AF" font-family="sans-serif" font-size="12">
+      Form 1120-S, 1065, Schedule C and California state franchise tax filings handled with zero headaches.
+    </text>
+    <text x="24" y="140" fill="#F59E0B" font-family="sans-serif" font-size="12" font-weight="700">Book Free Tax Review →</text>
+  </g>
+</svg>

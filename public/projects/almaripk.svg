@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d12"/>
+      <stop offset="100%" stop-color="#141720"/>
+    </linearGradient>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#191724"/>
+      <stop offset="50%" stop-color="#211e2f"/>
+      <stop offset="100%" stop-color="#161420"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#171922"/>
+      <stop offset="100%" stop-color="#0f1117"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A33D"/>
+      <stop offset="100%" stop-color="#F5C067"/>
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8a33d" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#e8a33d" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="750" fill="url(#bgGrad)"/>
+
+  <!-- Top Announcement Bar -->
+  <rect x="0" y="0" width="1200" height="32" fill="#0A0B0E"/>
+  <text x="600" y="21" fill="#F5C067" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">
+    ⚡ ALMARIPK.COM — NEXT.JS 14 HEADLESS WOOCOMMERCE STORE · SUB-SECOND TRANSITIONS
+  </text>
+
+  <!-- Navigation Bar -->
+  <rect x="0" y="32" width="1200" height="68" fill="#10131A" stroke="#222632" stroke-width="1"/>
+  
+  <!-- Logo -->
+  <text x="50" y="74" fill="#FFFFFF" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="24" font-weight="800" letter-spacing="3">ALMARI</text>
+  <rect x="160" y="58" width="34" height="18" rx="4" fill="url(#goldGrad)"/>
+  <text x="177" y="71" fill="#0E1014" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle">.PK</text>
+  <text x="206" y="71" fill="#7E8695" font-family="sans-serif" font-size="11" font-weight="500">HEADLESS STORE</text>
+
+  <!-- Nav Links -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#CBD2DF">
+    <text x="430" y="71">NEW ARRIVALS</text>
+    <text x="560" y="71">LUXURY PRET</text>
+    <text x="680" y="71">UNSTITCHED</text>
+    <text x="800" y="71">FORMAL '26</text>
+    <text x="910" y="71" fill="#E8A33D">SALE 30% OFF</text>
+  </g>
+
+  <!-- Nav Right Actions -->
+  <rect x="1030" y="50" width="120" height="32" rx="16" fill="#1C212C" stroke="#2F3646" stroke-width="1"/>
+  <circle cx="1048" cy="66" r="5" fill="#E8A33D"/>
+  <text x="1062" y="70" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700">CART (3)</text>
+
+  <!-- Hero Spotlight Section -->
+  <rect x="40" y="118" width="1120" height="240" rx="16" fill="url(#heroGrad)" stroke="#2C2E3E" stroke-width="1" filter="url(#shadow)"/>
+  <circle cx="950" cy="238" r="160" fill="url(#accentGlow)"/>
+
+  <!-- Hero Content -->
+  <rect x="70" y="142" width="160" height="22" rx="11" fill="rgba(232, 163, 61, 0.15)" stroke="#E8A33D" stroke-width="1"/>
+  <text x="150" y="157" fill="#E8A33D" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">CLIENT E-COMMERCE</text>
+
+  <text x="70" y="200" fill="#FFFFFF" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="800">The Modern Festive Collection '26</text>
+  <text x="70" y="228" fill="#B0B7C6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" max-width="600">
+    Full headless WooCommerce store on React &amp; Next.js frontend with GraphQL &amp; REST sync.
+  </text>
+  <text x="70" y="248" fill="#7D8699" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">
+    Instant SSR page loads, dynamic multi-attribute filters, and real-time cart state.
+  </text>
+
+  <!-- Hero CTA Buttons -->
+  <rect x="70" y="278" width="170" height="42" rx="8" fill="url(#goldGrad)"/>
+  <text x="155" y="304" fill="#0C0D12" font-family="sans-serif" font-size="13" font-weight="700" text-anchor="middle">SHOP COLLECTION</text>
+
+  <rect x="256" y="278" width="160" height="42" rx="8" fill="#1A1C24" stroke="#363C4D" stroke-width="1"/>
+  <text x="336" y="304" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="600" text-anchor="middle">VIEW ARCHITECTURE</text>
+
+  <!-- Performance Badges in Hero -->
+  <g transform="translate(760, 150)">
+    <rect x="0" y="0" width="320" height="160" rx="12" fill="#12131A" stroke="#262A38" stroke-width="1"/>
+    <text x="20" y="32" fill="#E8A33D" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="1">SYSTEM METRICS</text>
+    
+    <text x="20" y="65" fill="#FFFFFF" font-family="monospace" font-size="20" font-weight="700">99 / 100</text>
+    <text x="140" y="64" fill="#8C95A6" font-family="sans-serif" font-size="12">Lighthouse Mobile</text>
+
+    <text x="20" y="100" fill="#4ADE80" font-family="monospace" font-size="18" font-weight="700">&lt; 350ms</text>
+    <text x="140" y="99" fill="#8C95A6" font-family="sans-serif" font-size="12">SSR First Contentful Paint</text>
+
+    <text x="20" y="135" fill="#38BDF8" font-family="monospace" font-size="16" font-weight="700">WooCommerce</text>
+    <text x="140" y="134" fill="#8C95A6" font-family="sans-serif" font-size="12">Headless REST / GraphQL</text>
+  </g>
+
+  <!-- Catalog Section Header -->
+  <text x="40" y="394" fill="#E8A33D" font-family="monospace" font-size="11" font-weight="700" letter-spacing="2">CURATED CLIENT SHOWCASE</text>
+  <text x="40" y="420" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">Trending Storefront Items</text>
+
+  <g transform="translate(820, 395)" font-family="sans-serif" font-size="12" font-weight="600">
+    <rect x="0" y="0" width="70" height="26" rx="13" fill="#E8A33D"/>
+    <text x="35" y="17" fill="#0C0D12" text-anchor="middle">All (24)</text>
+
+    <rect x="80" y="0" width="80" height="26" rx="13" fill="#171A23" stroke="#282E3E" stroke-width="1"/>
+    <text x="120" y="17" fill="#A2ABB8" text-anchor="middle">Pret Wear</text>
+
+    <rect x="170" y="0" width="90" height="26" rx="13" fill="#171A23" stroke="#282E3E" stroke-width="1"/>
+    <text x="215" y="17" fill="#A2ABB8" text-anchor="middle">Unstitched</text>
+
+    <rect x="270" y="0" width="70" height="26" rx="13" fill="#171A23" stroke="#282E3E" stroke-width="1"/>
+    <text x="305" y="17" fill="#A2ABB8" text-anchor="middle">Formals</text>
+  </g>
+
+  <!-- Product Grid (3 Cards) -->
+  <!-- Product 1 -->
+  <g transform="translate(40, 440)">
+    <rect width="350" height="280" rx="12" fill="url(#cardGrad)" stroke="#252A38" stroke-width="1" filter="url(#shadow)"/>
+    <!-- Product visual placeholder block -->
+    <rect x="14" y="14" width="322" height="150" rx="8" fill="#1C202C"/>
+    <rect x="26" y="26" width="76" height="22" rx="4" fill="#E8A33D"/>
+    <text x="64" y="41" fill="#0C0D12" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">BEST SELLER</text>
+    
+    <!-- Stylized apparel silhouette -->
+    <path d="M140 140 L160 55 L175 68 L190 55 L210 140 Z" fill="#2B3244"/>
+    <circle cx="175" cy="50" r="10" fill="#3B445B"/>
+
+    <text x="18" y="190" fill="#FFFFFF" font-family="sans-serif" font-size="15" font-weight="700">Raw Silk Embroidered Set</text>
+    <text x="18" y="210" fill="#848D9E" font-family="sans-serif" font-size="12">3-Piece Formal · Stitched &amp; Styled</text>
+    
+    <text x="18" y="244" fill="#E8A33D" font-family="monospace" font-size="18" font-weight="700">Rs. 8,950</text>
+    <text x="120" y="243" fill="#586173" font-family="monospace" font-size="13" text-decoration="line-through">Rs. 11,500</text>
+    
+    <rect x="236" y="222" width="100" height="34" rx="6" fill="#252B3A" stroke="#3A4359" stroke-width="1"/>
+    <text x="286" y="243" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Add to Cart</text>
+  </g>
+
+  <!-- Product 2 -->
+  <g transform="translate(425, 440)">
+    <rect width="350" height="280" rx="12" fill="url(#cardGrad)" stroke="#252A38" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="14" y="14" width="322" height="150" rx="8" fill="#1C202C"/>
+    <rect x="26" y="26" width="76" height="22" rx="4" fill="#10B981"/>
+    <text x="64" y="41" fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">IN STOCK</text>
+    
+    <!-- Stylized apparel silhouette -->
+    <path d="M145 140 L162 60 L175 70 L188 60 L205 140 Z" fill="#332B3F"/>
+    <circle cx="175" cy="52" r="10" fill="#4B3B60"/>
+
+    <text x="18" y="190" fill="#FFFFFF" font-family="sans-serif" font-size="15" font-weight="700">Lawn Festive Block Print</text>
+    <text x="18" y="210" fill="#848D9E" font-family="sans-serif" font-size="12">Summer Pret Edition · Pure Cotton</text>
+    
+    <text x="18" y="244" fill="#E8A33D" font-family="monospace" font-size="18" font-weight="700">Rs. 5,400</text>
+    <text x="120" y="243" fill="#586173" font-family="monospace" font-size="13" text-decoration="line-through">Rs. 6,800</text>
+    
+    <rect x="236" y="222" width="100" height="34" rx="6" fill="#252B3A" stroke="#3A4359" stroke-width="1"/>
+    <text x="286" y="243" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Add to Cart</text>
+  </g>
+
+  <!-- Product 3 -->
+  <g transform="translate(810, 440)">
+    <rect width="350" height="280" rx="12" fill="url(#cardGrad)" stroke="#252A38" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="14" y="14" width="322" height="150" rx="8" fill="#1C202C"/>
+    <rect x="26" y="26" width="90" height="22" rx="4" fill="#8B5CF6"/>
+    <text x="71" y="41" fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="700" text-anchor="middle">NEW EDIT '26</text>
+    
+    <!-- Stylized apparel silhouette -->
+    <path d="M142 140 L160 58 L175 68 L190 58 L208 140 Z" fill="#223637"/>
+    <circle cx="175" cy="50" r="10" fill="#2D4C4E"/>
+
+    <text x="18" y="190" fill="#FFFFFF" font-family="sans-serif" font-size="15" font-weight="700">Chiffon Luxury Dupatta Kurta</text>
+    <text x="18" y="210" fill="#848D9E" font-family="sans-serif" font-size="12">Intricate Handwork · Wedding Edit</text>
+    
+    <text x="18" y="244" fill="#E8A33D" font-family="monospace" font-size="18" font-weight="700">Rs. 12,800</text>
+    <text x="130" y="243" fill="#586173" font-family="monospace" font-size="13" text-decoration="line-through">Rs. 15,000</text>
+    
+    <rect x="236" y="222" width="100" height="34" rx="6" fill="#252B3A" stroke="#3A4359" stroke-width="1"/>
+    <text x="286" y="243" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Add to Cart</text>
+  </g>
+</svg>
