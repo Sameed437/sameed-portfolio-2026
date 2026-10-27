@@ -1,135 +1,197 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
   <defs>
     <linearGradient id="caHeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#143e3d"/>
+      <stop offset="0%" stop-color="#113332"/>
+      <stop offset="40%" stop-color="#194c4a"/>
       <stop offset="100%" stop-color="#246a68"/>
     </linearGradient>
-    <linearGradient id="caCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f4f9f8"/>
+    <linearGradient id="caWashGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F2FAF8"/>
     </linearGradient>
-    <filter id="caShadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#153f3e" flood-opacity="0.18"/>
+    <linearGradient id="mintGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3FB9A3"/>
+      <stop offset="100%" stop-color="#5FE3CB"/>
+    </linearGradient>
+    <filter id="caDropShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#153f3e" flood-opacity="0.14"/>
     </filter>
   </defs>
 
   <!-- Background -->
   <rect width="1200" height="750" fill="#F4F8F7"/>
 
-  <!-- Top bar -->
-  <rect x="0" y="0" width="1200" height="34" fill="#1C5351"/>
-  <text x="600" y="22" fill="#B7F9EC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">
-    CUREABROADHEALTHSOLUTIONS.COM — CROSS-BORDER HEALTHCARE &amp; MEDICAL TOURISM
+  <!-- Top Announcement Bar -->
+  <rect x="0" y="0" width="1200" height="34" fill="#153F3E"/>
+  <text x="600" y="22" fill="#B7F9EC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" text-anchor="middle" letter-spacing="1.5">
+    CUREABROADHEALTHSOLUTIONS.COM — CROSS-BORDER HEALTHCARE COLLABORATION · UK / EUROPE / ASIA
   </text>
 
-  <!-- Nav Header -->
-  <rect x="0" y="34" width="1200" height="70" fill="#FFFFFF" stroke="#E0ECE9" stroke-width="1"/>
-  <circle cx="65" cy="69" r="16" fill="#2B7A78"/>
-  <path d="M60 69 H70 M65 64 V74" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-  <text x="92" y="75" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="20" font-weight="800">CURE ABROAD</text>
-  <text x="250" y="75" fill="#3FB9A3" font-family="sans-serif" font-size="11" font-weight="700">HEALTH SOLUTIONS</text>
-
-  <g font-family="'Montserrat', sans-serif" font-size="13" font-weight="600" fill="#4B6362">
-    <text x="560" y="74">HOW IT WORKS</text>
-    <text x="690" y="74">SPECIALTIES</text>
-    <text x="810" y="74">HOSPITALS</text>
-    <text x="920" y="74">FOR PATIENTS</text>
+  <!-- Header Navigation Bar -->
+  <rect x="0" y="34" width="1200" height="70" fill="#FFFFFF" stroke="#E3ECE9" stroke-width="1"/>
+  
+  <!-- Logo Representation -->
+  <g transform="translate(50, 48)">
+    <circle cx="20" cy="20" r="18" fill="#2B7A78"/>
+    <path d="M12 20 H28 M20 12 V28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="20" cy="20" r="8" fill="none" stroke="#B7F9EC" stroke-width="1.5"/>
+    <text x="48" y="21" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="18" font-weight="800" letter-spacing="0.5">CURE ABROAD</text>
+    <text x="48" y="35" fill="#3FB9A3" font-family="sans-serif" font-size="10" font-weight="700" letter-spacing="1">HEALTH SOLUTIONS</text>
   </g>
 
-  <rect x="1040" y="52" width="120" height="34" rx="17" fill="#2B7A78"/>
-  <text x="1100" y="74" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">BOOK CONSULT</text>
+  <!-- Navigation Links -->
+  <g font-family="'Montserrat', sans-serif" font-size="12.5" font-weight="600" fill="#425756">
+    <text x="510" y="74">ABOUT</text>
+    <text x="600" y="74">OUR MODEL</text>
+    <text x="720" y="74">PARTNERSHIPS</text>
+    <text x="860" y="74">FOR PATIENTS</text>
+    <text x="980" y="74">SPECIALTIES</text>
+  </g>
 
-  <!-- Hero Banner -->
-  <rect x="40" y="124" width="1120" height="260" rx="16" fill="url(#caHeroGrad)" filter="url(#caShadow)"/>
+  <!-- Action Button -->
+  <rect x="1055" y="52" width="105" height="34" rx="6" fill="#2B7A78"/>
+  <text x="1107" y="73" fill="#FFFFFF" font-family="sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">CONTACT</text>
+
+  <!-- Hero Section -->
+  <rect x="40" y="122" width="1120" height="268" rx="16" fill="url(#caHeroGrad)" stroke="#2F6664" stroke-width="1" filter="url(#caDropShadow)"/>
   
-  <text x="80" y="170" fill="#B7F9EC" font-family="'Montserrat', sans-serif" font-size="12" font-weight="700" letter-spacing="2">INTERNATIONAL HEALTHCARE FACILITATION</text>
-  <text x="80" y="215" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="34" font-weight="800">World-Class Treatment,</text>
-  <text x="80" y="255" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="34" font-weight="800">Coordinated End-to-End.</text>
+  <!-- Hero Content Left -->
+  <text x="80" y="166" fill="#B7F9EC" font-family="'Montserrat', sans-serif" font-size="11" font-weight="700" letter-spacing="2">INTERNATIONAL HEALTHCARE FACILITATION</text>
+  <text x="80" y="206" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="30" font-weight="800">Connecting Global Patients with</text>
+  <text x="80" y="244" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="30" font-weight="800">Premier Accredited Care.</text>
   
-  <text x="80" y="295" fill="#D3EFEB" font-family="sans-serif" font-size="14">
-    Direct access to accredited hospitals, visa assistance, and tailored treatment plans.
+  <text x="80" y="280" fill="#D7F2ED" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" max-width="500">
+    Cross-border clinical pathways, expert surgeon second opinions, visa logistics,
+  </text>
+  <text x="80" y="300" fill="#B1E3DC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">
+    and accredited hospital facilitation between the UK, Europe, and Asia.
   </text>
 
-  <!-- Hero Buttons -->
-  <rect x="80" y="325" width="170" height="40" rx="6" fill="#3FB9A3"/>
-  <text x="165" y="350" fill="#153F3E" font-family="sans-serif" font-size="13" font-weight="800" text-anchor="middle">REQUEST A QUOTE</text>
+  <!-- Hero CTA Buttons -->
+  <rect x="80" y="326" width="195" height="42" rx="6" fill="url(#mintGrad)"/>
+  <text x="177" y="352" fill="#153F3E" font-family="sans-serif" font-size="12.5" font-weight="800" text-anchor="middle">REQUEST CONSULTATION</text>
 
-  <rect x="264" y="325" width="160" height="40" rx="6" fill="transparent" stroke="#B7F9EC" stroke-width="1.5"/>
-  <text x="344" y="350" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="700" text-anchor="middle">OUR HOSPITALS</text>
+  <rect x="286" y="326" width="170" height="42" rx="6" fill="transparent" stroke="#B7F9EC" stroke-width="1.5"/>
+  <text x="371" y="352" fill="#FFFFFF" font-family="sans-serif" font-size="12.5" font-weight="700" text-anchor="middle">OUR HOSPITAL NETWORK</text>
 
-  <!-- Hero Trust Badge Widget -->
-  <g transform="translate(800, 150)">
-    <rect x="0" y="0" width="310" height="206" rx="12" fill="rgba(21, 63, 62, 0.75)" stroke="#3FB9A3" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="24" y="36" fill="#B7F9EC" font-family="sans-serif" font-size="12" font-weight="700">PATIENT ADVISORY METRICS</text>
+  <!-- Right: Two-Way Clinical Coordination Flow Model -->
+  <g transform="translate(730, 142)">
+    <rect width="395" height="228" rx="12" fill="#FFFFFF" stroke="#C8DFDB" stroke-width="1" filter="url(#caDropShadow)"/>
     
-    <text x="24" y="75" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="26" font-weight="800">100%</text>
-    <text x="110" y="72" fill="#D3EFEB" font-family="sans-serif" font-size="12">Accredited Partner Hospitals</text>
+    <!-- Flow Header -->
+    <rect x="0" y="0" width="395" height="38" rx="12" fill="#153F3E"/>
+    <text x="20" y="24" fill="#B7F9EC" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1">
+      COORDINATED CLINICAL PATHWAY
+    </text>
 
-    <text x="24" y="120" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="26" font-weight="800">24/7</text>
-    <text x="110" y="117" fill="#D3EFEB" font-family="sans-serif" font-size="12">Dedicated Patient Care Coordinator</text>
+    <!-- Leg 1 -->
+    <g transform="translate(20, 52)">
+      <circle cx="16" cy="18" r="14" fill="#E8F6F4"/>
+      <text x="16" y="23" fill="#2B7A78" font-family="sans-serif" font-size="12" font-weight="800" text-anchor="middle">01</text>
+      <text x="42" y="16" fill="#153F3E" font-family="sans-serif" font-size="12.5" font-weight="700">Patient Consultation &amp; Records Review</text>
+      <text x="42" y="32" fill="#5F7A78" font-family="sans-serif" font-size="11">Tele-consultation with leading UK / Asia specialists</text>
+    </g>
 
-    <text x="24" y="165" fill="#3FB9A3" font-family="'Montserrat', sans-serif" font-size="26" font-weight="800">60-70%</text>
-    <text x="135" y="162" fill="#D3EFEB" font-family="sans-serif" font-size="12">Average Cost Savings vs US/UK</text>
+    <line x1="36" y1="92" x2="36" y2="108" stroke="#3FB9A3" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <!-- Leg 2 -->
+    <g transform="translate(20, 110)">
+      <circle cx="16" cy="18" r="14" fill="#E8F6F4"/>
+      <text x="16" y="23" fill="#2B7A78" font-family="sans-serif" font-size="12" font-weight="800" text-anchor="middle">02</text>
+      <text x="42" y="16" fill="#153F3E" font-family="sans-serif" font-size="12.5" font-weight="700">Accredited Hospital Matching</text>
+      <text x="42" y="32" fill="#5F7A78" font-family="sans-serif" font-size="11">JCI &amp; ISO certified tertiary centers + transparent quote</text>
+    </g>
+
+    <line x1="36" y1="150" x2="36" y2="166" stroke="#3FB9A3" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <!-- Leg 3 -->
+    <g transform="translate(20, 168)">
+      <circle cx="16" cy="18" r="14" fill="#3FB9A3"/>
+      <text x="16" y="23" fill="#153F3E" font-family="sans-serif" font-size="12" font-weight="800" text-anchor="middle">03</text>
+      <text x="42" y="16" fill="#153F3E" font-family="sans-serif" font-size="12.5" font-weight="700">Travel, Surgery &amp; Post-Op Recovery</text>
+      <text x="42" y="32" fill="#5F7A78" font-family="sans-serif" font-size="11">Dedicated personal coordinator throughout entire stay</text>
+    </g>
   </g>
 
-  <!-- Specialties Section -->
-  <text x="40" y="420" fill="#2B7A78" font-family="'Montserrat', sans-serif" font-size="12" font-weight="800" letter-spacing="1.5">CLINICAL EXCELLENCE</text>
-  <text x="40" y="445" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="22" font-weight="800">Core Treatment Specialties</text>
+  <!-- Credibility Metrics Bar -->
+  <g transform="translate(40, 410)">
+    <rect width="1120" height="74" rx="12" fill="#FFFFFF" stroke="#D7E6E3" stroke-width="1" filter="url(#caDropShadow)"/>
+    
+    <g transform="translate(40, 20)">
+      <text x="0" y="22" fill="#2B7A78" font-family="'Montserrat', sans-serif" font-size="22" font-weight="800">JCI &amp; ISO</text>
+      <text x="120" y="14" fill="#153F3E" font-family="sans-serif" font-size="11.5" font-weight="700">Accredited Partner</text>
+      <text x="120" y="28" fill="#5F7A78" font-family="sans-serif" font-size="11">Hospital Network</text>
+    </g>
 
-  <!-- Specialty Cards -->
-  <g transform="translate(40, 465)">
+    <line x1="310" y1="16" x2="310" y2="58" stroke="#E1ECE9" stroke-width="1"/>
+
+    <g transform="translate(350, 20)">
+      <text x="0" y="22" fill="#3FB9A3" font-family="'Montserrat', sans-serif" font-size="22" font-weight="800">60-70%</text>
+      <text x="110" y="14" fill="#153F3E" font-family="sans-serif" font-size="11.5" font-weight="700">Cost Advantage</text>
+      <text x="110" y="28" fill="#5F7A78" font-family="sans-serif" font-size="11">vs UK/US Private Care</text>
+    </g>
+
+    <line x1="590" y1="16" x2="590" y2="58" stroke="#E1ECE9" stroke-width="1"/>
+
+    <g transform="translate(630, 20)">
+      <text x="0" y="22" fill="#A68A64" font-family="'Montserrat', sans-serif" font-size="22" font-weight="800">1-on-1</text>
+      <text x="85" y="14" fill="#153F3E" font-family="sans-serif" font-size="11.5" font-weight="700">Personal Care</text>
+      <text x="85" y="28" fill="#5F7A78" font-family="sans-serif" font-size="11">Dedicated Coordinator</text>
+    </g>
+
+    <line x1="860" y1="16" x2="860" y2="58" stroke="#E1ECE9" stroke-width="1"/>
+
+    <g transform="translate(900, 20)">
+      <text x="0" y="22" fill="#1D8348" font-family="'Montserrat', sans-serif" font-size="22" font-weight="800">24/7</text>
+      <text x="75" y="14" fill="#153F3E" font-family="sans-serif" font-size="11.5" font-weight="700">Comprehensive</text>
+      <text x="75" y="28" fill="#5F7A78" font-family="sans-serif" font-size="11">Follow-up Support</text>
+    </g>
+  </g>
+
+  <!-- Clinical Specialties Grid -->
+  <g transform="translate(40, 508)">
+    <text x="0" y="0" fill="#2B7A78" font-family="'Montserrat', sans-serif" font-size="11" font-weight="800" letter-spacing="1.5">CLINICAL EXCELLENCE</text>
+    <text x="0" y="24" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="19" font-weight="800">Key Treatment Specialties</text>
+  </g>
+
+  <!-- 4 Specialty Cards -->
+  <g transform="translate(40, 546)">
     <!-- Card 1 -->
-    <rect x="0" y="0" width="260" height="240" rx="12" fill="#FFFFFF" stroke="#D7E6E3" stroke-width="1" filter="url(#caShadow)"/>
-    <rect x="20" y="20" width="46" height="46" rx="8" fill="#E8F6F4"/>
-    <circle cx="43" cy="43" r="10" fill="#2B7A78"/>
-    <text x="20" y="96" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="16" font-weight="700">Cardiac Sciences</text>
-    <text x="20" y="122" fill="#5F7A78" font-family="sans-serif" font-size="12" max-width="220">
-      Bypass, angioplasty and valve replacements with top robotic surgery teams.
-    </text>
-    <text x="20" y="170" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">From $4,200</text>
-    <rect x="20" y="185" width="220" height="32" rx="6" fill="#2B7A78"/>
-    <text x="130" y="206" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">View Specialists</text>
+    <rect x="0" y="0" width="265" height="175" rx="10" fill="url(#caWashGrad)" stroke="#D7E6E3" stroke-width="1" filter="url(#caDropShadow)"/>
+    <rect x="18" y="18" width="36" height="36" rx="6" fill="#E8F6F4"/>
+    <circle cx="36" cy="36" r="9" fill="#2B7A78"/>
+    <text x="18" y="78" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="14.5" font-weight="700">Cardiac Sciences</text>
+    <text x="18" y="102" fill="#5F7A78" font-family="sans-serif" font-size="11.5">CABG, valve repairs, pediatric heart surgery &amp; minimally invasive stenting.</text>
+    <text x="18" y="152" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">Specialist Teams →</text>
   </g>
 
-  <g transform="translate(325, 465)">
+  <g transform="translate(325, 546)">
     <!-- Card 2 -->
-    <rect x="0" y="0" width="260" height="240" rx="12" fill="#FFFFFF" stroke="#D7E6E3" stroke-width="1" filter="url(#caShadow)"/>
-    <rect x="20" y="20" width="46" height="46" rx="8" fill="#E8F6F4"/>
-    <circle cx="43" cy="43" r="10" fill="#3FB9A3"/>
-    <text x="20" y="96" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="16" font-weight="700">Orthopedics &amp; Spine</text>
-    <text x="20" y="122" fill="#5F7A78" font-family="sans-serif" font-size="12">
-      Joint replacement, minimal invasive spine surgery and sports medicine.
-    </text>
-    <text x="20" y="170" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">From $3,500</text>
-    <rect x="20" y="185" width="220" height="32" rx="6" fill="#2B7A78"/>
-    <text x="130" y="206" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">View Specialists</text>
+    <rect x="0" y="0" width="265" height="175" rx="10" fill="url(#caWashGrad)" stroke="#D7E6E3" stroke-width="1" filter="url(#caDropShadow)"/>
+    <rect x="18" y="18" width="36" height="36" rx="6" fill="#E8F6F4"/>
+    <circle cx="36" cy="36" r="9" fill="#3FB9A3"/>
+    <text x="18" y="78" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="14.5" font-weight="700">Robotic Orthopedics</text>
+    <text x="18" y="102" fill="#5F7A78" font-family="sans-serif" font-size="11.5">Robotic hip &amp; knee replacement, arthroscopy, and complex spine correction.</text>
+    <text x="18" y="152" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">Specialist Teams →</text>
   </g>
 
-  <g transform="translate(610, 465)">
+  <g transform="translate(610, 546)">
     <!-- Card 3 -->
-    <rect x="0" y="0" width="260" height="240" rx="12" fill="#FFFFFF" stroke="#D7E6E3" stroke-width="1" filter="url(#caShadow)"/>
-    <rect x="20" y="20" width="46" height="46" rx="8" fill="#E8F6F4"/>
-    <circle cx="43" cy="43" r="10" fill="#A68A64"/>
-    <text x="20" y="96" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="16" font-weight="700">Oncology Care</text>
-    <text x="20" y="122" fill="#5F7A78" font-family="sans-serif" font-size="12">
-      Comprehensive precision oncology, immunotherapy and proton therapy.
-    </text>
-    <text x="20" y="170" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">Personalized Plan</text>
-    <rect x="20" y="185" width="220" height="32" rx="6" fill="#2B7A78"/>
-    <text x="130" y="206" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">View Specialists</text>
+    <rect x="0" y="0" width="265" height="175" rx="10" fill="url(#caWashGrad)" stroke="#D7E6E3" stroke-width="1" filter="url(#caDropShadow)"/>
+    <rect x="18" y="18" width="36" height="36" rx="6" fill="#E8F6F4"/>
+    <circle cx="36" cy="36" r="9" fill="#A68A64"/>
+    <text x="18" y="78" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="14.5" font-weight="700">Precision Oncology</text>
+    <text x="18" y="102" fill="#5F7A78" font-family="sans-serif" font-size="11.5">Surgical oncology, multidisciplinary tumor boards, chemotherapy &amp; radiation.</text>
+    <text x="18" y="152" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">Specialist Teams →</text>
   </g>
 
-  <g transform="translate(895, 465)">
+  <g transform="translate(895, 546)">
     <!-- Card 4 -->
-    <rect x="0" y="0" width="265" height="240" rx="12" fill="#FFFFFF" stroke="#D7E6E3" stroke-width="1" filter="url(#caShadow)"/>
-    <rect x="20" y="20" width="46" height="46" rx="8" fill="#E8F6F4"/>
-    <circle cx="43" cy="43" r="10" fill="#1D8348"/>
-    <text x="20" y="96" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="16" font-weight="700">Fertility &amp; IVF</text>
-    <text x="20" y="122" fill="#5F7A78" font-family="sans-serif" font-size="12">
-      High success rates with advanced reproductive genomics and support.
-    </text>
-    <text x="20" y="170" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">From $2,800</text>
-    <rect x="20" y="185" width="225" height="32" rx="6" fill="#2B7A78"/>
-    <text x="132" y="206" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">View Specialists</text>
+    <rect x="0" y="0" width="265" height="175" rx="10" fill="url(#caWashGrad)" stroke="#D7E6E3" stroke-width="1" filter="url(#caDropShadow)"/>
+    <rect x="18" y="18" width="36" height="36" rx="6" fill="#E8F6F4"/>
+    <circle cx="36" cy="36" r="9" fill="#1D8348"/>
+    <text x="18" y="78" fill="#153F3E" font-family="'Montserrat', sans-serif" font-size="14.5" font-weight="700">Fertility &amp; IVF</text>
+    <text x="18" y="102" fill="#5F7A78" font-family="sans-serif" font-size="11.5">Advanced IVF, ICSI, reproductive genomics and high-success embryo transfer.</text>
+    <text x="18" y="152" fill="#2B7A78" font-family="sans-serif" font-size="11" font-weight="700">Specialist Teams →</text>
   </g>
 </svg>

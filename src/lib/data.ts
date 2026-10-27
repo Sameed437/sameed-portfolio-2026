@@ -168,6 +168,35 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    title: 'Cure Abroad Health Solutions',
+    art: 'healthcare',
+    snapshot: '/projects/cureabroad.svg',
+    category: 'client',
+    domain: 'cureabroadhealthsolutions.com',
+    kicker: 'Cross-Border Healthcare Platform · Live Client',
+    description:
+      'Live international healthcare facilitation platform at cureabroadhealthsolutions.com coordinating medical travel, surgical consultations, second opinions, and accredited hospital care between the UK, Europe, and Asia. Built on WordPress with a custom child theme, featuring a dual-funnel architecture for patient treatment quotes and institutional hospital partnerships, complete UK/EU GDPR compliance, and an ultra-lean WebP media pipeline.',
+    tags: [
+      'WordPress',
+      'Custom Child Theme',
+      'Healthcare Facilitation',
+      'Elementor',
+      'Fluent Forms',
+      'SEO Schema',
+      'LiteSpeed',
+      'Lead Funnels',
+    ],
+    href: 'https://cureabroadhealthsolutions.com/',
+    badge: 'Live Platform',
+    highlights: [
+      'Dual-funnel conversion architecture: dedicated pathways for Patient Quotes and Hospital Partnership Agreements',
+      'Custom child theme engineering (cureabroad-child): container CSS decoupled from Elementor for brand governance',
+      'Ultra-optimized WebP asset pipeline: complete landing page imagery compressed to ≈360 KB, delivering sub-second LCP',
+      'UK/EU GDPR & Medical Compliance: non-emergency healthcare facilitation disclosures and consent-managed data handling',
+      'Full DNS & SMTP infrastructure: SPF, DKIM, DMARC, and PrivateEmail integration for automated office notifications and sender receipts',
+    ],
+  },
+  {
     title: 'BlogBolt',
     art: 'dashboard',
     snapshot: '/projects/blogbolt.png',
@@ -200,24 +229,6 @@ export const PROJECTS: Project[] = [
       'Bespoke React storefront decoupled from WooCommerce backend',
       'Sub-second catalog browsing and instant cart interactions',
       'Integrated Stripe & PayPal UK payment processing',
-    ],
-  },
-  {
-    title: 'Cure Abroad Health Solutions',
-    art: 'healthcare',
-    snapshot: '/projects/cureabroad.svg',
-    category: 'client',
-    domain: 'cureabroadhealthsolutions.com',
-    kicker: 'Medical tourism platform · Live',
-    description:
-      'Live medical-tourism platform coordinating cross-border healthcare — international consultations, visa and travel guidance, accommodation, translation and post-treatment follow-up. Built in WordPress with a service-led IA spanning Our Model, Partnerships and For Patients, plus separate patient and partnership enquiry funnels.',
-    tags: ['WordPress', 'Healthcare', 'SEO', 'Lead Generation', 'Web Design'],
-    href: 'https://cureabroadhealthsolutions.com/',
-    badge: 'Live Client',
-    highlights: [
-      'Dual-path enquiry funnel for patients and hospital partners',
-      'High-converting service landing pages with trust architecture',
-      'Comprehensive on-page SEO achieving high-intent medical rankings',
     ],
   },
   {
@@ -454,11 +465,15 @@ export const NAV_LINKS = [
  */
 export const BIO: string[] = [
   'Sameed Chaudhary is an AI Marketing Engineer and Full-Stack Web Developer based in Lahore, Pakistan. He builds AI automation systems that produce and publish marketing content at scale, and engineers full headless WooCommerce e-commerce stores with React & Next.js frontend architectures.',
-  'His flagship projects include Almari PK (almaripk.com — a full headless WooCommerce store with a Next.js / React frontend prepared for a client) and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress). He has also engineered Wonderlyf (a headless UK wellness storefront) and Cure Abroad Health Solutions.',
+  'His flagship projects include Almari PK (almaripk.com — a full headless WooCommerce store with a Next.js / React frontend prepared for a client), Cure Abroad Health Solutions (cureabroadhealthsolutions.com — an international medical tourism platform with custom child theme and dual-funnel architecture), and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress). He has also engineered Wonderlyf (a headless UK wellness storefront).',
   'He is currently SEO Content Specialist & Growth Engineer at Marham, where he builds AI solutions with Claude and APIs including agent-based workflows, builds n8n automations, runs UI experiments and A/B tests, and ships SEO-led content systems. He has 3+ years of experience and a web engineering background in Next.js, React, WordPress, and WooCommerce.',
 ];
 
 export const FAQS: { q: string; a: string }[] = [
+  {
+    q: 'What is Cure Abroad Health Solutions (cureabroadhealthsolutions.com)?',
+    a: 'Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is a live medical tourism platform engineered by Sameed. It connects international patients in the UK and Europe with accredited hospital networks in Asia for cardiac surgery, robotic joint replacement, precision oncology, and IVF. Sameed developed the custom WordPress child theme, dual-funnel lead architecture, WebP optimization pipeline, and SMTP deliverability setup.',
+  },
   {
     q: 'What is Almari PK (almaripk.com)?',
     a: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built it using a high-performance React / Next.js 14 frontend integrated with a headless WooCommerce & WordPress API backend, featuring instant faceted filtering, real-time cart state management, and optimized checkout flows.',
@@ -473,7 +488,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Is he available for work?',
-    a: 'Yes — he is open to freelance projects (including headless e-commerce builds, AI automation, and web engineering) as well as full-time roles. The fastest route is email: ' + PROFILE.email + '.',
+    a: 'Yes — he is open to freelance projects (including headless e-commerce builds, healthcare portals, AI automation, and web engineering) as well as full-time roles. The fastest route is email: ' + PROFILE.email + '.',
   },
   {
     q: 'Where is he based?',

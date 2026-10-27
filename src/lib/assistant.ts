@@ -45,6 +45,8 @@ const PHRASES: [RegExp, string][] = [
   [/\btail\s*wind\b/g, 'tailwind'],
   [/\balmari\s*pk\b/g, 'almaripk'],
   [/\balmaripk\.com\b/g, 'almaripk'],
+  [/\bcure\s*abroad\b/g, 'cureabroad'],
+  [/\bcureabroadhealthsolutions\.com\b/g, 'cureabroad'],
 ];
 
 const SYNONYMS: Record<string, string> = {
@@ -69,6 +71,8 @@ const SYNONYMS: Record<string, string> = {
   store: 'ecommerce',
   shop: 'ecommerce',
   almari: 'almaripk',
+  medical: 'healthcare',
+  tourism: 'cureabroad',
 };
 
 const STOPWORDS = new Set([
@@ -189,7 +193,7 @@ function buildFacts(): Fact[] {
     weight: 1.3,
     keywords: kw('available hire hiring freelance open opportunities work roles fulltime contract start notice'),
     answer: {
-      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to both freelance client projects (including headless e-commerce builds, AI automation, and web development) and full-time roles, usually replying within 24 hours.`,
+      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to both freelance client projects (including headless e-commerce builds, healthcare portals, AI automation, and web development) and full-time roles, usually replying within 24 hours.`,
       links: [MAILTO],
     },
   });
@@ -238,6 +242,16 @@ function buildFacts(): Fact[] {
     answer: {
       text: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built the frontend in React and Next.js 14, backed by WooCommerce and WordPress REST/GraphQL APIs, featuring instant catalog search, sub-second page loads, a real-time cart drawer, and localized checkout.',
       links: [{ label: 'Visit almaripk.com', href: 'https://almaripk.com' }],
+    },
+  });
+
+  facts.push({
+    id: 'cureabroad',
+    weight: 1.48,
+    keywords: kw('cureabroad cure abroad health solutions medical tourism healthcare international patients hospitals doctor surgery treatment'),
+    answer: {
+      text: 'Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is an international medical tourism platform engineered by Sameed. It coordinates cross-border patient treatment, second opinions, and accredited hospital care between the UK, Europe, and Asia. Sameed built the custom WordPress child theme, dual-funnel lead architecture (patients & hospital partners), WebP media optimization pipeline, and GDPR-compliant workflows.',
+      links: [{ label: 'Visit cureabroadhealthsolutions.com', href: 'https://cureabroadhealthsolutions.com/' }],
     },
   });
 
@@ -375,7 +389,7 @@ function buildFacts(): Fact[] {
     weight: 1.2,
     keywords: kw('projects showcase examples case studies samples portfolio work'),
     answer: {
-      text: `He has ${PROJECTS.length} projects showcased with full interface snapshots, including Almari PK (headless WooCommerce store), BlogBolt (AI content automation), Wonderlyf, and Cure Abroad. Ask about any project for details!`,
+      text: `He has ${PROJECTS.length} projects showcased with full interface snapshots, including Almari PK (headless WooCommerce store), Cure Abroad Health Solutions (medical tourism platform), BlogBolt (AI content automation), and Wonderlyf. Ask about any project for details!`,
     },
   });
 
@@ -464,14 +478,14 @@ const GREETING = /^(hi|hey|hello|yo|salam|assalam|good (morning|afternoon|evenin
 const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate)\b/i;
 
 export const SUGGESTIONS = [
+  'What is Cure Abroad Health Solutions (cureabroadhealthsolutions.com)?',
   'What is Almari PK (almaripk.com)?',
   'What is BlogBolt and how does it work?',
   'Where can I see his GitHub repository?',
-  'What does an AI Marketing Engineer do?',
   'Is he available for freelance client work?',
 ];
 
-export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s headless e-commerce builds (like almaripk.com), AI marketing pipelines, or GitHub repository. Everything I say comes straight from his real portfolio.`;
+export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s work: Cure Abroad Health Solutions, headless e-commerce builds (like almaripk.com), AI marketing pipelines, or his GitHub repository.`;
 
 export function ask(query: string): Answer {
   const trimmed = query.trim();
@@ -479,7 +493,7 @@ export function ask(query: string): Answer {
 
   if (GREETING.test(trimmed) && trimmed.length < 24) {
     return {
-      text: `Hello. Ask me about ${PROFILE.firstName}'s projects (like Almari PK or BlogBolt), his tech stack, GitHub repo, or availability.`,
+      text: `Hello. Ask me about ${PROFILE.firstName}'s projects (like Cure Abroad, Almari PK, or BlogBolt), his tech stack, GitHub repo, or availability.`,
     };
   }
 
@@ -501,7 +515,7 @@ export function ask(query: string): Answer {
 
   if (ranked.length === 0) {
     return {
-      text: `That isn't in his portfolio data, so I'd rather not guess. He can answer directly at ${PROFILE.email}. You could also ask about Almari PK, BlogBolt, his stack, or his GitHub repository.`,
+      text: `That isn't in his portfolio data, so I'd rather not guess. He can answer directly at ${PROFILE.email}. You could also ask about Cure Abroad, Almari PK, BlogBolt, his stack, or his GitHub repository.`,
       links: [MAILTO],
     };
   }
