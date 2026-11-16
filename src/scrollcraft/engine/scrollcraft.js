@@ -579,7 +579,11 @@
       if (scDead) return;
       vh = innerHeight; vw = innerWidth;
       acts.forEach(function (a) {
-        if (a.pinned) a.el.style.height = (a.span * 100) + 'vh';
+        if (a.pinned) {
+          var mSpan = parseFloat(a.el.getAttribute('data-sc-span-mobile'));
+          var s = isMobile() ? (mSpan || Math.min(a.span * 0.5, 1.8)) : a.span;
+          a.el.style.height = (s * 100) + 'vh';
+        }
       });
       // The spacer is the whole document flow of a worldflight. Its height is
       // the sum of the leg weights plus one viewport: without that extra screen

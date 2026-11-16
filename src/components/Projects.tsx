@@ -238,7 +238,13 @@ export default function Projects() {
   const [modalProject, setModalProject] = useState<Project | null>(null);
 
   return (
-    <section id="work" data-sc-act="pan" data-sc-span="4" data-sc-drift="#06080f">
+    <section
+      id="work"
+      data-sc-act="pan"
+      data-sc-span="4"
+      data-sc-span-mobile="2.2"
+      data-sc-drift="#06080f"
+    >
       <div data-sc-stage className="flex flex-col justify-center pt-16">
         <div className="work-rail" data-sc-pan="0.04">
           <div className="work-lead flex flex-col justify-center pr-4">

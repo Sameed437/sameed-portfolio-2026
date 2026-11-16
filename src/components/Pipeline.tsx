@@ -24,6 +24,7 @@ export default function Pipeline() {
       aria-labelledby="pipeline-title"
       data-sc-act="pin"
       data-sc-span="4.2"
+      data-sc-span-mobile="1.8"
       data-sc-drift="#070a14"
     >
       <div data-sc-stage className="flex items-center">

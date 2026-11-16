@@ -257,37 +257,27 @@ body {
 .hero-h1 { font-size: clamp(2.4rem, 1.6rem + 3.4vw, 5rem); font-weight: 700; color: var(--sc-ink); }
 
 @media (max-width: 860px) {
-  .hero-stage {
-    display: flex;
-    flex-direction: column;
-    padding-top: 5.5rem;
-    padding-inline: 1.25rem;
-  }
   .hero-copy {
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    translate: none !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
+    left: 1.25rem;
+    right: 1.25rem;
+    width: auto;
+    top: 50%;
+    translate: 0 -48%;
   }
-  .hero-copy + .hero-copy {
-    margin-top: 2.5rem;
+  .hero-h1 { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .hero-word {
+    display: block;
+    font-size: clamp(4.5rem, 19vw, 8rem);
+    bottom: 8svh;
+    opacity: 0.6;
   }
-  .hero-h1 { font-size: clamp(2rem, 8.2vw, 2.75rem); }
-  .hero-word { display: none; }
   .hero-portrait {
-    position: relative !important;
-    margin: 1.5rem auto 0;
-    width: min(72vw, 17rem);
-    height: auto;
-    aspect-ratio: 1;
-    right: auto !important;
-    translate: none !important;
+    width: min(68vw, 17rem);
+    right: 50%;
+    translate: 50% 0;
+    opacity: 0.38;
   }
-  .hero-floor { display: none; }
+  .hero-floor { height: 16svh; }
 }
 @media (max-height: 700px) and (max-width: 860px) {
   .hero-tagline { display: none; }
@@ -298,11 +288,13 @@ body {
 .pipe-phase {
   --on: clamp(0, (var(--sc-p, 0) - var(--t)) * 14, 1);
   opacity: calc(0.28 + var(--on) * 0.72);
-  transition: color 160ms ease-out;
+  transition: color 160ms ease-out, opacity 160ms ease-out;
 }
 .pipe-dot {
   background: color-mix(in oklab, var(--sc-accent) calc(var(--on) * 100%), #1b2436);
-  transform: scale(calc(0.7 + var(--on) * 0.3));
+  transform: scale(calc(0.7 + var(--on) * 0.35));
+  box-shadow: 0 0 calc(var(--on) * 12px) rgba(0, 210, 238, calc(var(--on) * 0.7));
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out;
 }
 .pipe-rail-fill { transform-origin: 50% 0; transform: scaleY(clamp(0, var(--sc-p, 0) * 1.12, 1)); }
 .pipe-status {
@@ -320,71 +312,15 @@ body {
 
 /* ------------------------------------------------------------- mobile -- */
 @media (max-width: 860px) {
-  /* Release all scroll-jacking and element pinning on touch devices so
-     vertical scroll glides naturally without freezing or hanging. */
-  #top {
-    height: auto !important;
-    min-height: 100svh;
-  }
-  #top .sc-stage,
-  #top .hero-stage {
-    position: relative !important;
-    height: auto !important;
-    min-height: 100svh;
-    overflow: visible !important;
-    padding-bottom: 3rem;
-  }
-
-  #pipeline {
-    height: auto !important;
-  }
-  #pipeline .sc-stage {
-    position: relative !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding-block: 3.5rem;
-  }
-  .pipe-phase {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .pipe-dot {
-    background: var(--sc-accent) !important;
-    transform: scale(1) !important;
-    box-shadow: 0 0 10px rgba(0, 210, 238, 0.4);
-  }
-  .pipe-rail-fill {
-    transform: scaleY(1) !important;
-  }
-
-  #work {
-    height: auto !important;
-  }
-  #work .sc-stage {
-    position: relative !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding-block: 3.5rem;
-  }
-
-  /* Smooth horizontal touch swipe carousel for projects on mobile */
+  /* Snappy mobile cards with responsive horizontal travel */
   .work-rail {
-    display: flex !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 1.25rem;
-    padding-inline: 1.25rem !important;
-    gap: 1rem !important;
-    padding-bottom: 1.5rem;
+    padding-inline: 6vw;
+    gap: 3.5vw;
   }
   .work-card,
   .work-lead {
-    width: 82vw !important;
+    width: 82vw;
     max-width: 22rem;
-    scroll-snap-align: center;
-    flex-shrink: 0;
   }
   .work-lead {
     padding: 0;
