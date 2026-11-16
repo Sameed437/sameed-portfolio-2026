@@ -53,7 +53,7 @@ export default function Contact() {
           index="06"
           eyebrow="Contact"
           title="Let's build the system that scales your business."
-          description="Open to freelance client projects (headless e-commerce, AI automation, full-stack builds) and full-time engineering roles. Tell me what you're building — I usually reply within 24 hours."
+          description="Open to high-impact client projects (AI automation workflows, autonomous agent systems, headless e-commerce builds) and collaborative opportunities. Tell me what you're building — I usually reply within 24 hours."
         />
 
         <div className="grid gap-6 md:grid-cols-12">
@@ -143,7 +143,7 @@ export default function Contact() {
                   name="subject"
                   value={form.subject}
                   onChange={set('subject')}
-                  placeholder="Headless WooCommerce store or AI automation"
+                  placeholder="AI automation workflow, intelligent agents, or headless e-commerce"
                   className={FIELD + ' mt-2'}
                 />
               </div>

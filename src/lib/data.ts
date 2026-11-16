@@ -2,25 +2,25 @@ export const PROFILE = {
   name: 'Sameed Chaudhary',
   firstName: 'Sameed',
   lastName: 'Chaudhary',
-  title: 'AI Marketing & Web Engineer',
+  title: 'AI Automation Specialist',
   tagline:
-    'I build AI automation systems that research, write and publish marketing content at scale — and engineer full headless e-commerce stores with Next.js & WooCommerce that convert.',
+    'I build end-to-end AI automation systems and autonomous agent workflows that eliminate manual work — paired with high-performance web platforms and headless e-commerce stores that convert.',
   email: 'msameedch437@gmail.com',
   location: 'Lahore, Pakistan',
   socials: {
-    linkedin: 'https://www.linkedin.com/in/sameed-chaudhary-740424278/',
+    linkedin: 'https://www.linkedin.com/in/sameed-chaudhary',
     github: 'https://github.com/Sameed437',
     githubRepo: 'https://github.com/Sameed437/sameed-portfolio-2026',
     upwork: 'https://www.upwork.com/freelancers/',
   },
   availability: 'Available for opportunities',
   rotatingTitles: [
-    'AI Marketing Engineer',
+    'AI Automation Specialist',
+    'AI Systems Engineer',
+    'Automation Specialist',
+    'AI Workflow Architect',
     'Headless E-Commerce Dev',
     'Full-Stack Web Engineer',
-    'Automation Engineer',
-    'Growth Engineer',
-    'SEO Systems',
   ],
 };
 
@@ -34,32 +34,46 @@ export const STATS = [
 /** The four core areas Sameed delivers, in priority order. */
 export const SERVICES = [
   {
+    title: 'AI Automation & Autonomous Systems',
+    blurb:
+      'End-to-end intelligent automation pipelines and autonomous agent systems. Custom workflows engineered with n8n, Claude API, Make, Zapier, and Python — including automated webhook integrations, CRM syncs, and intelligent chatbots that eliminate manual bottlenecks.',
+    items: ['n8n', 'Claude API', 'Claude Code', 'AI Agents', 'Make / Zapier', 'Chatbot Development', 'Webhook Integrations'],
+  },
+  {
+    title: 'AI Content & Marketing Pipelines',
+    blurb:
+      'Autonomous multi-stage content engines (like BlogBolt). Claude handles deep SERP research, structured outlines, full drafts, on-page SEO schema, and image alt-text; n8n orchestrates the pipeline, publishing directly into WordPress and CMS backends.',
+    items: ['Autonomous Pipelines', 'Claude API', 'WordPress REST API', 'n8n', 'On-Page SEO', 'Python'],
+  },
+  {
     title: 'Headless E-Commerce Engineering',
     blurb:
       'High-performance client stores: Next.js and React front ends on headless WooCommerce and WordPress backends (such as almaripk.com and wonderlyf.co.uk). Built for speed, instant filtering, dynamic carts, and seamless checkout flows.',
     items: ['Next.js 14', 'React', 'Headless WooCommerce', 'WordPress REST / GraphQL', 'Tailwind CSS'],
   },
   {
-    title: 'AI Content Automation',
+    title: 'Growth Engineering & SEO Systems',
     blurb:
-      'End-to-end pipelines that take a topic and return a publish-ready post. Claude handles research, outlining, drafting, on-page SEO and image alt-text; n8n orchestrates it; WordPress receives the draft.',
-    items: ['Claude AI', 'AI Agents', 'n8n', 'Python', 'WordPress API'],
-  },
-  {
-    title: 'Growth Engineering',
-    blurb:
-      'UI experiments and A/B tests on high-impact pages, run with product and marketing teams to lift conversion, engagement, and retention rather than guesswork.',
-    items: ['A/B Testing', 'UI Experimentation', 'Conversion Optimization', 'Funnel Analytics'],
-  },
-  {
-    title: 'SEO Systems & Web Architecture',
-    blurb:
-      'Keyword research, search-intent strategy, full on-page execution — meta, internal linking, URL structure — plus systematic refreshes of existing content to compound rankings and organic CTR.',
-    items: ['Keyword Research', 'On-Page SEO', 'Content Strategy', 'Site Performance'],
+      'Data-driven search intent strategy, technical on-page execution, GA4/GSC funnel tracking, and structured A/B UI experimentation on high-impact conversion pages to systematically grow organic reach and revenue.',
+    items: ['Technical SEO', 'GA4 & GSC', 'Semrush', 'Conversion Optimization', 'A/B Testing'],
   },
 ];
 
 export const SKILL_GROUPS = [
+  {
+    title: 'AI & Automation',
+    items: [
+      'n8n',
+      'Claude API',
+      'Claude Code',
+      'Make',
+      'Zapier',
+      'Chatbot Development',
+      'Webhook Integrations',
+      'AI Agents',
+      'Python',
+    ],
+  },
   {
     title: 'Web & Headless E-Commerce',
     items: [
@@ -70,42 +84,29 @@ export const SKILL_GROUPS = [
       'GraphQL',
       'TypeScript',
       'Tailwind CSS',
-      'JavaScript',
+      'Supabase',
       'PHP',
     ],
   },
   {
-    title: 'AI & Automation',
+    title: 'SEO & Analytics',
     items: [
-      'Claude AI',
-      'AI Agents',
-      'n8n',
-      'Python',
-      'API Integration',
-      'Blog Automation',
-      'Workflow Design',
-      'OpenCV',
-    ],
-  },
-  {
-    title: 'Growth & Experimentation',
-    items: [
-      'A/B Testing',
-      'UI Experimentation',
-      'Conversion Optimization',
-      'Analytics & Funnels',
-      'User Flow Design',
-    ],
-  },
-  {
-    title: 'SEO & Performance',
-    items: [
-      'Keyword Research',
-      'On-Page SEO',
-      'Internal Linking',
+      'Technical & On-Page SEO',
       'Content Strategy',
-      'Content Refreshes',
-      'Core Web Vitals',
+      'GA4',
+      'Google Search Console',
+      'Semrush',
+      'Conversion Tracking',
+      'Funnels & A/B Testing',
+    ],
+  },
+  {
+    title: 'Infrastructure & Cloud',
+    items: [
+      'Oracle Cloud',
+      'AWS Deployment',
+      'REST APIs',
+      'Git & GitHub',
     ],
   },
 ];
@@ -364,79 +365,85 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
-    company: 'Marham',
-    role: 'SEO Content Specialist & Growth Engineer',
-    date: 'Dec 2025 – Present',
-    location: 'Lahore, On-site',
+    company: '360 Signum',
+    role: 'AI Automation Specialist',
+    date: 'Nov 2026 – Present',
+    location: 'Remote · Full-time',
     blurb:
-      'Working at the intersection of AI automation, SEO, and product growth — building AI solutions with Claude and APIs, the systems that produce content, and the experiments that make it convert.',
+      'Leading AI automation architecture and workflow engineering — designing intelligent agent systems, API pipelines, and autonomous business processes.',
     bullets: [
-      'Build AI solutions using Claude and external APIs, including agent-based workflows, to automate marketing and content operations.',
-      'Built blog-automation workflows in n8n to streamline publishing and improve operational efficiency.',
-      'Run UI experiments and A/B tests on key product pages to lift conversion and engagement.',
-      'Partner with product and marketing to identify, prioritize and ship data-driven UI improvements.',
-      'Create and optimize SEO-focused healthcare content to drive organic traffic and search visibility.',
-      'Manage and publish WordPress blogs with full on-page SEO — meta tags, internal linking, URL structure, formatting.',
-      'Conduct keyword research and develop content strategies aligned with search intent and acquisition.',
-      'Optimize and refresh existing content to improve rankings, CTR and organic reach.',
+      'Design and deploy production-grade AI automation pipelines and multi-step agent workflows using n8n, Claude API, Make, and Zapier.',
+      'Build custom webhook integrations and REST API connectors linking web apps, CRMs, databases, and AI models.',
+      'Develop intelligent chatbots and automated communication pipelines to eliminate manual support and operational overhead.',
+      'Engineer autonomous data extraction, processing, and reporting systems to replace repetitive manual operations.',
+      'Collaborate remotely with cross-functional teams to identify automation opportunities and implement scalable AI solutions.',
+    ],
+  },
+  {
+    company: 'Marham',
+    role: 'Digital Growth Specialist (SEO Content Writer)',
+    date: 'Dec 2025 – Nov 2026',
+    location: 'Lahore / Remote',
+    blurb:
+      'Built and ran the in-house AI content platform at Pakistan’s largest healthcare platform, while owning organic SEO strategy and growth experiments.',
+    bullets: [
+      'Grew organic traffic 70% in 3 months on a targeted segment and started conversions from that segment.',
+      'Built an AI content platform (Python, Next.js, Oracle Cloud) that researches, optimises and publishes a blog post in about 2 minutes. Live in production and self-serve for the team, with GSC, GA4 and Semrush connected.',
+      'Built an n8n + Claude API + WordPress REST API content pipeline in production, saving 20+ hours per week.',
+      'Owned organic SEO strategy, set up GA4 and GSC tracking and internal dashboards, and shipped an automated WhatsApp chatbot.',
+      'Built and marketed Marham Labs, a new preventive-health segment: researched and prioritised problems using search demand, platform data, competitor research, and user/doctor interviews, then launched through SEO and performance marketing.',
+      'Worked in a cross-functional Scrum squad shipping rapid UI experiments and A/B tests on key product funnels.',
+    ],
+  },
+  {
+    company: 'Animaker Media',
+    role: 'Senior Marketing Expert (Contract)',
+    date: 'Jun 2026 – Aug 2026',
+    location: 'Remote · Contract',
+    bullets: [
+      'Delivered SEO and WordPress site work across multiple projects on a contract basis.',
+      'Managed several projects in parallel alongside a full-time role.',
+      'Enhanced site architecture, on-page technical SEO, and conversion funnels.',
     ],
   },
   {
     company: 'Rocket Bookkeeper',
     role: 'WordPress Developer',
-    date: 'Oct 2025 – Jan 2026',
-    location: 'On-site',
+    date: 'Oct 2025 – Dec 2025',
+    location: 'Lahore · On-site',
     bullets: [
-      'Developed and customized WordPress themes, templates and page layouts.',
-      'Built new landing pages and improved existing site structure for better UX.',
-      'Optimized website performance, speed and mobile responsiveness.',
-      'Integrated lead forms, CRM tools and third-party plugins.',
-      'Implemented SEO best practices and on-page enhancements.',
+      'Built the company website and handled technical and on-page SEO, page speed fixes, migrations, hosting and deployments.',
+      'Engineered custom WordPress page layouts, lead-generation consultation funnels, and CRM form integrations.',
     ],
   },
   {
     company: 'Kynbix',
     role: 'Junior WordPress Developer',
     date: 'Feb 2025 – Nov 2025',
-    location: 'Lahore, Remote',
-    blurb: 'Also WordPress & UI/UX Intern — Dec 2024 to Feb 2025.',
+    location: 'Lahore / Remote',
+    blurb: 'Also WordPress & UI/UX Intern (2024 – 2025).',
     bullets: [
-      'Developed and maintained WordPress sites with custom themes, plugins and Elementor.',
-      'Optimized speed, SEO and responsive design for better UX and rankings.',
-      'Implemented WooCommerce — product pages, checkout flows and payment gateways.',
-      'Handled PHP, CSS, HTML and JavaScript customizations for client-specific requirements.',
-      'Ensured website security, performance and cross-browser compatibility.',
+      'Converted Figma, XD and PSD designs into WordPress themes, built Elementor sites and WooCommerce stores, customised plugins and maintained live sites.',
+      'Optimized site speed, mobile responsiveness, and technical SEO structure.',
     ],
   },
   {
-    company: 'Intersoft',
-    role: 'Research Analyst',
-    date: 'Feb 2024 – Feb 2025',
-    location: 'Lahore, Remote',
+    company: 'Internsoft',
+    role: 'Research Analyst (Freelance)',
+    date: 'Feb 2024 – Jun 2024',
+    location: 'Remote',
     bullets: [
-      'Managed freelance IT projects: WordPress customization, AWS deployment, SQL database management.',
-      'Collaborated with clients on technical assignments with timely, tailored solutions.',
-      'Produced clear technical documentation and assisted with project tracking.',
-    ],
-  },
-  {
-    company: 'ESolBiz™',
-    role: 'WordPress Intern',
-    date: 'Sep 2024 – Dec 2024',
-    location: 'Lahore, On-site',
-    bullets: [
-      'Hands-on WordPress development experience.',
-      'Worked on PSD-to-WordPress conversions.',
-      'Learned core concepts of WordPress design and theme structure.',
+      'Delivered freelance client technical solutions: WordPress customisation, AWS deployment, and SQL database management.',
+      'Collaborated directly with clients on technical assignments with timely, tailored solutions and documentation.',
     ],
   },
 ];
 
 export const EDUCATION = [
   {
-    title: 'BS Computer Science',
-    org: 'University of Central Punjab',
-    detail: 'Graduated',
+    title: 'B.Sc. Computer Science',
+    org: 'University of the Central Punjab, Lahore',
+    detail: '2021 – 2025 · Final year project: AI-based attendance system with parental control (React.js, AI)',
   },
   {
     title: 'Web Development Certification',
@@ -464,12 +471,25 @@ export const NAV_LINKS = [
  * quote real facts and never invent anything.
  */
 export const BIO: string[] = [
-  'Sameed Chaudhary is an AI Marketing Engineer and Full-Stack Web Developer based in Lahore, Pakistan. He builds AI automation systems that produce and publish marketing content at scale, and engineers full headless WooCommerce e-commerce stores with React & Next.js frontend architectures.',
-  'His flagship projects include Almari PK (almaripk.com — a full headless WooCommerce store with a Next.js / React frontend prepared for a client), Cure Abroad Health Solutions (cureabroadhealthsolutions.com — an international medical tourism platform with custom child theme and dual-funnel architecture), and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress). He has also engineered Wonderlyf (a headless UK wellness storefront).',
-  'He is currently SEO Content Specialist & Growth Engineer at Marham, where he builds AI solutions with Claude and APIs including agent-based workflows, builds n8n automations, runs UI experiments and A/B tests, and ships SEO-led content systems. He has 3+ years of experience and a web engineering background in Next.js, React, WordPress, and WooCommerce.',
+  'Sameed Chaudhary is an AI Automation Specialist and Full-Stack Web Engineer based in Lahore, Pakistan. He builds end-to-end AI automation systems, autonomous agent workflows with Claude and n8n, and engineers full headless WooCommerce e-commerce stores with React & Next.js frontend architectures.',
+  'He currently works full-time as an AI Automation Specialist at 360 Signum (Remote), engineering production-grade automation workflows, intelligent agent systems, and webhook integrations.',
+  'Previously at Marham (Dec 2025 – Nov 2026), Pakistan’s largest healthcare platform, he built an in-house AI content platform in Python, Next.js, and Oracle Cloud, built an n8n + Claude API content pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, and drove 70% organic traffic growth on a targeted segment within 3 months.',
+  'His flagship projects include Almari PK (almaripk.com — a full headless WooCommerce store with a Next.js / React frontend prepared for a client), Cure Abroad Health Solutions (cureabroadhealthsolutions.com — an international medical tourism platform with custom child theme and dual-funnel architecture), and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress).',
 ];
 
 export const FAQS: { q: string; a: string }[] = [
+  {
+    q: 'What does Sameed do as an AI Automation Specialist?',
+    a: 'As an AI Automation Specialist, Sameed designs and deploys autonomous AI workflows, multi-agent systems, and API pipelines using n8n, Claude API, Make, Zapier, and Python. He connects CRMs, web apps, and databases through automated webhook integrations and builds intelligent chatbots to eliminate manual operational bottlenecks.',
+  },
+  {
+    q: 'What is his current role at 360 Signum?',
+    a: 'Sameed works full-time as an AI Automation Specialist at 360 Signum in a remote capacity. He leads AI automation architecture, developing multi-step agent workflows, CRM and webhook integrations, and automated data pipelines.',
+  },
+  {
+    q: 'What did he accomplish at Marham?',
+    a: 'At Marham (Dec 2025 – Nov 2026), Sameed built an in-house AI content platform (Python, Next.js, Oracle Cloud) that researches, optimizes, and publishes blog posts in ~2 minutes with GSC, GA4, and Semrush connected. He also built an n8n + Claude API pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, owned organic SEO strategy, and grew organic traffic 70% in 3 months.',
+  },
   {
     q: 'What is Cure Abroad Health Solutions (cureabroadhealthsolutions.com)?',
     a: 'Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is a live medical tourism platform engineered by Sameed. It connects international patients in the UK and Europe with accredited hospital networks in Asia for cardiac surgery, robotic joint replacement, precision oncology, and IVF. Sameed developed the custom WordPress child theme, dual-funnel lead architecture, WebP optimization pipeline, and SMTP deliverability setup.',
@@ -479,23 +499,19 @@ export const FAQS: { q: string; a: string }[] = [
     a: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built it using a high-performance React / Next.js 14 frontend integrated with a headless WooCommerce & WordPress API backend, featuring instant faceted filtering, real-time cart state management, and optimized checkout flows.',
   },
   {
-    q: 'What does an AI Marketing Engineer do?',
-    a: 'In his case: build the automation that produces marketing content — AI pipelines for research, drafting and on-page SEO, orchestrated in n8n — then run A/B tests and UI experiments on the pages that content lands on, and build headless web storefronts that convert visitors into paying clients.',
-  },
-  {
     q: 'Where can I find his GitHub and open-source code?',
     a: 'You can find his GitHub profile at ' + PROFILE.socials.github + ' and the source repository for this portfolio at ' + PROFILE.socials.githubRepo + '.',
   },
   {
     q: 'Is he available for work?',
-    a: 'Yes — he is open to freelance projects (including headless e-commerce builds, healthcare portals, AI automation, and web engineering) as well as full-time roles. The fastest route is email: ' + PROFILE.email + '.',
+    a: 'Yes — in addition to his role at 360 Signum, he is open to high-impact freelance projects (including AI automation pipelines, n8n workflows, headless e-commerce builds, and web engineering). The fastest route is email: ' + PROFILE.email + '.',
   },
   {
     q: 'Where is he based?',
-    a: 'Lahore, Pakistan. He has worked on-site, hybrid and fully remote — with international clients across the UK, US, and Pakistan.',
+    a: 'Lahore, Pakistan. He works remotely with global teams and clients across the UK, US, and Pakistan.',
   },
   {
     q: 'How much experience does he have?',
-    a: '3+ years of professional experience across five companies, with 25+ projects delivered for 40+ clients.',
+    a: '3+ years of professional experience across six companies/contracts, with 25+ projects delivered for 40+ clients.',
   },
 ];

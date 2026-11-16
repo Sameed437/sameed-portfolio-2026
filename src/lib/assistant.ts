@@ -47,6 +47,8 @@ const PHRASES: [RegExp, string][] = [
   [/\balmaripk\.com\b/g, 'almaripk'],
   [/\bcure\s*abroad\b/g, 'cureabroad'],
   [/\bcureabroadhealthsolutions\.com\b/g, 'cureabroad'],
+  [/\b360\s*signum\b/g, 'signum'],
+  [/\bsignum\b/g, 'signum'],
 ];
 
 const SYNONYMS: Record<string, string> = {
@@ -267,18 +269,18 @@ function buildFacts(): Fact[] {
   facts.push({
     id: 'titles',
     weight: 1.15,
-    keywords: kw('title titles marketing ai engineer growth seo specialist developer what does do ecommerce'),
+    keywords: kw('title titles marketing ai engineer growth seo specialist developer what does do ecommerce automation'),
     answer: {
-      text: `He works as a ${list(PROFILE.rotatingTitles)} — in practice that means engineering high-speed frontends (like headless WooCommerce stores), building AI marketing automations, and running data-driven growth experiments.`,
+      text: `He works as an ${PROFILE.title} (also specializing in ${list(PROFILE.rotatingTitles.slice(1))}) — designing autonomous AI workflows, multi-agent systems, and API integrations alongside high-speed headless stores.`,
     },
   });
 
   facts.push({
     id: 'aiwork',
     weight: 1.35,
-    keywords: kw('ai automation automate pipeline pipelines llm claude agent workflow workflows n8n marketing engineer'),
+    keywords: kw('ai automation automate pipeline pipelines llm claude agent workflow workflows n8n signum 360 make zapier specialist'),
     answer: {
-      text: 'His AI automation work spans custom Python pipelines and n8n workflows. BlogBolt is a Python pipeline with a Next.js control panel running a 7-phase SEO workflow with Claude (research, outline, draft, on-page SEO, image selection, formatting, publish) pushing drafts into WordPress. At Marham, he builds AI solutions with Claude and APIs including agent-based workflows alongside n8n automations.',
+      text: 'His AI automation work spans custom agent architectures, production n8n workflows, Make/Zapier automations, and Claude/OpenAI API integrations. Currently at 360 Signum, he works full-time as an AI Automation Specialist building autonomous pipelines and webhook systems. BlogBolt is his flagship Python pipeline with a Next.js control panel running a 7-phase SEO workflow with Claude. At Marham (Dec 2025 – Nov 2026), he built the in-house AI content platform and n8n + Claude API pipelines saving 20+ hours weekly.',
     },
   });
 
@@ -478,14 +480,14 @@ const GREETING = /^(hi|hey|hello|yo|salam|assalam|good (morning|afternoon|evenin
 const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate)\b/i;
 
 export const SUGGESTIONS = [
-  'What is Cure Abroad Health Solutions (cureabroadhealthsolutions.com)?',
-  'What is Almari PK (almaripk.com)?',
+  'What does Sameed do as an AI Automation Specialist?',
+  'What is his role at 360 Signum?',
   'What is BlogBolt and how does it work?',
-  'Where can I see his GitHub repository?',
-  'Is he available for freelance client work?',
+  'What is Almari PK (almaripk.com)?',
+  'What did he accomplish at Marham?',
 ];
 
-export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s work: Cure Abroad Health Solutions, headless e-commerce builds (like almaripk.com), AI marketing pipelines, or his GitHub repository.`;
+export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s work: AI automation at 360 Signum, BlogBolt, headless e-commerce builds (like almaripk.com), Cure Abroad, or his tech stack.`;
 
 export function ask(query: string): Answer {
   const trimmed = query.trim();

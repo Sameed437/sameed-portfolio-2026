@@ -10,7 +10,7 @@ export default function About() {
         <SectionHeader
           index="03"
           eyebrow="About"
-          title="I build the full system, from headless storefronts to AI pipelines."
+          title="I build intelligent AI automation systems and scalable web platforms."
         />
 
         <div className="grid gap-12 md:grid-cols-12 md:gap-14">
@@ -23,7 +23,7 @@ export default function About() {
               <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line bg-surface shadow-card">
                 <Image
                   src="/sameed.jpg"
-                  alt={PROFILE.name + ', AI Marketing & Web Engineer'}
+                  alt={PROFILE.name + ', ' + PROFILE.title}
                   fill
                   sizes="(max-width: 768px) 90vw, 400px"
                   priority
@@ -44,12 +44,23 @@ export default function About() {
           <Reveal className="md:col-span-7" delay={120}>
             <div className="space-y-5 text-lead text-pretty text-fg-muted">
               <p>
-                I&apos;m an AI Marketing &amp; Web Engineer based in {PROFILE.location}. I
-                build the automation that produces marketing content, engineer high-speed
-                headless e-commerce stores, and run the experimentation loops that make them convert.
+                I&apos;m an AI Automation Specialist based in {PROFILE.location}. I
+                design and deploy autonomous AI workflows, multi-agent systems, and API
+                integrations that eliminate manual bottlenecks — backed by high-speed
+                headless e-commerce and full-stack web engineering.
               </p>
               <p>
-                In headless e-commerce, I recently prepared{' '}
+                Currently, I work full-time as an AI Automation Specialist at{' '}
+                <span className="text-fg font-medium">360 Signum</span> (Remote),
+                architecting production-grade AI automations, webhook integrations, and intelligent agents.
+              </p>
+              <p>
+                Previously at <span className="text-fg font-medium">Marham</span> (Dec 2025 – Nov 2026),
+                Pakistan&apos;s largest healthcare platform, I engineered an in-house AI content platform in Python, Next.js, and Oracle Cloud, built an n8n + Claude API content pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, and grew organic traffic 70% in 3 months.
+              </p>
+              <p>
+                My flagship AI build <span className="text-fg font-medium">BlogBolt</span> automates a
+                seven-phase SEO content workflow from SERP research to WordPress drafts. In headless e-commerce, I engineered{' '}
                 <a
                   href="https://almaripk.com"
                   target="_blank"
@@ -58,14 +69,7 @@ export default function About() {
                 >
                   Almari PK (almaripk.com)
                 </a>{' '}
-                for a client — a modern full-stack headless store pairing a Next.js 14 / React frontend with a headless WooCommerce &amp; WordPress API backend for instant catalog filtering and streamlined checkouts.
-              </p>
-              <p>
-                My flagship AI project is <span className="text-fg font-medium">BlogBolt</span>: a
-                Python pipeline with a Next.js control panel that runs a seven-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — landing drafts directly in WordPress.
-              </p>
-              <p>
-                At <span className="text-fg font-medium">Marham</span> I engineer AI solutions with Claude and APIs, automate publishing via n8n workflows, run UI experiments and A/B tests on key product flows, and scale organic reach with structured SEO systems.
+                for a client — pairing Next.js 14 / React with a headless WooCommerce &amp; WordPress API backend for instant catalog filtering and streamlined checkouts.
               </p>
             </div>
 

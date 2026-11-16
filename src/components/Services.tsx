@@ -11,12 +11,12 @@ export default function Services() {
       <div className="shell pb-16 pt-16 md:pb-24 md:pt-20">
         <div className="max-w-3xl" data-sc-in>
           <h2 className="sc-display text-title font-semibold text-balance text-fg">
-            Marketing outcomes, delivered as engineering.
+            Automation outcomes, delivered as engineering.
           </h2>
           <p className="mt-5 max-w-prose text-pretty text-fg-muted">
-            Four things, and they compound: the automation produces the content, the SEO decides
-            what it targets, the experiments decide what converts, and the web work is where it
-            all lands.
+            Four disciplines, engineered to compound: intelligent AI automations eliminate manual
+            operations, autonomous pipelines produce content at scale, SEO captures high-intent demand, and
+            high-speed web stores convert visitors into revenue.
           </p>
         </div>
 

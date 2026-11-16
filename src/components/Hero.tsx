@@ -54,10 +54,10 @@ export default function Hero() {
             {PROFILE.name} · {PROFILE.title}
           </p>
           <h1 className="sc-display hero-h1 mt-4" data-sc-kinetic="lines">
-            I engineer AI content systems and headless stores.
+            I engineer AI automation systems and high-speed web platforms.
           </h1>
           <p className="hero-tagline mt-6 max-w-prose text-lead text-pretty text-fg-muted">
-            Pipelines that research, write and publish on their own, and storefronts that load
+            Autonomous workflows that eliminate manual work, intelligent agent pipelines, and storefronts that load
             before you blink.
           </p>
 
