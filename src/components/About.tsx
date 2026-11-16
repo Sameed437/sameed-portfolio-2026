@@ -1,26 +1,87 @@
 import Image from 'next/image';
+import {
+  Bot,
+  Layers,
+  Cpu,
+  Globe,
+  TrendingUp,
+  Sparkles,
+  CheckCircle2,
+  Clock,
+  ArrowUpRight,
+} from 'lucide-react';
 import { PROFILE, SKILL_GROUPS } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
 
+const CATEGORY_ICONS: Record<string, React.ElementType> = {
+  'AI & Automation': Bot,
+  'Frontend & Headless': Layers,
+  'Backend & Data': Cpu,
+  'Growth & Performance': TrendingUp,
+};
+
+const IMPACT_METRICS = [
+  { value: '4+', label: 'Years Experience', icon: Clock },
+  { value: '50+', label: 'Automations Built', icon: Bot },
+  { value: '20+', label: 'Hrs Saved Weekly', icon: Sparkles },
+  { value: '100K+', label: 'SEO Impressions', icon: TrendingUp },
+];
+
 export default function About() {
   return (
     <section id="about" className="relative border-t border-line bg-surface/30">
+      {/* Subtle background glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[100px]"
+      />
+
       <div className="shell py-20 md:py-28">
         <SectionHeader
           index="03"
-          eyebrow="About"
+          eyebrow="Profile &amp; Background"
           title="I build intelligent AI automation systems and scalable web platforms."
         />
 
-        <div className="grid gap-12 md:grid-cols-12 md:gap-14">
+        {/* Quick Impact Stats Strip */}
+        <Reveal className="mb-14">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {IMPACT_METRICS.map((m) => {
+              const Icon = m.icon;
+              return (
+                <div
+                  key={m.label}
+                  className="rounded-xl border border-white/10 bg-gradient-to-br from-surface to-base p-4 sm:p-5 shadow-sm transition-all duration-200 hover:border-accent/30"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="sc-display text-2xl sm:text-3xl font-bold tracking-tight text-accent">
+                      {m.value}
+                    </span>
+                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent-wash text-accent border border-accent/20">
+                      <Icon size={15} />
+                    </span>
+                  </div>
+                  <p className="font-mono text-xs text-fg-muted mt-2 uppercase tracking-label">
+                    {m.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Reveal>
+
+        <div className="grid gap-12 md:grid-cols-12 md:gap-14 items-start">
+          {/* Portrait Column with High-Tech Frame */}
           <Reveal className="md:col-span-5">
             <div className="relative">
+              {/* Outer ambient blur */}
               <div
                 aria-hidden
-                className="absolute -inset-3 -z-10 rounded-2xl bg-accent/10 blur-2xl"
+                className="absolute -inset-2 -z-10 rounded-2xl bg-gradient-to-tr from-accent/20 to-cyan-500/10 blur-xl opacity-70"
               />
-              <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line bg-surface shadow-card">
+
+              <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-accent/30 bg-surface shadow-lift">
                 <Image
                   src="/sameed.jpg"
                   alt={PROFILE.name + ', ' + PROFILE.title}
@@ -29,34 +90,47 @@ export default function About() {
                   priority
                   className="object-cover object-top"
                 />
+
+                {/* Dark gradient fade for text legibility */}
                 <div
                   aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-base to-transparent"
+                  className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-base via-base/80 to-transparent"
                 />
+
+                {/* Floating Active Role Badge */}
+                <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-base/85 px-3 py-1 text-[11px] font-mono font-medium text-accent border border-accent/30 backdrop-blur-md shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                    360 Signum · Full-Time
+                  </span>
+                </div>
+
                 <figcaption className="absolute inset-x-5 bottom-4">
-                  <p className="text-sm font-semibold text-fg">{PROFILE.name}</p>
-                  <p className="label mt-0.5">{PROFILE.title}</p>
+                  <p className="text-base font-semibold text-fg">{PROFILE.name}</p>
+                  <p className="font-mono text-xs text-accent mt-0.5">{PROFILE.title}</p>
+                  <p className="text-xs text-fg-faint mt-1">Based in {PROFILE.location} · Available Worldwide</p>
                 </figcaption>
               </figure>
             </div>
           </Reveal>
 
+          {/* Bio & Skills Matrix Column */}
           <Reveal className="md:col-span-7" delay={120}>
-            <div className="space-y-5 text-lead text-pretty text-fg-muted">
+            <div className="space-y-5 text-base sm:text-lg leading-relaxed text-pretty text-fg-muted">
               <p>
-                I&apos;m an AI Automation Specialist based in {PROFILE.location}. I
-                design and deploy autonomous AI workflows, multi-agent systems, and API
-                integrations that eliminate manual bottlenecks — backed by high-speed
+                I&apos;m an <span className="text-fg font-semibold">AI Automation Specialist</span> based in {PROFILE.location}. I
+                architect and deploy autonomous AI workflows, multi-agent pipelines, and webhook systems
+                that eliminate repetitive manual bottlenecks — paired with high-performance
                 headless e-commerce and full-stack web engineering.
               </p>
               <p>
                 Currently, I work full-time as an AI Automation Specialist at{' '}
-                <span className="text-fg font-medium">360 Signum</span> (Remote),
-                architecting production-grade AI automations, webhook integrations, and intelligent agents.
+                <span className="text-fg font-semibold text-accent">360 Signum</span> (Remote),
+                building enterprise-scale automation pipelines, multi-agent architectures, and webhook integrations.
               </p>
               <p>
                 Previously at <span className="text-fg font-medium">Marham</span> (Dec 2025 – Nov 2026),
-                Pakistan&apos;s largest healthcare platform, I engineered an in-house AI content platform in Python, Next.js, and Oracle Cloud, built an n8n + Claude API content pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, and grew organic traffic 70% in 3 months.
+                Pakistan&apos;s leading healthcare platform, I engineered their in-house AI content platform in Python, Next.js, and Oracle Cloud, built an n8n + Claude API content pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, and grew organic traffic 70% in 3 months.
               </p>
               <p>
                 My flagship AI build <span className="text-fg font-medium">BlogBolt</span> automates a
@@ -65,29 +139,45 @@ export default function About() {
                   href="https://almaripk.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-fg font-semibold hover:text-accent transition-colors underline underline-offset-4 decoration-accent/40"
+                  className="text-fg font-semibold hover:text-accent transition-colors underline underline-offset-4 decoration-accent/40 inline-flex items-center gap-1"
                 >
                   Almari PK (almaripk.com)
+                  <ArrowUpRight size={13} />
                 </a>{' '}
-                for a client — pairing Next.js 14 / React with a headless WooCommerce &amp; WordPress API backend for instant catalog filtering and streamlined checkouts.
+                for a client — pairing Next.js 14 and React with a headless WooCommerce backend for instant catalog filtering and streamlined checkouts.
               </p>
             </div>
 
-            <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
-              {SKILL_GROUPS.map((group) => (
-                <div key={group.title} className="bg-surface p-5 md:p-6 transition-colors hover:bg-surface-raised">
-                  <h3 className="font-mono text-[11px] uppercase tracking-label text-accent">
-                    {group.title}
-                  </h3>
-                  <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
-                    {group.items.map((item) => (
-                      <li key={item} className="text-sm text-fg-muted">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            {/* Categorized Skills Matrix */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {SKILL_GROUPS.map((group) => {
+                const Icon = CATEGORY_ICONS[group.title] ?? Bot;
+                return (
+                  <div
+                    key={group.title}
+                    className="rounded-xl border border-white/10 bg-gradient-to-br from-surface to-base/80 p-5 transition-all duration-200 hover:border-accent/35 hover:shadow-sm"
+                  >
+                    <div className="flex items-center gap-2.5 border-b border-line/60 pb-3 mb-3">
+                      <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent-wash text-accent border border-accent/20">
+                        <Icon size={14} />
+                      </span>
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
+                        {group.title}
+                      </h4>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-md border border-white/5 bg-base/60 px-2 py-1 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-fg"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>

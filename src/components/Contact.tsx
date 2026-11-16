@@ -1,19 +1,33 @@
 'use client';
 
 import { useState, useEffect, type FormEvent } from 'react';
-import { ArrowUpRight, Github, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Github, Mail, MapPin, Sparkles, Send, CheckCircle2 } from 'lucide-react';
 import { PROFILE } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
 
-const FIELD =
-  'w-full rounded-md border border-line bg-base px-3.5 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-accent/60';
-
 const CHANNELS = [
-  { label: 'LinkedIn', value: '/in/sameed-chaudhary', href: PROFILE.socials.linkedin },
-  { label: 'GitHub Profile', value: '@Sameed437', href: PROFILE.socials.github },
-  { label: 'Repository', value: 'Sameed437/sameed-portfolio-2026', href: PROFILE.socials.githubRepo },
+  {
+    label: 'LinkedIn',
+    value: 'sameed-chaudhary',
+    href: PROFILE.socials.linkedin,
+  },
+  {
+    label: 'GitHub',
+    value: 'Sameed437',
+    href: PROFILE.socials.github,
+  },
 ];
+
+const PREFILL_TOPICS = [
+  'AI Automation & n8n Workflows',
+  'Multi-Agent Systems & Claude API',
+  'Headless WooCommerce / React Store',
+  'AI Content Engine (BlogBolt style)',
+];
+
+const FIELD =
+  'w-full rounded-xl border border-white/10 bg-base/80 px-4 py-3 text-sm text-fg placeholder:text-fg-faint/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -58,11 +72,10 @@ export default function Contact() {
   const set = (key: keyof typeof form) => (e: { target: { value: string } }) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  /*
-   * No backend and no API key by design — this hands the composed message to
-   * the visitor's own mail client, so it genuinely sends rather than
-   * pretending to.
-   */
+  const setTopic = (topic: string) => {
+    setForm((f) => ({ ...f, subject: topic }));
+  };
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const subject = form.subject.trim() || 'Project enquiry from ' + form.name;
@@ -77,29 +90,40 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative isolate overflow-hidden">
-      <div aria-hidden className="hero-glow absolute inset-0 -z-10 opacity-60" />
+    <section id="contact" className="relative isolate overflow-hidden border-t border-line">
+      {/* Background ambient lighting */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 bottom-0 -translate-x-1/2 h-[30rem] w-[50rem] max-w-full rounded-full bg-accent/5 blur-[140px]"
+      />
 
       <div className="shell py-20 md:py-28">
         <SectionHeader
           index="06"
-          eyebrow="Contact"
+          eyebrow="Start A Project"
           title="Let's build the system that scales your business."
           description="Open to high-impact client projects (AI automation workflows, autonomous agent systems, headless e-commerce builds) and collaborative opportunities. Tell me what you're building — I usually reply within 24 hours."
         />
 
-        <div className="grid gap-6 md:grid-cols-12">
+        <div className="grid gap-6 md:grid-cols-12 items-start">
+          {/* Direct Channels Column */}
           <Reveal className="md:col-span-5">
-            <div className="flex h-full flex-col gap-4">
+            <div className="flex flex-col gap-4">
               <a
                 href={'mailto:' + PROFILE.email}
-                className="card card-hover group rounded-xl p-6"
+                className="group rounded-2xl border border-white/10 bg-gradient-to-br from-surface via-[#090D16] to-surface p-6 sm:p-7 transition-all duration-300 hover:border-accent/40 hover:shadow-lift"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-lg border border-line bg-base text-accent">
-                  <Mail size={17} />
-                </span>
-                <p className="label mt-5">Email</p>
-                <p className="mt-1.5 break-all text-sm font-medium text-fg transition-colors group-hover:text-accent">
+                <div className="flex items-center justify-between">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-accent/30 bg-accent-wash text-accent shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-accent">
+                    <Mail size={19} />
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 text-[10px] font-mono text-accent border border-accent/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                    Direct Email
+                  </span>
+                </div>
+                <p className="font-mono text-xs uppercase tracking-wider text-fg-faint mt-4">Fastest Response</p>
+                <p className="mt-1 break-all text-sm sm:text-base font-semibold text-fg transition-colors group-hover:text-accent">
                   {PROFILE.email}
                 </p>
               </a>
@@ -110,11 +134,11 @@ export default function Contact() {
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card card-hover group flex items-center justify-between rounded-xl px-6 py-5"
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-gradient-to-br from-surface to-base px-6 py-4 transition-all duration-200 hover:border-accent/40"
                 >
                   <div>
-                    <p className="label">{c.label}</p>
-                    <p className="mt-1 text-sm text-fg transition-colors group-hover:text-accent">
+                    <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">{c.label}</p>
+                    <p className="mt-0.5 text-sm font-medium text-fg transition-colors group-hover:text-accent">
                       {c.value}
                     </p>
                   </div>
@@ -125,18 +149,22 @@ export default function Contact() {
                 </a>
               ))}
 
-              <div className="card flex items-center gap-3 rounded-xl px-6 py-5 text-sm text-fg-muted">
-                <MapPin size={16} className="shrink-0 text-accent" />
-                {PROFILE.location}
+              <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-base/60 px-6 py-4 text-xs font-mono text-fg-muted">
+                <MapPin size={15} className="shrink-0 text-accent" />
+                <span>{PROFILE.location} · Remote Worldwide</span>
               </div>
             </div>
           </Reveal>
 
+          {/* Consultation Form Column */}
           <Reveal className="md:col-span-7" delay={100}>
-            <form onSubmit={onSubmit} className="card rounded-xl p-6 md:p-8">
+            <form
+              onSubmit={onSubmit}
+              className="rounded-2xl border border-white/10 bg-gradient-to-br from-surface via-[#090D16] to-surface p-6 sm:p-8 shadow-lift"
+            >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="label">
+                  <label htmlFor="name" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
                     Your name
                   </label>
                   <input
@@ -146,12 +174,12 @@ export default function Contact() {
                     value={form.name}
                     onChange={set('name')}
                     placeholder="Jane Doe"
-                    className={FIELD + ' mt-2'}
+                    className={FIELD}
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="label">
-                    Email
+                  <label htmlFor="email" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                    Your email
                   </label>
                   <input
                     id="email"
@@ -161,13 +189,36 @@ export default function Contact() {
                     value={form.email}
                     onChange={set('email')}
                     placeholder="jane@company.com"
-                    className={FIELD + ' mt-2'}
+                    className={FIELD}
                   />
                 </div>
               </div>
 
+              {/* One-Click Topic Selector Pills */}
               <div className="mt-5">
-                <label htmlFor="subject" className="label">
+                <label className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                  Select Project Focus (or type below):
+                </label>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {PREFILL_TOPICS.map((topic) => (
+                    <button
+                      key={topic}
+                      type="button"
+                      onClick={() => setTopic(topic)}
+                      className={`rounded-lg border px-2.5 py-1 text-xs font-mono transition-all ${
+                        form.subject === topic
+                          ? 'border-accent bg-accent/15 text-accent font-medium shadow-sm'
+                          : 'border-white/10 bg-base/60 text-fg-muted hover:border-accent/30 hover:text-fg'
+                      }`}
+                    >
+                      {topic}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label htmlFor="subject" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
                   Subject
                 </label>
                 <input
@@ -176,13 +227,13 @@ export default function Contact() {
                   value={form.subject}
                   onChange={set('subject')}
                   placeholder="AI automation workflow, intelligent agents, or headless e-commerce"
-                  className={FIELD + ' mt-2'}
+                  className={FIELD}
                 />
               </div>
 
               <div className="mt-5">
-                <label htmlFor="message" className="label">
-                  Message
+                <label htmlFor="message" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                  Project Details &amp; Goals
                 </label>
                 <textarea
                   id="message"
@@ -191,20 +242,21 @@ export default function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={set('message')}
-                  placeholder="Tell me about your project, timeline, and goals…"
-                  className={FIELD + ' mt-2 resize-none'}
+                  placeholder="Tell me about what you're building, existing tools (n8n, CRM, APIs), and your timeline…"
+                  className={FIELD + ' resize-none'}
                 />
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pt-2">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-all hover:bg-accent-dim hover:shadow-glow shadow-glow"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-xs font-semibold text-base transition-all hover:bg-accent-dim shadow-glow"
                 >
-                  Send message
+                  <Send size={14} />
+                  Send Discovery Inquiry
                 </button>
-                <p className="text-xs text-fg-faint">
-                  Opens in your mail app, addressed to {PROFILE.email}.
+                <p className="text-xs text-fg-faint font-mono">
+                  Opens directly in your mail client addressed to {PROFILE.email}.
                 </p>
               </div>
             </form>
