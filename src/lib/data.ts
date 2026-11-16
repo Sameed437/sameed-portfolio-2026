@@ -8,6 +8,7 @@ export const PROFILE = {
   email: 'msameedch437@gmail.com',
   location: 'Lahore, Pakistan',
   socials: {
+    website: 'https://sameed.work',
     linkedin: 'https://www.linkedin.com/in/sameed-chaudhary',
     github: 'https://github.com/Sameed437',
     githubRepo: 'https://github.com/Sameed437/sameed-portfolio-2026',
