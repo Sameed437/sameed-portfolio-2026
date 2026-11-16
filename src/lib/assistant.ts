@@ -10,15 +10,6 @@ import {
   STATS,
 } from './data';
 
-/*
- * A small local retrieval engine.
- *
- * Every answer is assembled from src/lib/data.ts at module load, so the
- * assistant can only ever state things that are actually true of Sameed —
- * there is no model, no API key, and no way for it to invent a fact.
- * Edit data.ts and the assistant's knowledge updates with it.
- */
-
 export type Answer = {
   text: string;
   links?: { label: string; href: string }[];
@@ -28,12 +19,192 @@ type Fact = {
   id: string;
   keywords: string[];
   answer: Answer;
-  /** Lifts broad topics above incidental keyword collisions. */
   weight?: number;
 };
 
+const MAILTO = { label: `Email ${PROFILE.email}`, href: `mailto:${PROFILE.email}` };
+
 /* ------------------------------------------------------------------ */
-/* Text normalisation                                                  */
+/* Direct Intent Patterns (High Precision)                            */
+/* ------------------------------------------------------------------ */
+
+type Intent = {
+  pattern: RegExp;
+  answer: Answer;
+};
+
+const INTENTS: Intent[] = [
+  // Pricing / Rates / Cost / Budget
+  {
+    pattern: /\b(rate|rates|price|prices|pricing|cost|costs|fee|fees|budget|charge|charges|how much|quote|quotation|expensive|cheap|hourly)\b/i,
+    answer: {
+      text: "Sameed offers flexible engagement models tailored to client needs:\n\n• Hourly Engagements: Typically $35–$60/hour for custom AI engineering, workflow architecture, and technical implementations.\n• Milestone / Fixed-Scope Pipelines: Dedicated automations (e.g., n8n webhook sync, AI content pipelines, or lead triage agents) typically start from $500 to $2,500+ depending on integrations.\n• Headless E-Commerce Builds: Complete custom stores (like Almari PK) range based on catalog scale and custom features.\n\nFor an accurate scope and turnaround estimate, email him directly with what you are looking to automate.",
+      links: [
+        MAILTO,
+        { label: 'Calculate ROI in AI Studio', href: '/studio' },
+      ],
+    },
+  },
+
+  // What does Sameed do / Services / Capabilities
+  {
+    pattern: /\b(what do (you|he) do|services|capabilities|what can (you|he) (do|build|automate)|offerings|solutions)\b/i,
+    answer: {
+      text: `Sameed is an ${PROFILE.title} specializing in:\n\n1. AI Automation & Autonomous Agents: Custom workflows engineered with n8n, Claude API, Make, Zapier, and Python to eliminate manual operational tasks.\n2. Autonomous Content Pipelines: Multi-stage SEO engines (like BlogBolt) that research SERPs, generate structured drafts, and auto-publish into WordPress.\n3. Headless E-Commerce Engineering: Ultra-fast React & Next.js 14 frontends backed by WooCommerce REST/GraphQL APIs (like Almari PK).\n4. Intelligent Chatbots & CRM Syncs: Custom bots with RAG for customer support and instant WhatsApp/Slack routing.`,
+      links: [
+        { label: 'Explore Interactive Studio', href: '/studio' },
+        { label: 'View Case Studies', href: '/#work' },
+        MAILTO,
+      ],
+    },
+  },
+
+  // Can you build / automate for me / for my business
+  {
+    pattern: /\b(can you (build|help|automate|create|make|work)|help me|automate (my|our)|implement)\b/i,
+    answer: {
+      text: "Yes, absolutely! Sameed works directly with businesses, agencies, and founders to automate manual bottlenecks. Whether you need an n8n webhook integration, an autonomous Claude content pipeline, an automated lead qualification system, or a headless web platform, he can architect and deploy the entire solution end-to-end.\n\nYou can inspect live blueprints in the AI Studio or send over your requirements via email.",
+      links: [
+        { label: 'Test Production Workflows', href: '/studio' },
+        MAILTO,
+      ],
+    },
+  },
+
+  // Process / How do we start / Turnaround / Timeline
+  {
+    pattern: /\b(process|steps|how (do we|to) start|onboard|turnaround|how long|timeline|deliver|delivery time)\b/i,
+    answer: {
+      text: "Working with Sameed is swift and structured:\n\n1. Discovery & Audit (1–2 days): Quick consultation to review your existing tools, data flow, and bottlenecks.\n2. Architecture Blueprint: Detailed mapping of API endpoints, n8n nodes, prompt schemas, and webhook fail-safes.\n3. Build & Integration: Most custom automation pipelines are completed in 3 to 10 days; full web platforms in 2 to 4 weeks.\n4. Handover & Testing: Full documentation, video walkthrough, and live deployment with ongoing reliability monitoring.",
+      links: [MAILTO],
+    },
+  },
+
+  // Tech stack / Tools / Languages
+  {
+    pattern: /\b(tech stack|technologies|tools|languages|frameworks|what stack|what tools|what do you use|toolkit)\b/i,
+    answer: {
+      text: "Sameed's core production stack:\n\n• AI & Agents: Claude API, Claude Code, n8n, Make, Zapier, Python, LangChain, OpenAI API\n• Frontend: Next.js 14 (App Router), React, TypeScript, Tailwind CSS, REST & GraphQL APIs\n• CMS & E-Commerce: Headless WooCommerce, WordPress REST API, Sanity CMS\n• Backend & Data: Node.js, Webhooks, Python, Supabase, PostgreSQL, Docker\n• Growth & Performance: Technical On-Page SEO, Core Web Vitals, Schema markup",
+      links: [{ label: 'View Selected Projects', href: '/#work' }],
+    },
+  },
+
+  // 360 Signum
+  {
+    pattern: /\b(360\s*signum|signum)\b/i,
+    answer: {
+      text: "At 360 Signum (Nov 2026 – Present), Sameed works full-time as an AI Automation Specialist (Remote). He is responsible for engineering autonomous enterprise workflows, designing multi-agent pipeline architectures, and setting up automated webhook integrations connecting CRMs, databases, and LLM APIs to eliminate manual overhead.",
+    },
+  },
+
+  // Marham
+  {
+    pattern: /\b(marham)\b/i,
+    answer: {
+      text: "At Marham (Dec 2025 – Nov 2026), Sameed was a Growth Engineer & AI Content Developer. He built Marham's in-house AI content platform and integrated automated n8n + Claude API pipelines, saving 20+ hours of manual editorial effort each week while generating 100K+ organic impressions.",
+    },
+  },
+
+  // BlogBolt
+  {
+    pattern: /\b(blogbolt|blog bolt|content pipeline)\b/i,
+    answer: {
+      text: "BlogBolt is Sameed's flagship AI pipeline built with Python and a Next.js control panel. It automates a 7-phase SEO workflow using Claude: SERP research, intent mapping, full article drafts, on-page SEO schema, image selection with alt text, markdown formatting, and direct publishing to WordPress via REST API.",
+      links: [{ label: 'Inspect BlogBolt Architecture', href: '/studio' }],
+    },
+  },
+
+  // Almari PK
+  {
+    pattern: /\b(almari|almaripk)\b/i,
+    answer: {
+      text: "Almari PK (almaripk.com) is a full headless WooCommerce store designed and engineered by Sameed. It features a React & Next.js 14 frontend backed by WooCommerce APIs, sub-second search, slide-out cart drawer, and localized checkout.",
+      links: [{ label: 'Visit almaripk.com', href: 'https://almaripk.com' }],
+    },
+  },
+
+  // Cure Abroad
+  {
+    pattern: /\b(cure\s*abroad|cureabroad|medical tourism)\b/i,
+    answer: {
+      text: "Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is an international medical tourism platform engineered by Sameed. It coordinates cross-border patient care between the UK, Europe, and Asia, featuring custom WordPress architecture and a dual-funnel patient/hospital conversion system.",
+      links: [{ label: 'Visit cureabroadhealthsolutions.com', href: 'https://cureabroadhealthsolutions.com/' }],
+    },
+  },
+
+  // Chatbots / Support Bots / RAG
+  {
+    pattern: /\b(chatbot|chatbots|whatsapp|slack|support bot|customer support|rag|bot)\b/i,
+    answer: {
+      text: "Yes! Sameed builds and deploys conversational AI agents and intelligent chatbots. They use retrieval-augmented generation (RAG) to accurately answer questions from your company knowledge base, call webhooks to update databases or CRMs (HubSpot, Airtable), and deploy across web widgets, WhatsApp, or Slack.",
+      links: [MAILTO],
+    },
+  },
+
+  // Who is Sameed / Bio / About him
+  {
+    pattern: /\b(who (is|are)|about (sameed|him|you)|tell me about|introduce|bio|summary|background|who made|who built)\b/i,
+    answer: {
+      text: `Sameed Chaudhary is an ${PROFILE.title} and Full-Stack Web Engineer based in Lahore, Pakistan with 4+ years of professional experience across 6 companies/contracts, delivering 25+ projects for 40+ clients worldwide.\n\nCurrently at 360 Signum, he architects autonomous pipelines and webhook systems. His flagship builds include BlogBolt, Almari PK (headless store), and Cure Abroad Health Solutions.`,
+      links: [
+        MAILTO,
+        { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
+        { label: 'GitHub Profile', href: PROFILE.socials.github },
+      ],
+    },
+  },
+
+  // Availability / Hire / Freelance
+  {
+    pattern: /\b(hire|hiring|available|availability|freelance|contract|full-?time|open to|collaborate)\b/i,
+    answer: {
+      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to freelance client projects (AI automation pipelines, autonomous agent systems, headless web development) as well as collaborative roles, usually replying within 24 hours.`,
+      links: [MAILTO],
+    },
+  },
+
+  // Contact / Email / Phone / Reach
+  {
+    pattern: /\b(contact|email|phone|call|message|reach|connect|talk|touch|inquiry|consultation)\b/i,
+    answer: {
+      text: `The fastest way to reach Sameed is via email: ${PROFILE.email}. You can also connect with him on LinkedIn or review his repositories on GitHub.`,
+      links: [
+        MAILTO,
+        { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
+        { label: 'GitHub Profile', href: PROFILE.socials.github },
+      ],
+    },
+  },
+
+  // Location / Timezone / Remote
+  {
+    pattern: /\b(location|where (is|are)|live|based|timezone|relocate|remote|lahore|pakistan)\b/i,
+    answer: {
+      text: `Sameed is based in ${PROFILE.location} (PKT / UTC+5). He has extensive experience working remotely with clients across the US, UK, Europe, and Middle East, providing regular video check-ins and time-zone overlapping hours.`,
+    },
+  },
+
+  // Experience / Past companies / Seniority
+  {
+    pattern: /\b(experience|history|companies|employment|jobs|seniority|past roles|work history)\b/i,
+    answer: {
+      text: `Sameed has 4+ years of experience across 6 companies/contracts:\n\n• 360 Signum (Nov 2026 – Present): AI Automation Specialist (Remote)\n• Marham (Dec 2025 – Nov 2026): Growth Engineer / AI Content Developer\n• Animaker Media (Sep 2024 – Nov 2025): SEO Specialist & Web Developer\n• Rocket Bookkeeper (Mar 2024 – Sep 2024): SEO Specialist\n• Kynbix (Aug 2023 – Mar 2024): SEO Specialist & WordPress Developer\n• Internsoft (Sep 2022 – Aug 2023): Web Developer Intern`,
+      links: [{ label: 'View Timeline', href: '/#experience' }],
+    },
+  },
+
+  // Studio / Calculator
+  {
+    pattern: /\b(studio|calculator|roi|savings|hours saved|blueprint|inspector|lab)\b/i,
+    answer: {
+      text: 'You can test his interactive AI Studio & ROI Lab directly on the dedicated /studio page. It lets you inspect live production workflow nodes (with sample JSON payloads and Claude prompts) and calculate how many hours and dollars your team could reclaim.',
+      links: [{ label: 'Open AI Studio & ROI Lab', href: '/studio' }],
+    },
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Text normalisation & Tokeniser                                     */
 /* ------------------------------------------------------------------ */
 
 const PHRASES: [RegExp, string][] = [
@@ -44,11 +215,8 @@ const PHRASES: [RegExp, string][] = [
   [/\bwoo\s*commerce\b/g, 'woocommerce'],
   [/\btail\s*wind\b/g, 'tailwind'],
   [/\balmari\s*pk\b/g, 'almaripk'],
-  [/\balmaripk\.com\b/g, 'almaripk'],
   [/\bcure\s*abroad\b/g, 'cureabroad'],
-  [/\bcureabroadhealthsolutions\.com\b/g, 'cureabroad'],
   [/\b360\s*signum\b/g, 'signum'],
-  [/\bsignum\b/g, 'signum'],
 ];
 
 const SYNONYMS: Record<string, string> = {
@@ -58,93 +226,48 @@ const SYNONYMS: Record<string, string> = {
   woo: 'woocommerce',
   next: 'nextjs',
   node: 'nodejs',
-  css3: 'css',
-  html5: 'html',
-  front: 'frontend',
-  ui: 'frontend',
-  ux: 'design',
-  job: 'work',
-  hire: 'available',
-  available: 'available',
-  cv: 'resume',
-  repo: 'github',
-  source: 'github',
-  codebase: 'github',
+  rates: 'pricing',
+  rate: 'pricing',
+  cost: 'pricing',
+  costs: 'pricing',
+  fee: 'pricing',
+  fees: 'pricing',
+  charge: 'pricing',
+  charges: 'pricing',
+  budget: 'pricing',
+  quote: 'pricing',
+  pipeline: 'automation',
+  pipelines: 'automation',
+  automate: 'automation',
+  automates: 'automation',
+  bot: 'chatbot',
+  bots: 'chatbot',
   store: 'ecommerce',
   shop: 'ecommerce',
-  almari: 'almaripk',
-  medical: 'healthcare',
-  tourism: 'cureabroad',
+  cv: 'resume',
+  repo: 'github',
 };
 
 const STOPWORDS = new Set([
-  'a',
-  'about',
-  'an',
-  'and',
-  'are',
-  'as',
-  'at',
-  'be',
-  'by',
-  'can',
-  'do',
-  'does',
-  'for',
-  'from',
-  'has',
-  'have',
-  'he',
-  'him',
-  'his',
-  'how',
-  'i',
-  'in',
-  'is',
-  'it',
-  'its',
-  'me',
-  'my',
-  'of',
-  'on',
-  'or',
-  'our',
-  'sameed',
-  'so',
-  'tell',
-  'that',
-  'the',
-  'their',
-  'there',
-  'this',
-  'to',
-  'was',
-  'we',
-  'what',
-  'where',
-  'which',
-  'who',
-  'will',
-  'with',
-  'you',
-  'your',
+  'a', 'about', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'do',
+  'does', 'for', 'from', 'has', 'have', 'he', 'him', 'his', 'how', 'i',
+  'in', 'is', 'it', 'its', 'me', 'my', 'of', 'on', 'or', 'our', 'that',
+  'the', 'their', 'them', 'then', 'there', 'these', 'they', 'this', 'to',
+  'us', 'was', 'we', 'were', 'what', 'when', 'where', 'which', 'who',
+  'why', 'will', 'with', 'would', 'you', 'your',
 ]);
 
-function normalise(input: string): string {
-  let s = input.toLowerCase();
-  for (const [regex, replacement] of PHRASES) {
-    s = s.replace(regex, replacement);
+function normalise(raw: string): string {
+  let s = raw.toLowerCase();
+  for (const [re, replacement] of PHRASES) {
+    s = s.replace(re, replacement);
   }
-  return s
-    .replace(/[^a-z0-9\s-]/g, ' ')
-    .replace(/[\s-]+/g, ' ')
-    .trim();
+  return s.replace(/[^a-z0-9\s]/g, ' ');
 }
 
 function expand(token: string): string | null {
-  const mapped = SYNONYMS[token] ?? token;
-  if (mapped.length < 2 || STOPWORDS.has(mapped)) return null;
-  return mapped;
+  if (STOPWORDS.has(token) || token.length < 2) return null;
+  return SYNONYMS[token] ?? token;
 }
 
 function tokenise(input: string): string[] {
@@ -156,7 +279,6 @@ function tokenise(input: string): string[] {
   return [...out];
 }
 
-/** Build a de-duplicated keyword bag for a fact. */
 function kw(...parts: string[]): string[] {
   const out = new Set<string>();
   for (const part of parts) {
@@ -175,284 +297,60 @@ function list(items: string[]): string {
 }
 
 /* ------------------------------------------------------------------ */
-/* Knowledge base, derived from data.ts                                */
+/* Knowledge Base Assembly                                             */
 /* ------------------------------------------------------------------ */
-
-const MAILTO = { label: PROFILE.email, href: `mailto:${PROFILE.email}` };
 
 function buildFacts(): Fact[] {
   const facts: Fact[] = [];
 
-  facts.push({
-    id: 'who',
-    weight: 1.1,
-    keywords: kw('who sameed chaudhary introduce yourself intro summary overview bio himself person'),
-    answer: { text: BIO.join(' ') },
-  });
-
-  facts.push({
-    id: 'available',
-    weight: 1.3,
-    keywords: kw('available hire hiring freelance open opportunities work roles fulltime contract start notice'),
-    answer: {
-      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to both freelance client projects (including headless e-commerce builds, healthcare portals, AI automation, and web development) and full-time roles, usually replying within 24 hours.`,
-      links: [MAILTO],
-    },
-  });
-
-  facts.push({
-    id: 'location',
-    weight: 1.2,
-    keywords: kw('location live lahore pakistan remote relocate timezone onsite hybrid'),
-    answer: {
-      text: `He is based in ${PROFILE.location}. He has worked on-site, hybrid and fully remote with clients internationally across the UK, US, and Pakistan.`,
-    },
-  });
-
-  facts.push({
-    id: 'contact',
-    weight: 1.2,
-    keywords: kw('email contact message linkedin github socials connect touch reach'),
-    answer: {
-      text: `The fastest way to reach him is email — ${PROFILE.email}. You can also connect on LinkedIn or view his work and repositories on GitHub.`,
-      links: [
-        MAILTO,
-        { label: 'LinkedIn', href: PROFILE.socials.linkedin },
-        { label: 'GitHub Profile', href: PROFILE.socials.github },
-        { label: 'GitHub Repo (2026)', href: PROFILE.socials.githubRepo },
-      ],
-    },
-  });
-
-  facts.push({
-    id: 'github',
-    weight: 1.4,
-    keywords: kw('github repo repository source code git open source sameed437 sameed-portfolio-2026'),
-    answer: {
-      text: `His GitHub profile is ${PROFILE.socials.github}. The complete open-source repository for this portfolio is hosted at ${PROFILE.socials.githubRepo}.`,
-      links: [
-        { label: 'GitHub Repository', href: PROFILE.socials.githubRepo },
-        { label: 'GitHub Profile', href: PROFILE.socials.github },
-      ],
-    },
-  });
-
-  facts.push({
-    id: 'almaripk',
-    weight: 1.45,
-    keywords: kw('almaripk almari store ecommerce headless woocommerce fashion client retail pakistan'),
-    answer: {
-      text: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built the frontend in React and Next.js 14, backed by WooCommerce and WordPress REST/GraphQL APIs, featuring instant catalog search, sub-second page loads, a real-time cart drawer, and localized checkout.',
-      links: [{ label: 'Visit almaripk.com', href: 'https://almaripk.com' }],
-    },
-  });
-
-  facts.push({
-    id: 'cureabroad',
-    weight: 1.48,
-    keywords: kw('cureabroad cure abroad health solutions medical tourism healthcare international patients hospitals doctor surgery treatment'),
-    answer: {
-      text: 'Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is an international medical tourism platform engineered by Sameed. It coordinates cross-border patient treatment, second opinions, and accredited hospital care between the UK, Europe, and Asia. Sameed built the custom WordPress child theme, dual-funnel lead architecture (patients & hospital partners), WebP media optimization pipeline, and GDPR-compliant workflows.',
-      links: [{ label: 'Visit cureabroadhealthsolutions.com', href: 'https://cureabroadhealthsolutions.com/' }],
-    },
-  });
-
-  facts.push({
-    id: 'stats',
-    weight: 1.1,
-    keywords: kw('experience long seniority level clients delivered numbers senior junior metrics'),
-    answer: {
-      text: `${list(STATS.map((s) => `${s.value} ${s.label.toLowerCase()}`))}. He has worked across ${EXPERIENCE.length} companies, currently as ${EXPERIENCE[0].role} at ${EXPERIENCE[0].company}.`,
-    },
-  });
-
-  facts.push({
-    id: 'titles',
-    weight: 1.15,
-    keywords: kw('title titles marketing ai engineer growth seo specialist developer what does do ecommerce automation'),
-    answer: {
-      text: `He works as an ${PROFILE.title} (also specializing in ${list(PROFILE.rotatingTitles.slice(1))}) — designing autonomous AI workflows, multi-agent systems, and API integrations alongside high-speed headless stores.`,
-    },
-  });
-
-  facts.push({
-    id: 'aiwork',
-    weight: 1.35,
-    keywords: kw('ai automation automate pipeline pipelines llm claude agent workflow workflows n8n signum 360 make zapier specialist'),
-    answer: {
-      text: 'His AI automation work spans custom agent architectures, production n8n workflows, Make/Zapier automations, and Claude/OpenAI API integrations. Currently at 360 Signum, he works full-time as an AI Automation Specialist building autonomous pipelines and webhook systems. BlogBolt is his flagship Python pipeline with a Next.js control panel running a 7-phase SEO workflow with Claude. At Marham (Dec 2025 – Nov 2026), he built the in-house AI content platform and n8n + Claude API pipelines saving 20+ hours weekly.',
-    },
-  });
-
-  facts.push({
-    id: 'studio',
-    weight: 1.4,
-    keywords: kw('studio calculator roi architecture inspector lab simulator savings hours estimate workflow nodes'),
-    answer: {
-      text: 'You can test his interactive AI Studio & ROI Lab on the dedicated /studio page. It features a live Architecture Inspector showing real production workflows (telemetry, JSON payloads, and Claude prompts) and a business ROI Calculator that estimates hours and capital your team can reclaim through automation.',
-      links: [{ label: 'Open AI Studio & ROI Lab', href: '/studio' }],
-    },
-  });
-
   for (const s of SERVICES) {
     facts.push({
       id: `service:${s.title}`,
-      weight: 1.2,
-      keywords: kw(s.title, s.items.join(' ')),
-      answer: { text: `${s.title} — ${s.blurb}` },
+      weight: 1.3,
+      keywords: kw(s.title, s.items.join(' '), s.blurb),
+      answer: { text: `${s.title}: ${s.blurb}` },
     });
   }
 
-  facts.push({
-    id: 'services',
-    weight: 1.2,
-    keywords: kw('services offer offering help hire what do deliver'),
-    answer: {
-      text: SERVICES.map((x) => `${x.title}: ${x.blurb}`).join(' '),
-    },
-  });
-
-  facts.push({
-    id: 'skills',
-    weight: 1.3,
-    keywords: kw('skills stack tech technologies tools proficient good'),
-    answer: {
-      text: SKILL_GROUPS.map((g) => `${g.title}: ${list(g.items)}.`).join(' '),
-    },
-  });
-
-  // Whole skill groups
-  for (const group of SKILL_GROUPS) {
-    facts.push({
-      id: `skillgroup:${group.title}`,
-      keywords: kw(group.title, group.items.join(' ')),
-      answer: { text: `${group.title}: ${list(group.items)}.` },
-    });
-  }
-
-  // One fact per individual technology, cross-referenced to real projects
-  for (const group of SKILL_GROUPS) {
-    for (const item of group.items) {
-      const needle = normalise(item);
-      const related = PROJECTS.filter((p) =>
-        p.tags.some((t) => normalise(t).includes(needle))
-      ).map((p) => p.title);
-
-      facts.push({
-        id: `skill:${item}`,
-        weight: 1.25,
-        keywords: kw(item),
-        answer: {
-          text:
-            `Yes — ${item} is part of his ${group.title} toolkit.` +
-            (related.length ? ` You can see it in ${list(related.slice(0, 3))}.` : ''),
-        },
-      });
-    }
-  }
-
-  facts.push({
-    id: 'seo',
-    weight: 1.5,
-    keywords: kw('seo search ranking rankings organic traffic keywords keyword onpage visibility ctr'),
-    answer: {
-      text:
-        'SEO runs through all his web and content work. He conducts keyword research, search intent mapping, and on-page technical optimization — meta tags, internal linking, schema, URL structure — and refreshes existing content to lift organic rankings and CTR.',
-    },
-  });
-
-  // Technologies that appear in project tags
-  const skillTokens = SKILL_GROUPS.flatMap((g) =>
-    g.items.map((i) => new Set(kw(i)))
-  );
-  const seenTags = new Set<string>();
-  for (const p of PROJECTS) {
-    for (const tag of p.tags) {
-      const key = normalise(tag);
-      if (seenTags.has(key)) continue;
-      const tokens = kw(tag);
-      if (skillTokens.some((set) => tokens.every((t) => set.has(t)))) continue;
-      seenTags.add(key);
-      const related = PROJECTS.filter((x) => x.tags.includes(tag)).map((x) => x.title);
-      facts.push({
-        id: `tag:${tag}`,
-        weight: 1.18,
-        keywords: kw(tag),
-        answer: { text: `Yes — ${tag} is used in his work: ${list(related)}.` },
-      });
-    }
-  }
-
-  // One fact per project
   for (const p of PROJECTS) {
     facts.push({
       id: `project:${p.title}`,
-      weight: 1.2,
-      keywords: kw(p.title, p.tags.join(' '), p.badge ?? '', p.domain ?? ''),
+      weight: 1.4,
+      keywords: kw(p.title, p.kicker, p.tags.join(' '), p.description),
       answer: {
-        text: `${p.title} — ${p.description} Stack: ${list(p.tags)}.`,
-        links: p.href ? [{ label: `Visit ${p.domain ?? p.title}`, href: p.href }] : undefined,
+        text: `${p.title} (${p.kicker}): ${p.description}`,
+        links: p.href
+          ? [{ label: `View ${p.title}`, href: p.href }]
+          : undefined,
       },
     });
   }
 
-  facts.push({
-    id: 'projects',
-    weight: 1.2,
-    keywords: kw('projects showcase examples case studies samples portfolio work'),
-    answer: {
-      text: `He has ${PROJECTS.length} projects showcased with full interface snapshots, including Almari PK (headless WooCommerce store), Cure Abroad Health Solutions (medical tourism platform), BlogBolt (AI content automation), and Wonderlyf. Ask about any project for details!`,
-    },
-  });
-
-  // One fact per role
-  for (const job of EXPERIENCE) {
+  for (const group of SKILL_GROUPS) {
     facts.push({
-      id: `job:${job.company}`,
-      weight: 1.15,
-      keywords: kw(job.company, job.role, job.location),
-      answer: {
-        text: `${job.role} at ${job.company} (${job.date}, ${job.location}). ${job.bullets
-          .slice(0, 3)
-          .join(' ')}`,
-      },
+      id: `skillgroup:${group.title}`,
+      weight: 1.25,
+      keywords: kw(group.title, group.items.join(' ')),
+      answer: { text: `${group.title} stack: ${list(group.items)}.` },
     });
+
+    for (const item of group.items) {
+      facts.push({
+        id: `skill:${item}`,
+        weight: 1.2,
+        keywords: kw(item),
+        answer: { text: `Yes — ${item} is a core part of Sameed's ${group.title} toolkit.` },
+      });
+    }
   }
-
-  facts.push({
-    id: 'experience',
-    weight: 1.2,
-    keywords: kw('experience employment previous past timeline'),
-    answer: {
-      text: `4+ years across ${EXPERIENCE.length} companies: ${list(
-        EXPERIENCE.map((e) => `${e.role} at ${e.company} (${e.date})`)
-      )}.`,
-    },
-  });
-
-  facts.push({
-    id: 'education',
-    weight: 1.2,
-    keywords: kw(
-      'education qualification certification certificate academic graduated',
-      EDUCATION.map((e) => `${e.title} ${e.org}`).join(' ')
-    ),
-    answer: {
-      text: list(EDUCATION.map((e) => `${e.title} — ${e.org} (${e.detail})`)) + '.',
-    },
-  });
-
-  facts.push({
-    id: 'resume',
-    keywords: kw('resume download pdf document cv'),
-    answer: {
-      text: 'Everything on this page represents his up-to-date experience. For a formal CV or custom client portfolio PDF, email him directly.',
-      links: [MAILTO],
-    },
-  });
 
   for (const [i, f] of FAQS.entries()) {
-    facts.push({ id: `faq:${i}`, keywords: kw(f.q), answer: { text: f.a } });
+    facts.push({
+      id: `faq:${i}`,
+      weight: 1.2,
+      keywords: kw(f.q),
+      answer: { text: f.a },
+    });
   }
 
   return facts;
@@ -460,87 +358,88 @@ function buildFacts(): Fact[] {
 
 const FACTS = buildFacts();
 
-/* ------------------------------------------------------------------ */
-/* Scoring                                                             */
-/* ------------------------------------------------------------------ */
-
-const EXACT = 3;
-const PARTIAL = 1.25;
-const THRESHOLD = 2.5;
-
 function scoreFact(fact: Fact, tokens: string[]): number {
   let score = 0;
   for (const token of tokens) {
-    let best = 0;
     for (const keyword of fact.keywords) {
       if (keyword === token) {
-        best = EXACT;
+        score += 3;
         break;
       }
       if (token.length >= 4 && (keyword.startsWith(token) || token.startsWith(keyword))) {
-        best = Math.max(best, PARTIAL);
+        score += 1.5;
+        break;
       }
     }
-    score += best;
   }
   return score * (fact.weight ?? 1);
 }
 
-const GREETING = /^(hi|hey|hello|yo|salam|assalam|good (morning|afternoon|evening))\b/i;
-const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate)\b/i;
+/* ------------------------------------------------------------------ */
+/* Public API                                                         */
+/* ------------------------------------------------------------------ */
+
+const GREETING = /^(hi|hey|hello|yo|salam|assalam|aoa|good (morning|afternoon|evening))\b/i;
+const THANKS = /\b(thanks|thank you|thankyou|cheers|appreciate|great)\b/i;
 
 export const SUGGESTIONS = [
-  'What does Sameed do as an AI Automation Specialist?',
-  'What is his role at 360 Signum?',
+  'What services do you offer?',
+  'What are your pricing and hourly rates?',
+  'What is your role at 360 Signum?',
   'What is BlogBolt and how does it work?',
-  'What is Almari PK (almaripk.com)?',
-  'What did he accomplish at Marham?',
+  'Can you automate my business workflows?',
 ];
 
-export const GREETING_MESSAGE = `Hi — ask me about ${PROFILE.firstName}'s work: AI automation at 360 Signum, BlogBolt, headless e-commerce builds (like almaripk.com), Cure Abroad, or his tech stack.`;
+export const GREETING_MESSAGE = `Hi! I'm Sameed's AI assistant. Ask me about his automation pipelines, role at 360 Signum, BlogBolt, headless e-commerce builds, pricing, or tech stack.`;
 
 export function ask(query: string): Answer {
   const trimmed = query.trim();
   if (!trimmed) return { text: GREETING_MESSAGE };
 
+  // Quick greetings
   if (GREETING.test(trimmed) && trimmed.length < 24) {
     return {
-      text: `Hello. Ask me about ${PROFILE.firstName}'s projects (like Cure Abroad, Almari PK, or BlogBolt), his tech stack, GitHub repo, or availability.`,
+      text: `Hello! I'm happy to help. You can ask me about Sameed's AI automations, projects like BlogBolt or Almari PK, his pricing, or his availability.`,
+      links: [
+        { label: 'View Services', href: '/#services' },
+        { label: 'Explore AI Studio', href: '/studio' },
+      ],
     };
   }
 
+  // Thanks
   if (THANKS.test(trimmed) && trimmed.length < 32) {
     return {
-      text: `Any time! If you want to reach him directly, ${PROFILE.email} is the fastest route.`,
+      text: `You're welcome! If you'd like to discuss a project or schedule a discovery call, feel free to email Sameed directly at ${PROFILE.email}.`,
       links: [MAILTO],
     };
   }
 
+  // 1. Check High-Precision Intent Matches first
+  for (const intent of INTENTS) {
+    if (intent.pattern.test(trimmed)) {
+      return intent.answer;
+    }
+  }
+
+  // 2. Keyword ranking against dynamic database
   const tokens = tokenise(trimmed);
-  if (tokens.length === 0) {
-    return { text: BIO.join(' ') };
+  if (tokens.length > 0) {
+    const ranked = FACTS.map((f) => ({ fact: f, score: scoreFact(f, tokens) }))
+      .filter((r) => r.score >= 2.0)
+      .sort((a, b) => b.score - a.score);
+
+    if (ranked.length > 0) {
+      return ranked[0].fact.answer;
+    }
   }
 
-  const ranked = FACTS.map((f) => ({ fact: f, score: scoreFact(f, tokens) }))
-    .filter((r) => r.score >= THRESHOLD)
-    .sort((a, b) => b.score - a.score);
-
-  if (ranked.length === 0) {
-    return {
-      text: `That isn't in his portfolio data, so I'd rather not guess. He can answer directly at ${PROFILE.email}. You could also ask about Cure Abroad, Almari PK, BlogBolt, his stack, or his GitHub repository.`,
-      links: [MAILTO],
-    };
-  }
-
-  const [top, second] = ranked;
-
-  // Two near-equal matches — answer both rather than picking arbitrarily.
-  if (second && second.score >= top.score * 0.95 && second.fact.id !== top.fact.id) {
-    return {
-      text: `${top.fact.answer.text}\n\n${second.fact.answer.text}`,
-      links: top.fact.answer.links ?? second.fact.answer.links,
-    };
-  }
-
-  return top.fact.answer;
+  // 3. Intelligent helpful fallback
+  return {
+    text: `Sameed specializes in AI automation workflows (n8n, Claude API, custom agents), headless e-commerce, and high-performance web engineering.\n\nHere are some questions you can ask me:\n• "What are your pricing and hourly rates?"\n• "What is BlogBolt and how does it work?"\n• "What did Sameed build at 360 Signum or Marham?"\n• "Can you automate my business workflows?"\n• "What is your tech stack?"\n\nYou can also contact him directly at ${PROFILE.email}.`,
+    links: [
+      MAILTO,
+      { label: 'Open AI Studio & ROI Lab', href: '/studio' },
+    ],
+  };
 }

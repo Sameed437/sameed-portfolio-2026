@@ -257,15 +257,40 @@ body {
 .hero-h1 { font-size: clamp(2.4rem, 1.6rem + 3.4vw, 5rem); font-weight: 700; color: var(--sc-ink); }
 
 @media (max-width: 860px) {
-  .hero-copy { left: 1.25rem; right: 1.25rem; width: auto; top: 6.25rem; translate: none; }
-  .hero-h1 { font-size: clamp(2.1rem, 8.6vw, 3rem); }
+  .hero-stage {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5.5rem;
+    padding-inline: 1.25rem;
+  }
+  .hero-copy {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    translate: none !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-copy + .hero-copy {
+    margin-top: 2.5rem;
+  }
+  .hero-h1 { font-size: clamp(2rem, 8.2vw, 2.75rem); }
   .hero-word { display: none; }
-  .hero-portrait { width: min(78vw, 21rem); right: 50%; translate: 50% 0; }
-  .hero-floor { height: 14svh; }
+  .hero-portrait {
+    position: relative !important;
+    margin: 1.5rem auto 0;
+    width: min(72vw, 17rem);
+    height: auto;
+    aspect-ratio: 1;
+    right: auto !important;
+    translate: none !important;
+  }
+  .hero-floor { display: none; }
 }
 @media (max-height: 700px) and (max-width: 860px) {
   .hero-tagline { display: none; }
-  .hero-portrait { opacity: 0.35; }
   .pipe-detail { display: none; }
 }
 
@@ -295,11 +320,73 @@ body {
 
 /* ------------------------------------------------------------- mobile -- */
 @media (max-width: 860px) {
-  /* One card per screen: the rail reads as a swipe deck driven by scroll. */
-  .work-rail { padding-inline: 8vw; gap: 4vw; }
-  .work-card, .work-lead { width: 84vw; }
-  .work-lead { padding: 0; }
-  /* Shorter holds on a phone, where a long pin feels like a stuck page. */
-  #top { height: 180vh !important; }
-  #pipeline { height: 300vh !important; }
+  /* Release all scroll-jacking and element pinning on touch devices so
+     vertical scroll glides naturally without freezing or hanging. */
+  #top {
+    height: auto !important;
+    min-height: 100svh;
+  }
+  #top .sc-stage,
+  #top .hero-stage {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100svh;
+    overflow: visible !important;
+    padding-bottom: 3rem;
+  }
+
+  #pipeline {
+    height: auto !important;
+  }
+  #pipeline .sc-stage {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-block: 3.5rem;
+  }
+  .pipe-phase {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .pipe-dot {
+    background: var(--sc-accent) !important;
+    transform: scale(1) !important;
+    box-shadow: 0 0 10px rgba(0, 210, 238, 0.4);
+  }
+  .pipe-rail-fill {
+    transform: scaleY(1) !important;
+  }
+
+  #work {
+    height: auto !important;
+  }
+  #work .sc-stage {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-block: 3.5rem;
+  }
+
+  /* Smooth horizontal touch swipe carousel for projects on mobile */
+  .work-rail {
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1.25rem;
+    padding-inline: 1.25rem !important;
+    gap: 1rem !important;
+    padding-bottom: 1.5rem;
+  }
+  .work-card,
+  .work-lead {
+    width: 82vw !important;
+    max-width: 22rem;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  .work-lead {
+    padding: 0;
+  }
 }

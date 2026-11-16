@@ -200,7 +200,7 @@ export default function VideoBriefing() {
                 src="/studio-intro.mp4"
                 poster="/studio-intro-poster.webp"
                 playsInline
-                preload="auto"
+                preload="none"
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={handleVideoEnded}
