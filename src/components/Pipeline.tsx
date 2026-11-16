@@ -24,7 +24,7 @@ export default function Pipeline() {
       aria-labelledby="pipeline-title"
       data-sc-act="pin"
       data-sc-span="4.2"
-      data-sc-drift="#0c0a07"
+      data-sc-drift="#070a14"
     >
       <div data-sc-stage className="flex items-center">
         <div className="shell grid w-full items-center gap-10 pt-16 md:grid-cols-12 md:gap-14">

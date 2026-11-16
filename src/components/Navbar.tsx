@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Github, Menu, X } from 'lucide-react';
 import { NAV_LINKS, PROFILE } from '@/lib/data';
 
@@ -64,8 +65,15 @@ export default function Navbar() {
       >
         <div className="flex h-14 items-center justify-between gap-4 pl-2.5 pr-2">
           <a href="#top" className="group flex items-center gap-2.5 rounded-full pr-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-accent font-mono text-xs font-bold text-base transition-transform group-hover:scale-105">
-              S
+            <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-lg border border-accent/35 bg-surface/90 shadow-sm transition-all duration-200 group-hover:scale-105 group-hover:border-accent">
+              <Image
+                src="/logo.png"
+                alt={PROFILE.name}
+                width={36}
+                height={36}
+                priority
+                className="h-full w-full object-contain"
+              />
             </span>
             <span className="hidden text-sm font-semibold tracking-tight text-fg sm:block">
               {PROFILE.name}

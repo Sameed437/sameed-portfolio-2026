@@ -62,6 +62,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'Sameed Chaudhary' }],
   creator: 'Sameed Chaudhary',
   alternates: { canonical: '/' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -79,7 +87,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08090B',
+  themeColor: '#06080F',
   width: 'device-width',
   initialScale: 1,
 };

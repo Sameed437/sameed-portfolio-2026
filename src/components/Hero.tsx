@@ -15,7 +15,7 @@ function parseStat(v: string) {
 
 export default function Hero() {
   return (
-    <section id="top" data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#08090b">
+    <section id="top" data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#06080f">
       <div data-sc-stage className="hero-stage">
         <div aria-hidden className="hero-plane" data-sc-parallax="-0.5">
           <div className="hero-glow absolute inset-0" />
@@ -30,9 +30,9 @@ export default function Hero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/portrait-cutout.webp"
-            alt=""
-            width={800}
-            height={800}
+            alt={PROFILE.name}
+            width={1000}
+            height={1000}
             fetchPriority="high"
             className="hero-portrait__img"
           />

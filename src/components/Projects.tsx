@@ -88,7 +88,7 @@ function SnapshotModal({
           {/* Main Snapshot Frame */}
           <div className="overflow-hidden rounded-xl border border-line bg-base shadow-card">
             {/* Browser chrome replica */}
-            <div className="flex h-8 items-center justify-between border-b border-line bg-[#10141D] px-4">
+            <div className="flex h-8 items-center justify-between border-b border-line bg-[#0C1019] px-4">
               <div className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]" />
@@ -102,7 +102,7 @@ function SnapshotModal({
             </div>
 
             {/* High-Resolution Snapshot */}
-            <div className="relative w-full aspect-[16/10] bg-[#080A10]">
+            <div className="relative w-full aspect-[16/10] bg-[#06080F]">
               <Image
                 src={project.snapshot}
                 alt={`${project.title} High-Resolution Snapshot`}
@@ -238,7 +238,7 @@ export default function Projects() {
   const [modalProject, setModalProject] = useState<Project | null>(null);
 
   return (
-    <section id="work" data-sc-act="pan" data-sc-span="4" data-sc-drift="#08090b">
+    <section id="work" data-sc-act="pan" data-sc-span="4" data-sc-drift="#06080f">
       <div data-sc-stage className="flex flex-col justify-center pt-16">
         <div className="work-rail" data-sc-pan="0.04">
           <div className="work-lead flex flex-col justify-center pr-4">

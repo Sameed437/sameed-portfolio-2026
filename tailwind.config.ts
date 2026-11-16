@@ -5,24 +5,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: '#08090B', // page
+        base: '#06080F', // luxury deep obsidian canvas
         surface: {
-          DEFAULT: '#0E1014', // cards
-          raised: '#15181E', // hover / elevated
+          DEFAULT: '#0B0F19', // sleek cards
+          raised: '#121826', // hover / elevated
         },
         line: {
-          DEFAULT: '#22262E', // borders
-          soft: '#171A20',
+          DEFAULT: '#1B2436', // refined hairline borders
+          soft: '#131A28',
         },
         fg: {
-          DEFAULT: '#F2F3F5', // headings
-          muted: '#A2A9B4', // body
-          faint: '#6E7683', // meta
+          DEFAULT: '#F8FAFC', // brilliant crisp headings
+          muted: '#94A3B8', // balanced slate body
+          faint: '#64748B', // meta & technical labels
         },
         accent: {
-          DEFAULT: '#E8A33D', // the single accent — warm, not violet
-          dim: '#B97F26',
-          wash: 'rgba(232,163,61,0.10)',
+          DEFAULT: '#00D2EE', // Electric Cyan — high-tech AI authority
+          dim: '#00B4D8',
+          wash: 'rgba(0, 210, 238, 0.08)',
         },
       },
       fontFamily: {
@@ -48,7 +48,7 @@ const config: Config = {
       boxShadow: {
         card: '0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)',
         lift: '0 2px 4px rgba(0,0,0,0.4), 0 24px 48px -20px rgba(0,0,0,0.85)',
-        glow: '0 0 0 1px rgba(232,163,61,0.25), 0 12px 40px -16px rgba(232,163,61,0.35)',
+        glow: '0 0 0 1px rgba(0, 210, 238, 0.25), 0 14px 40px -14px rgba(0, 210, 238, 0.38)',
       },
       keyframes: {
         marquee: {

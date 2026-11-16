@@ -9,12 +9,12 @@ import type { ProjectArt } from '@/lib/data';
  * real domain name pill, and high-fidelity snapshot preview with smooth zoom on hover.
  */
 
-const CHROME = '#14171F';
-const PANEL = '#10131A';
-const BLOCK = '#232833';
-const BLOCK_SOFT = '#1B1F27';
-const TEXT = '#2E343F';
-const ACCENT = '#E8A33D';
+const CHROME = '#0E131F';
+const PANEL = '#0A0E17';
+const BLOCK = '#1C2436';
+const BLOCK_SOFT = '#121824';
+const TEXT = '#2D3B52';
+const ACCENT = '#00D2EE';
 
 function Line({ x, y, w, h = 5, fill = TEXT }: { x: number; y: number; w: number; h?: number; fill?: string }) {
   return <rect x={x} y={y} width={w} height={h} rx={2.5} fill={fill} />;

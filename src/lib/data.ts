@@ -25,8 +25,8 @@ export const PROFILE = {
 };
 
 export const STATS = [
-  { value: '3+', label: 'Years Experience' },
-  { value: '7', label: 'Phase AI Pipeline' },
+  { value: '4+', label: 'Years Experience' },
+  { value: '50+', label: 'Automations Built' },
   { value: '25+', label: 'Projects Delivered' },
   { value: '40+', label: 'Clients Served' },
 ];
@@ -512,6 +512,6 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much experience does he have?',
-    a: '3+ years of professional experience across six companies/contracts, with 25+ projects delivered for 40+ clients.',
+    a: '4+ years of professional experience across six companies/contracts, with 25+ projects delivered for 40+ clients.',
   },
 ];

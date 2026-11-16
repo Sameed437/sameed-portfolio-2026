@@ -4,22 +4,22 @@
 
 :root {
   color-scheme: dark;
-  --base: #08090b;
-  --fg: #f2f3f5;
-  --line: #22262e;
-  --accent: #e8a33d;
+  --base: #06080f;
+  --fg: #f8fafc;
+  --line: #1b2436;
+  --accent: #00d2ee;
 }
 
 /* scroll-craft tokens. html:root outranks the engine's own :root defaults
    regardless of stylesheet order in the production bundle. */
 html:root {
   /* scroll-craft tokens: the whole rebrand is these values */
-  --sc-canvas: #08090b;
-  --sc-surface: #0e1014;
-  --sc-ink: #f2f3f5;
-  --sc-ink-soft: #a2a9b4;
-  --sc-accent: #e8a33d;
-  --sc-accent-ink: #08090b;
+  --sc-canvas: #06080f;
+  --sc-surface: #0b0f19;
+  --sc-ink: #f8fafc;
+  --sc-ink-soft: #94a3b8;
+  --sc-accent: #00d2ee;
+  --sc-accent-ink: #06080f;
   --sc-font-display: var(--font-display), system-ui, sans-serif;
   --sc-font-text: var(--font-inter), system-ui, sans-serif;
   --sc-font-mono: var(--font-mono), ui-monospace, monospace;
@@ -49,7 +49,7 @@ body {
 }
 
 ::selection {
-  background: rgba(232, 163, 61, 0.28);
+  background: rgba(0, 210, 238, 0.25);
   color: #fff;
 }
 
@@ -65,15 +65,15 @@ body {
   height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #090b0e;
+  background: #06080f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232832;
+  background: #1b2436;
   border-radius: 8px;
-  border: 2px solid #090b0e;
+  border: 2px solid #06080f;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #363d4c;
+  background: #28354d;
 }
 
 @layer utilities {
@@ -108,12 +108,12 @@ body {
     background:
       radial-gradient(
         60rem 40rem at 15% -10%,
-        rgba(232, 163, 61, 0.15),
+        rgba(0, 210, 238, 0.14),
         transparent 60%
       ),
       radial-gradient(
-        48rem 32rem at 85% 0%,
-        rgba(232, 163, 61, 0.08),
+        50rem 35rem at 85% 0%,
+        rgba(99, 102, 241, 0.12),
         transparent 55%
       );
   }
@@ -132,7 +132,7 @@ body {
     background: linear-gradient(
       90deg,
       var(--accent),
-      rgba(232, 163, 61, 0) 70%
+      rgba(0, 210, 238, 0) 70%
     );
   }
 
@@ -233,7 +233,7 @@ body {
   margin: 0; white-space: nowrap; pointer-events: none; user-select: none;
   font-family: var(--sc-font-display); font-weight: 800;
   font-size: clamp(5rem, 21vw, 22rem); line-height: 0.8; letter-spacing: -0.05em;
-  color: transparent; -webkit-text-stroke: 1px rgba(232, 163, 61, 0.28);
+  color: transparent; -webkit-text-stroke: 1px rgba(0, 210, 238, 0.16);
 }
 .hero-portrait {
   position: absolute; right: max(2vw, calc((100vw - 80rem) / 2)); bottom: 0;
@@ -276,7 +276,7 @@ body {
   transition: color 160ms ease-out;
 }
 .pipe-dot {
-  background: color-mix(in oklab, var(--sc-accent) calc(var(--on) * 100%), #22262e);
+  background: color-mix(in oklab, var(--sc-accent) calc(var(--on) * 100%), #1b2436);
   transform: scale(calc(0.7 + var(--on) * 0.3));
 }
 .pipe-rail-fill { transform-origin: 50% 0; transform: scaleY(clamp(0, var(--sc-p, 0) * 1.12, 1)); }

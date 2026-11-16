@@ -414,7 +414,7 @@ function buildFacts(): Fact[] {
     weight: 1.2,
     keywords: kw('experience employment previous past timeline'),
     answer: {
-      text: `3+ years across ${EXPERIENCE.length} companies: ${list(
+      text: `4+ years across ${EXPERIENCE.length} companies: ${list(
         EXPERIENCE.map((e) => `${e.role} at ${e.company} (${e.date})`)
       )}.`,
     },
