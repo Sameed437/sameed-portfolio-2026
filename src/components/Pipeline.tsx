@@ -66,13 +66,13 @@ export default function Pipeline() {
             {PHASES.map((ph, i) => (
               <li
                 key={ph.name}
-                className="pipe-phase relative flex gap-5 py-2.5 pl-0 md:py-3.5"
+                className="pipe-phase relative flex gap-4 py-2 md:gap-5 md:py-3.5"
                 style={{ '--t': ((i + 0.6) / (PHASES.length + 1)).toFixed(3) } as CSSProperties}
               >
                 <span aria-hidden className="pipe-dot relative mt-1.5 h-[15px] w-[15px] shrink-0 rounded-full" />
                 <div>
                   <h3 className="sc-display text-lg font-semibold text-fg md:text-xl">{ph.name}</h3>
-                  <p className="mt-0.5 text-sm text-fg-muted max-sm:hidden">{ph.detail}</p>
+                  <p className="pipe-detail mt-0.5 text-xs text-fg-muted sm:text-sm">{ph.detail}</p>
                 </div>
               </li>
             ))}

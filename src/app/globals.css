@@ -257,13 +257,16 @@ body {
 .hero-h1 { font-size: clamp(2.4rem, 1.6rem + 3.4vw, 5rem); font-weight: 700; color: var(--sc-ink); }
 
 @media (max-width: 860px) {
-  .hero-copy { left: 1.25rem; right: 1.25rem; width: auto; top: 6.5rem; translate: none; }
+  .hero-copy { left: 1.25rem; right: 1.25rem; width: auto; top: 6.25rem; translate: none; }
   .hero-h1 { font-size: clamp(2.1rem, 8.6vw, 3rem); }
-  .hero-portrait { width: min(92vw, 26rem); right: 50%; translate: 50% 0; opacity: 0.5; }
-  .hero-word { bottom: 30svh; }
+  .hero-word { display: none; }
+  .hero-portrait { width: min(78vw, 21rem); right: 50%; translate: 50% 0; }
+  .hero-floor { height: 14svh; }
 }
 @media (max-height: 700px) and (max-width: 860px) {
   .hero-tagline { display: none; }
+  .hero-portrait { opacity: 0.35; }
+  .pipe-detail { display: none; }
 }
 
 /* ------------------------------------------------------------ pipeline -- */
@@ -289,3 +292,14 @@ body {
 
 /* ---------------------------------------------------------- experience -- */
 .exp-spine-fill { transform-origin: 50% 0; transform: scaleY(clamp(0, (var(--sc-p, 0) - 0.12) * 1.6, 1)); }
+
+/* ------------------------------------------------------------- mobile -- */
+@media (max-width: 860px) {
+  /* One card per screen: the rail reads as a swipe deck driven by scroll. */
+  .work-rail { padding-inline: 8vw; gap: 4vw; }
+  .work-card, .work-lead { width: 84vw; }
+  .work-lead { padding: 0; }
+  /* Shorter holds on a phone, where a long pin feels like a stuck page. */
+  #top { height: 180vh !important; }
+  #pipeline { height: 300vh !important; }
+}

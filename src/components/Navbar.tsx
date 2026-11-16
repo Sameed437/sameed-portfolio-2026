@@ -58,7 +58,7 @@ export default function Navbar() {
         className={
           'pointer-events-auto relative w-full max-w-4xl overflow-hidden rounded-full border transition-[background-color,border-color,box-shadow] duration-300 ' +
           (stuck || open
-            ? 'border-white/10 bg-base/70 shadow-lift backdrop-blur-xl'
+            ? 'border-white/10 bg-base/85 shadow-lift backdrop-blur-xl'
             : 'border-white/[0.06] bg-base/40 backdrop-blur-md')
         }
       >
