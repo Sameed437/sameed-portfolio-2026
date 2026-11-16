@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Pipeline from '@/components/Pipeline';
 import Projects from '@/components/Projects';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
@@ -11,6 +12,7 @@ export default function Page() {
     <>
       <Hero />
       <Services />
+      <Pipeline />
       <Projects />
       <About />
       <Experience />

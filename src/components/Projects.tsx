@@ -2,19 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, ExternalLink, Eye, Globe, Maximize2, Sparkles, X, CheckCircle2 } from 'lucide-react';
-import { PROJECTS, type Project, type ProjectCategory } from '@/lib/data';
-import SectionHeader from './SectionHeader';
+import { ArrowUpRight, ExternalLink, Eye, Globe, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { PROJECTS, type Project } from '@/lib/data';
 import ProjectCover from './ProjectCover';
-import Reveal from './Reveal';
-
-const CATEGORIES: { id: ProjectCategory; label: string }[] = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'ecommerce', label: 'Headless E-Commerce' },
-  { id: 'automation', label: 'AI & Automation' },
-  { id: 'client', label: 'Client Sites' },
-  { id: 'fullstack', label: 'Full-Stack' },
-];
 
 /* ------------------------------------------------------------------ */
 /* Interactive High-Resolution Snapshot Lightbox Modal                */
@@ -190,34 +180,13 @@ function SnapshotModal({
 }
 
 /* ------------------------------------------------------------------ */
-/* Project Card Component                                             */
+/* Rail card                                                          */
 /* ------------------------------------------------------------------ */
-function Card({
-  project,
-  index,
-  onZoom,
-}: {
-  project: Project;
-  index: number;
-  onZoom: (p: Project) => void;
-}) {
+function Card({ project, onZoom }: { project: Project; onZoom: (p: Project) => void }) {
   const isLink = Boolean(project.href);
-  const featured = index === 0;
-
   return (
-    <article
-      className={
-        'card card-hover group h-full overflow-hidden rounded-xl flex flex-col justify-between ' +
-        (featured ? 'md:grid md:grid-cols-12 md:items-center' : '')
-      }
-    >
-      {/* Visual Snapshot Browser Mockup */}
-      <div
-        className={
-          'relative overflow-hidden border-b border-line ' +
-          (featured ? 'md:col-span-7 md:border-b-0 md:border-r h-full' : 'w-full')
-        }
-      >
+    <article className="work-card card group flex flex-col overflow-hidden rounded-xl">
+      <div className="relative border-b border-line" data-sc-tilt="5">
         <ProjectCover
           art={project.art}
           title={project.title}
@@ -226,87 +195,33 @@ function Card({
           onZoom={() => onZoom(project)}
           className="aspect-[16/10] w-full"
         />
-
         {project.badge && (
-          <span className="absolute left-3.5 top-10 rounded-md border border-accent/30 bg-base/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-accent backdrop-blur-md shadow-card">
+          <span className="absolute left-3 top-10 rounded-md border border-accent/30 bg-base/90 px-2 py-0.5 font-mono text-[10px] uppercase tracking-label text-accent">
             {project.badge}
           </span>
         )}
       </div>
-
-      {/* Info Section */}
-      <div
-        className={
-          'flex flex-col justify-between p-6 sm:p-7 ' +
-          (featured ? 'md:col-span-5 md:p-9' : 'flex-1')
-        }
-      >
-        <div>
-          <div className="flex items-center justify-between gap-2">
-            <p className="label">{project.kicker}</p>
-          </div>
-
-          <h3
-            className={
-              'mt-3 flex items-start gap-2 font-semibold tracking-tight text-fg transition-colors group-hover:text-accent ' +
-              (featured ? 'text-2xl md:text-3xl' : 'text-xl')
-            }
-          >
-            {project.title}
-            {isLink && (
-              <ArrowUpRight
-                size={18}
-                className="mt-1 shrink-0 text-fg-faint transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-              />
-            )}
-          </h3>
-
-          <p className="mt-3 text-sm leading-relaxed text-pretty text-fg-muted">
-            {project.description}
-          </p>
-
-          {featured && project.highlights && (
-            <ul className="mt-4 space-y-1.5 border-t border-line/60 pt-3">
-              {project.highlights.slice(0, 3).map((h, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-xs text-fg-muted">
-                  <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-accent" />
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <ul className="mt-5 flex flex-wrap gap-1.5">
-            {project.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded border border-line bg-base px-2 py-0.5 font-mono text-[11px] text-fg-faint"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Action CTAs */}
-        <div className="mt-6 flex items-center gap-3 pt-3 border-t border-line/40">
+      <div className="flex flex-1 flex-col p-5 md:p-6">
+        <p className="label">{project.kicker}</p>
+        <h3 className="sc-display mt-2.5 text-xl font-semibold tracking-tight text-fg">{project.title}</h3>
+        <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-fg-muted">{project.description}</p>
+        <div className="mt-auto flex items-center gap-3 pt-5">
           <button
             type="button"
             onClick={() => onZoom(project)}
-            className="inline-flex items-center gap-1.5 rounded-md border border-line bg-base px-3 py-1.5 text-xs font-medium text-fg-muted transition-all hover:border-accent/40 hover:text-accent"
+            className="inline-flex items-center gap-1.5 rounded-md border border-line bg-base px-3 py-1.5 text-xs font-medium text-fg-muted transition-colors hover:border-accent/40 hover:text-accent"
           >
             <Maximize2 size={12} />
-            Inspect Snapshot
+            Details
           </button>
-
           {isLink && (
             <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-accent transition-colors hover:text-accent-dim"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-dim"
             >
-              Live Site
+              Live site
               <ArrowUpRight size={13} />
             </a>
           )}
@@ -317,88 +232,46 @@ function Card({
 }
 
 /* ------------------------------------------------------------------ */
-/* Main Projects Section with Category Filtering                      */
+/* Act 4, pan: vertical scroll travels the work sideways.             */
 /* ------------------------------------------------------------------ */
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
   const [modalProject, setModalProject] = useState<Project | null>(null);
 
-  const filteredProjects = PROJECTS.filter((p) => {
-    if (activeCategory === 'all') return true;
-    return p.category === activeCategory;
-  });
-
   return (
-    <section id="work" className="relative">
-      <div className="shell py-20 md:py-28">
-        <SectionHeader
-          index="02"
-          eyebrow={'Selected work — ' + PROJECTS.length + ' projects'}
-          title="Headless stores, AI automations, and client deployments."
-          description="Every project includes full interface snapshots. Featured flagship is Almari PK (almaripk.com) — a full headless WooCommerce store built with React & Next.js, alongside BlogBolt and live client portals."
-        />
-
-        {/* Smooth Category Filter Tabs */}
-        <div className="mb-10 flex flex-wrap items-center gap-2">
-          {CATEGORIES.map((cat) => {
-            const count =
-              cat.id === 'all'
-                ? PROJECTS.length
-                : PROJECTS.filter((p) => p.category === cat.id).length;
-            const active = activeCategory === cat.id;
-
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActiveCategory(cat.id)}
-                className={
-                  'inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-medium transition-all duration-300 ' +
-                  (active
-                    ? 'bg-accent text-base font-semibold shadow-glow'
-                    : 'border border-line bg-surface text-fg-muted hover:border-accent/30 hover:bg-surface-raised hover:text-fg')
-                }
-              >
-                <span>{cat.label}</span>
-                <span
-                  className={
-                    'rounded-full px-1.5 py-0.2 font-mono text-[10px] ' +
-                    (active ? 'bg-base/20 text-base' : 'bg-base text-fg-faint')
-                  }
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Projects Grid */}
-        <ul className="grid gap-6 md:grid-cols-2">
-          {filteredProjects.map((project, i) => (
-            <li
-              key={project.title}
-              className={
-                activeCategory === 'all' && i === 0
-                  ? 'md:col-span-2'
-                  : ''
-              }
-            >
-              <Reveal delay={i === 0 ? 0 : (i % 2) * 80}>
-                <Card project={project} index={i} onZoom={setModalProject} />
-              </Reveal>
-            </li>
+    <section id="work" data-sc-act="pan" data-sc-span="4" data-sc-drift="#08090b">
+      <div data-sc-stage className="flex flex-col justify-center pt-16">
+        <div className="work-rail" data-sc-pan="0.04">
+          <div className="work-lead flex flex-col justify-center pr-4">
+            <p className="font-mono text-[11px] uppercase tracking-label text-accent">
+              Selected work · {PROJECTS.length} projects
+            </p>
+            <h2 className="sc-display mt-4 text-title font-semibold text-balance text-fg">
+              Headless stores, AI automations, live client sites.
+            </h2>
+            <p className="mt-5 text-pretty text-fg-muted">
+              Keep scrolling and the work slides past. Open any project for the full write-up and
+              snapshot.
+            </p>
+          </div>
+          {PROJECTS.map((project) => (
+            <Card key={project.title} project={project} onZoom={setModalProject} />
           ))}
-        </ul>
-
-        {/* Modal Lightbox */}
-        {modalProject && (
-          <SnapshotModal
-            project={modalProject}
-            onClose={() => setModalProject(null)}
-          />
-        )}
+          <div className="work-lead flex flex-col justify-center pl-2">
+            <p className="sc-display text-2xl font-semibold text-fg">Want one of these?</p>
+            <a
+              href="#contact"
+              className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dim"
+            >
+              Tell me what you are building
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
+        </div>
       </div>
+
+      {modalProject && (
+        <SnapshotModal project={modalProject} onClose={() => setModalProject(null)} />
+      )}
     </section>
   );
 }

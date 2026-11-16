@@ -1,15 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Archivo, Inter, JetBrains_Mono } from 'next/font/google';
+import '@/scrollcraft/engine/scrollcraft.css';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Assistant from '@/components/Assistant';
 import BackToTop from '@/components/BackToTop';
+import ScrollCraftMount from '@/components/scroll/ScrollCraftMount';
 import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const display = Archivo({
+  subsets: ['latin'],
+  variable: '--font-display',
   display: 'swap',
 });
 
@@ -78,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`no-js ${inter.variable} ${mono.variable}`}>
+    <html lang="en" className={`no-js ${inter.variable} ${display.variable} ${mono.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -98,6 +106,7 @@ export default function RootLayout({
         <Footer />
         <Assistant />
         <BackToTop />
+        <ScrollCraftMount />
       </body>
     </html>
   );

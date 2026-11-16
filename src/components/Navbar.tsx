@@ -53,102 +53,92 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={
-        'sticky top-0 z-40 transition-all duration-300 ' +
-        (stuck
-          ? 'border-b border-line bg-base/85 backdrop-blur-md shadow-card'
-          : 'border-b border-transparent')
-      }
-    >
-      <div className="shell flex h-16 items-center justify-between gap-6 md:h-20">
-        <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-7 w-7 place-items-center rounded bg-accent font-mono text-xs font-bold text-base transition-transform group-hover:scale-105">
-            S
-          </span>
-          <span className="hidden text-sm font-semibold tracking-tight text-fg transition-colors group-hover:text-accent sm:block">
-            {PROFILE.name}
-          </span>
-        </a>
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-40 flex justify-center px-3 md:top-5">
+      <div
+        className={
+          'pointer-events-auto relative w-full max-w-4xl overflow-hidden rounded-full border transition-[background-color,border-color,box-shadow] duration-300 ' +
+          (stuck || open
+            ? 'border-white/10 bg-base/70 shadow-lift backdrop-blur-xl'
+            : 'border-white/[0.06] bg-base/40 backdrop-blur-md')
+        }
+      >
+        <div className="flex h-14 items-center justify-between gap-4 pl-2.5 pr-2">
+          <a href="#top" className="group flex items-center gap-2.5 rounded-full pr-2">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-accent font-mono text-xs font-bold text-base transition-transform group-hover:scale-105">
+              S
+            </span>
+            <span className="hidden text-sm font-semibold tracking-tight text-fg sm:block">
+              {PROFILE.name}
+            </span>
+          </a>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-          {NAV_LINKS.map((l) => (
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="rounded-full px-3.5 py-2 text-sm text-fg-muted transition-colors duration-200 hover:bg-white/[0.06] hover:text-fg"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-1.5">
             <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-fg-muted transition-colors duration-200 hover:text-fg"
+              href={PROFILE.socials.githubRepo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid h-10 w-10 place-items-center rounded-full text-fg-muted transition-colors hover:bg-white/[0.06] hover:text-accent"
+              title="View sameed-portfolio-2026 on GitHub"
+              aria-label="GitHub Repository"
             >
-              {l.label}
+              <Github size={17} />
             </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          {/* GitHub Repo Button */}
-          <a
-            href={PROFILE.socials.githubRepo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="grid h-9 w-9 place-items-center rounded-md border border-line bg-surface text-fg-muted transition-all duration-200 hover:border-accent/40 hover:bg-surface-raised hover:text-accent"
-            title="View sameed-portfolio-2026 on GitHub"
-            aria-label="GitHub Repository"
-          >
-            <Github size={17} />
-          </a>
-
-          <a
-            href={'mailto:' + PROFILE.email}
-            className="hidden rounded-md bg-accent px-4 py-2 text-sm font-medium text-base transition-colors duration-200 hover:bg-accent-dim sm:inline-block shadow-glow"
-          >
-            Hire me
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="-mr-2 grid h-10 w-10 place-items-center text-fg lg:hidden"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
+            <a
+              href={'mailto:' + PROFILE.email}
+              className="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-base transition-colors duration-200 hover:bg-accent-dim sm:inline-block"
+            >
+              Hire me
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-full text-fg hover:bg-white/[0.06] lg:hidden"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+            >
+              {open ? <X size={19} /> : <Menu size={19} />}
+            </button>
+          </div>
         </div>
+
+        {/* reading progress */}
+        <div
+          ref={barRef}
+          aria-hidden
+          className="absolute inset-x-6 bottom-0 h-px origin-left bg-accent/80"
+          style={{ transform: 'scaleX(0)' }}
+        />
       </div>
 
-      {/* reading progress */}
-      <div
-        ref={barRef}
-        aria-hidden
-        className="h-px origin-left bg-accent transition-transform duration-75"
-        style={{ transform: 'scaleX(0)' }}
-      />
-
       {open && (
-        <div className="border-t border-line bg-base/95 backdrop-blur-md lg:hidden animate-fadeIn">
-          <nav className="shell flex flex-col py-2" aria-label="Mobile">
+        <div className="pointer-events-auto absolute inset-x-3 top-[4.25rem] mx-auto max-w-4xl animate-fadeIn rounded-3xl border border-white/10 bg-base/90 p-2 shadow-lift backdrop-blur-xl lg:hidden">
+          <nav className="flex flex-col" aria-label="Mobile">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-line-soft py-4 text-base text-fg-muted transition-colors hover:text-accent"
+                className="rounded-2xl px-4 py-3.5 text-base text-fg-muted transition-colors hover:bg-white/[0.05] hover:text-accent"
               >
                 {l.label}
               </a>
             ))}
             <a
-              href={PROFILE.socials.githubRepo}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2 border-b border-line-soft py-4 text-base text-fg-muted transition-colors hover:text-accent"
-            >
-              <Github size={18} />
-              GitHub Repo (sameed-portfolio-2026)
-            </a>
-            <a
               href={'mailto:' + PROFILE.email}
               onClick={() => setOpen(false)}
-              className="py-4 text-base font-medium text-accent"
+              className="mt-1 rounded-2xl bg-accent px-4 py-3.5 text-center text-base font-semibold text-base"
             >
               Hire me
             </a>

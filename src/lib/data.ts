@@ -170,7 +170,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Cure Abroad Health Solutions',
     art: 'healthcare',
-    snapshot: '/projects/cureabroad.svg',
+    snapshot: '/projects/cureabroad-live.webp',
     category: 'client',
     domain: 'cureabroadhealthsolutions.com',
     kicker: 'Cross-Border Healthcare Platform · Live Client',
@@ -216,7 +216,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Wonderlyf',
     art: 'commerce',
-    snapshot: '/projects/wonderlyf.png',
+    snapshot: '/projects/wonderlyf-live.webp',
     category: 'ecommerce',
     domain: 'wonderlyf.co.uk',
     kicker: 'Headless e-commerce storefront · Live UK Client',
@@ -234,7 +234,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Azhar Foundation School',
     art: 'school',
-    snapshot: '/projects/azhar-school.jpg',
+    snapshot: '/projects/azhar-school-live.webp',
     category: 'client',
     domain: 'azhar-foundation-school.vercel.app',
     kicker: 'School portal · Live React on Vercel',
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Seattle City Accounting',
     art: 'corporate',
-    snapshot: '/projects/seattle-accounting.svg',
+    snapshot: '/projects/seattle-accounting-live.webp',
     category: 'client',
     domain: 'seattlecityaccounting.com',
     kicker: 'Accounting firm · Live',
@@ -304,7 +304,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'LA Accounting Pro',
     art: 'ledger',
-    snapshot: '/projects/la-accounting.svg',
+    snapshot: '/projects/la-accounting-live.webp',
     category: 'client',
     domain: 'laaccountingpro.com',
     kicker: 'Lead generation · Live',

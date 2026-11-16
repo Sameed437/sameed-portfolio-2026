@@ -4,7 +4,7 @@ import Reveal from './Reveal';
 
 export default function Experience() {
   return (
-    <section id="experience" className="shell py-20 md:py-28">
+    <section id="experience" data-sc-act="flow" className="shell py-20 md:py-28">
       <SectionHeader
         index="04"
         eyebrow="Experience"
@@ -16,7 +16,9 @@ export default function Experience() {
         <span
           aria-hidden
           className="absolute left-[7px] top-2 hidden h-[calc(100%-1rem)] w-px bg-line md:block"
-        />
+        >
+          <span className="exp-spine-fill block h-full w-full bg-accent" />
+        </span>
 
         {EXPERIENCE.map((job, i) => (
           <li key={job.company + job.date} className="relative md:pl-10">
