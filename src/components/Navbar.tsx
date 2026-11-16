@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Github, Menu, X } from 'lucide-react';
 import { NAV_LINKS, PROFILE } from '@/lib/data';
 
@@ -9,6 +11,13 @@ export default function Navbar() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  const resolveHref = (href: string) => {
+    if (href.startsWith('/')) return href;
+    if (pathname === '/') return href;
+    return `/${href}`;
+  };
 
   useEffect(() => {
     let raf = 0;
@@ -64,7 +73,7 @@ export default function Navbar() {
         }
       >
         <div className="flex h-14 items-center justify-between gap-4 pl-2.5 pr-2">
-          <a href="#top" className="group flex items-center gap-2.5 rounded-full pr-2">
+          <Link href={pathname === '/' ? '#top' : '/'} className="group flex items-center gap-2.5 rounded-full pr-2">
             <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-lg border border-accent/35 bg-surface/90 shadow-sm transition-all duration-200 group-hover:scale-105 group-hover:border-accent">
               <Image
                 src="/logo.png"
@@ -78,18 +87,26 @@ export default function Navbar() {
             <span className="hidden text-sm font-semibold tracking-tight text-fg sm:block">
               {PROFILE.name}
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="rounded-full px-3.5 py-2 text-sm text-fg-muted transition-colors duration-200 hover:bg-white/[0.06] hover:text-fg"
-              >
-                {l.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((l) => {
+              const isCurrent = pathname === l.href;
+              return (
+                <Link
+                  key={l.href}
+                  href={resolveHref(l.href)}
+                  className={
+                    'rounded-full px-3.5 py-2 text-sm transition-all duration-200 ' +
+                    (isCurrent
+                      ? 'bg-accent/15 font-semibold text-accent border border-accent/25 shadow-[0_0_12px_rgba(0,210,238,0.15)]'
+                      : 'text-fg-muted hover:bg-white/[0.06] hover:text-fg')
+                  }
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-1.5">
@@ -133,16 +150,24 @@ export default function Navbar() {
       {open && (
         <div className="pointer-events-auto absolute inset-x-3 top-[4.25rem] mx-auto max-w-4xl animate-fadeIn rounded-3xl border border-white/10 bg-base/90 p-2 shadow-lift backdrop-blur-xl lg:hidden">
           <nav className="flex flex-col" aria-label="Mobile">
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3.5 text-base text-fg-muted transition-colors hover:bg-white/[0.05] hover:text-accent"
-              >
-                {l.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((l) => {
+              const isCurrent = pathname === l.href;
+              return (
+                <Link
+                  key={l.href}
+                  href={resolveHref(l.href)}
+                  onClick={() => setOpen(false)}
+                  className={
+                    'rounded-2xl px-4 py-3.5 text-base transition-colors ' +
+                    (isCurrent
+                      ? 'bg-accent/15 font-semibold text-accent'
+                      : 'text-fg-muted hover:bg-white/[0.05] hover:text-accent')
+                  }
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
             <a
               href={'mailto:' + PROFILE.email}
               onClick={() => setOpen(false)}

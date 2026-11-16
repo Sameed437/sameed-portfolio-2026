@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { ArrowUpRight, Github, Mail, MapPin } from 'lucide-react';
 import { PROFILE } from '@/lib/data';
 import SectionHeader from './SectionHeader';
@@ -22,6 +22,38 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const subj = params.get('subject');
+        const msg = params.get('message');
+        if (subj || msg) {
+          setForm((prev) => ({
+            ...prev,
+            subject: subj || prev.subject,
+            message: msg || prev.message,
+          }));
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    const handlePrefill = (e: Event) => {
+      const customEvent = e as CustomEvent<{ subject?: string; message?: string }>;
+      if (customEvent.detail) {
+        setForm((prev) => ({
+          ...prev,
+          subject: customEvent.detail.subject ?? prev.subject,
+          message: customEvent.detail.message ?? prev.message,
+        }));
+      }
+    };
+    window.addEventListener('prefill-contact', handlePrefill);
+    return () => window.removeEventListener('prefill-contact', handlePrefill);
+  }, []);
 
   const set = (key: keyof typeof form) => (e: { target: { value: string } }) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));

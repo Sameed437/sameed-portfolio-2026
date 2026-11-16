@@ -459,6 +459,7 @@ export const EDUCATION = [
 
 export const NAV_LINKS = [
   { href: '#services', label: 'What I Do' },
+  { href: '/studio', label: 'AI Studio' },
   { href: '#work', label: 'Work' },
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },

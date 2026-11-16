@@ -284,6 +284,16 @@ function buildFacts(): Fact[] {
     },
   });
 
+  facts.push({
+    id: 'studio',
+    weight: 1.4,
+    keywords: kw('studio calculator roi architecture inspector lab simulator savings hours estimate workflow nodes'),
+    answer: {
+      text: 'You can test his interactive AI Studio & ROI Lab on the dedicated /studio page. It features a live Architecture Inspector showing real production workflows (telemetry, JSON payloads, and Claude prompts) and a business ROI Calculator that estimates hours and capital your team can reclaim through automation.',
+      links: [{ label: 'Open AI Studio & ROI Lab', href: '/studio' }],
+    },
+  });
+
   for (const s of SERVICES) {
     facts.push({
       id: `service:${s.title}`,
