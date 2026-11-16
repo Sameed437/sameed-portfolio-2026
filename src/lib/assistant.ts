@@ -201,6 +201,63 @@ const INTENTS: Intent[] = [
       links: [{ label: 'Open AI Studio & ROI Lab', href: '/studio' }],
     },
   },
+
+  // Projects / Portfolio / Case Studies
+  {
+    pattern: /\b(projects?|portfolio|case stud(y|ies)|what (have you|did you) (built?|made|worked on)|examples of work)\b/i,
+    answer: {
+      text: `Sameed has engineered 25+ production projects across autonomous AI workflows, headless e-commerce, and healthcare platforms. Key highlights include:\n\n• BlogBolt: Autonomous 7-phase Python & Next.js content pipeline using Claude API and n8n.\n• Almari PK (almaripk.com): Headless Next.js 14 WooCommerce storefront with sub-second catalog search.\n• Cure Abroad Health Solutions (cureabroadhealthsolutions.com): International medical tourism platform with dual-funnel patient conversion.\n• Wonderlyf (wonderlyf.co.uk): Animated UK wellness store with headless cart and checkout.\n• Seattle Accounting & LA Accounting: Financial authority portals engineered for lead generation.`,
+      links: [
+        { label: 'View All Selected Work', href: '/#work' },
+        { label: 'Inspect AI Studio Blueprints', href: '/studio' },
+      ],
+    },
+  },
+
+  // Websites / Web Development / E-Commerce
+  {
+    pattern: /\b(website|websites|web dev(elopment)?|web app|frontend|e-?commerce|store|storefront|headless|wordpress|woocommerce)\b/i,
+    answer: {
+      text: 'Yes! Sameed is a specialist in high-speed web platforms and headless e-commerce. He builds ultra-fast frontends using Next.js 14 (App Router), React, TypeScript, and Tailwind CSS, backed by headless WooCommerce, WordPress REST API, or custom backend services. Sites load in under a second with 95+ Core Web Vitals.',
+      links: [
+        { label: 'View E-Commerce Case Studies', href: '/#work' },
+        MAILTO,
+      ],
+    },
+  },
+
+  // n8n / Make / Workflows / Webhooks
+  {
+    pattern: /\b(n8n|make\.com|zapier|webhooks?|workflow automation|lead triage)\b/i,
+    answer: {
+      text: 'Sameed has built 50+ enterprise automations using n8n, Make, Zapier, and custom Python webhooks. Typical setups include:\n\n• Multi-agent content generation & SEO publishing\n• CRM syncing & automated lead enrichment (HubSpot, Airtable, Notion)\n• E-commerce order routing & inventory sync\n• Automated Slack / WhatsApp notifications with fallback error handling',
+      links: [
+        { label: 'Test Workflow Schemas in AI Studio', href: '/studio' },
+        MAILTO,
+      ],
+    },
+  },
+
+  // SEO / Growth / Traffic
+  {
+    pattern: /\b(seo|search engine|rankings?|organic traffic|serp|on-page seo)\b/i,
+    answer: {
+      text: 'Sameed has 4+ years of professional technical SEO experience. At Marham, he drove over 100,000 organic search impressions using AI content pipelines. His builds incorporate automated schema markup, semantic HTML, sub-second TTFB, and SERP intent analysis built directly into the engineering stack.',
+      links: [{ label: 'View Work', href: '/#work' }],
+    },
+  },
+
+  // Identity / Assistant Bot
+  {
+    pattern: /\b(who are you|your name|what('s| is) your name|are you sameed)\b/i,
+    answer: {
+      text: `I am Sameed's AI assistant! I'm here to answer questions about Sameed Chaudhary's work as an ${PROFILE.title}, his experience at 360 Signum and Marham, his projects (like BlogBolt and Almari PK), his tech stack, and how to hire him.`,
+      links: [
+        MAILTO,
+        { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
+      ],
+    },
+  },
 ];
 
 /* ------------------------------------------------------------------ */

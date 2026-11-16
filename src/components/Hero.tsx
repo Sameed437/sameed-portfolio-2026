@@ -56,28 +56,28 @@ export default function Hero() {
             <span className="label">{PROFILE.location}</span>
           </div>
 
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-label text-accent">
+          <p className="mt-5 sm:mt-8 font-mono text-[11px] uppercase tracking-label text-accent">
             {PROFILE.name} · {PROFILE.title}
           </p>
-          <h1 className="sc-display hero-h1 mt-4" data-sc-kinetic="lines">
+          <h1 className="sc-display hero-h1 mt-2.5 sm:mt-4" data-sc-kinetic="lines">
             I engineer AI automation systems and high-speed web platforms.
           </h1>
-          <p className="hero-tagline mt-6 max-w-prose text-lead text-pretty text-fg-muted">
+          <p className="hero-tagline mt-3.5 sm:mt-6 max-w-prose text-lead text-pretty text-fg-muted">
             Autonomous workflows that eliminate manual work, intelligent agent pipelines, and storefronts that load
             before you blink.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-5 sm:mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-base transition-colors duration-200 hover:bg-accent-dim"
+              className="group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-semibold text-base transition-colors duration-200 hover:bg-accent-dim"
             >
               See the work
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href={'mailto:' + PROFILE.email}
-              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface/80 px-6 py-3.5 text-sm font-medium text-fg transition-colors duration-200 hover:border-accent/40"
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface/80 px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-medium text-fg transition-colors duration-200 hover:border-accent/40 hover:text-accent"
             >
               Hire me
             </a>
@@ -105,12 +105,12 @@ export default function Hero() {
         {/* Beat two: the record, counted in as the stage holds. */}
         <div className="hero-copy" data-sc-cue="0.5 1 0.25 0.2">
           <p className="label">The record so far</p>
-          <dl className="mt-6 grid grid-cols-2 gap-x-10 gap-y-8">
+          <dl className="mt-4 sm:mt-6 grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-5 sm:gap-y-8">
             {STATS.map((s) => {
               const p = parseStat(s.value);
               return (
-                <div key={s.label} className="border-t border-line pt-4">
-                  <dd className="sc-display text-5xl font-semibold tracking-tight text-fg md:text-6xl">
+                <div key={s.label} className="border-t border-line pt-3 sm:pt-4">
+                  <dd className="sc-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-fg">
                     {p ? (
                       <>
                         <span data-sc-count={'0 ' + p.n} data-sc-count-at="0.52 0.78">
@@ -122,7 +122,7 @@ export default function Hero() {
                       s.value
                     )}
                   </dd>
-                  <dt className="label mt-2">{s.label}</dt>
+                  <dt className="label mt-1.5 sm:mt-2 text-xs sm:text-sm">{s.label}</dt>
                 </div>
               );
             })}

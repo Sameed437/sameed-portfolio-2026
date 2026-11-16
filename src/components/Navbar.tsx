@@ -120,12 +120,12 @@ export default function Navbar() {
             >
               <Github size={17} />
             </a>
-            <a
-              href={'mailto:' + PROFILE.email}
+            <Link
+              href={resolveHref('#contact')}
               className="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-base transition-colors duration-200 hover:bg-accent-dim sm:inline-block"
             >
               Hire me
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -168,13 +168,13 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <a
-              href={'mailto:' + PROFILE.email}
+            <Link
+              href={resolveHref('#contact')}
               onClick={() => setOpen(false)}
-              className="mt-1 rounded-2xl bg-accent px-4 py-3.5 text-center text-base font-semibold text-base"
+              className="mt-1 rounded-2xl bg-accent px-4 py-3.5 text-center text-base font-semibold text-base transition-colors hover:bg-accent-dim"
             >
               Hire me
-            </a>
+            </Link>
           </nav>
         </div>
       )}

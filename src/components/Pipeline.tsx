@@ -39,13 +39,13 @@ export default function Pipeline() {
             >
               One topic in. A publish-ready post out.
             </h2>
-            <p className="mt-5 max-w-prose text-pretty text-fg-muted max-md:hidden">
+            <p className="mt-3 md:mt-5 text-sm sm:text-base max-w-prose text-pretty text-fg-muted">
               My flagship AI build: a Python pipeline with a Next.js control panel. Claude does the
               work, n8n orchestrates it, and WordPress receives the draft.
             </p>
 
             <figure
-              className="mt-8 overflow-hidden rounded-xl border border-line bg-surface shadow-lift max-md:hidden"
+              className="mt-6 md:mt-8 overflow-hidden rounded-xl border border-white/10 bg-surface shadow-lift"
               data-sc-reveal="up"
               data-sc-reveal-at="0.72 0.96"
             >
@@ -54,8 +54,8 @@ export default function Pipeline() {
                 alt="BlogBolt control panel, the dashboard that starts a pipeline run"
                 width={1912}
                 height={839}
-                sizes="(max-width: 1280px) 45vw, 600px"
-                className="h-auto w-full"
+                sizes="(max-width: 1280px) 90vw, 600px"
+                className="h-auto w-full object-cover"
               />
             </figure>
           </div>

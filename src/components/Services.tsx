@@ -19,6 +19,8 @@ const SERVICE_META = [
     accentColor: 'text-accent',
     bgGlow: 'from-accent/15 via-accent/5 to-transparent',
     highlight: 'Reclaims 20+ manual operational hours / week',
+    telemetry: '99.9% Uptime · Automated Failover',
+    topic: 'AI Automation & n8n Workflows',
   },
   {
     icon: Sparkles,
@@ -26,6 +28,8 @@ const SERVICE_META = [
     accentColor: 'text-cyan-400',
     bgGlow: 'from-cyan-500/15 via-cyan-500/5 to-transparent',
     highlight: 'Automated SERP research to WordPress drafts',
+    telemetry: '100K+ Impressions · SERP Mapped',
+    topic: 'AI Content Engine (BlogBolt style)',
   },
   {
     icon: ShoppingCart,
@@ -33,6 +37,8 @@ const SERVICE_META = [
     accentColor: 'text-accent',
     bgGlow: 'from-accent/15 via-accent/5 to-transparent',
     highlight: 'Sub-second catalog search & instant checkout',
+    telemetry: '< 1s Load Time · React Frontend',
+    topic: 'Headless WooCommerce / React Store',
   },
   {
     icon: Code2,
@@ -40,6 +46,8 @@ const SERVICE_META = [
     accentColor: 'text-cyan-400',
     bgGlow: 'from-cyan-500/15 via-cyan-500/5 to-transparent',
     highlight: 'Production APIs, webhooks & Core Web Vitals',
+    telemetry: '100/100 Mobile Vitals · Next.js 14',
+    topic: 'Multi-Agent Systems & Claude API',
   },
 ];
 
@@ -104,10 +112,21 @@ export default function Services() {
                     </p>
 
                     {/* Key Outcome Highlight */}
-                    <div className="mt-5 flex items-center gap-2 rounded-lg bg-base/60 border border-line px-3 py-2 text-xs text-fg">
-                      <CheckCircle2 size={14} className="text-accent shrink-0" />
-                      <span className="font-medium text-fg">{meta.highlight}</span>
+                    <div className="mt-5 flex items-center justify-between rounded-lg bg-base/70 border border-line px-3.5 py-2.5 text-xs text-fg">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 size={14} className="text-accent shrink-0" />
+                        <span className="font-medium text-fg">{meta.highlight}</span>
+                      </div>
+                      <span className="hidden sm:inline-block font-mono text-[10px] text-accent/80 font-medium">{meta.telemetry}</span>
                     </div>
+
+                    <a
+                      href="#contact"
+                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent transition-colors hover:text-accent-dim group-hover:translate-x-1 duration-200"
+                    >
+                      Enquire for this discipline
+                      <ArrowRight size={13} />
+                    </a>
                   </div>
 
                   {/* Tech Stack Micro-Pills */}
