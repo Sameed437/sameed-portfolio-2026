@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, type FormEvent } from 'react';
-import { ArrowUpRight, Github, Mail, MapPin, Sparkles, Send, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Github, Mail, MapPin, Sparkles, Send, CheckCircle2, Copy, Check, MessageSquare } from 'lucide-react';
 import { PROFILE } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
@@ -30,12 +30,21 @@ const FIELD =
   'w-full rounded-xl border border-white/10 bg-base/80 px-4 py-3 text-sm text-fg placeholder:text-fg-faint/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent';
 
 export default function Contact() {
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
   });
+
+  const copyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(PROFILE.email);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -123,9 +132,29 @@ export default function Contact() {
                   </span>
                 </div>
                 <p className="font-mono text-xs uppercase tracking-wider text-fg-faint mt-4">Fastest Response</p>
-                <p className="mt-1 break-all text-sm sm:text-base font-semibold text-fg transition-colors group-hover:text-accent">
-                  {PROFILE.email}
-                </p>
+                <div className="mt-1 flex items-center justify-between gap-2">
+                  <p className="break-all text-sm sm:text-base font-semibold text-fg transition-colors group-hover:text-accent">
+                    {PROFILE.email}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-base/80 px-2.5 py-1 text-xs font-mono text-slate-300 transition-colors hover:border-accent hover:text-accent shrink-0"
+                    title="Copy email address"
+                  >
+                    {copiedEmail ? (
+                      <>
+                        <Check size={12} className="text-emerald-400" />
+                        <span className="text-emerald-400">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={12} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </a>
 
               {CHANNELS.map((c) => (

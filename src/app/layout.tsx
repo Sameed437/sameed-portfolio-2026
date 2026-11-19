@@ -28,9 +28,9 @@ const mono = JetBrains_Mono({
   weight: ['400', '500'],
 });
 
-const TITLE = 'Sameed Chaudhary — AI Automation Specialist';
+const TITLE = 'Sameed Chaudhary — Automation Engineer & AI Systems';
 const DESCRIPTION =
-  'AI Automation Specialist based in Lahore. I build autonomous AI workflows, multi-agent systems, and intelligent pipelines with Claude, n8n, Make, and Python, alongside high-performance web and e-commerce platforms.';
+  'Automation Engineer based in Lahore. I build autonomous AI workflows, multi-agent systems, and intelligent pipelines with Claude, n8n, Make, and Python, alongside high-performance web and e-commerce platforms.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -41,7 +41,8 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   keywords: [
     'Sameed Chaudhary',
-    'AI Automation Specialist',
+    'Automation Engineer',
+    'AI Automation Engineer',
     'AI Automation',
     '360 Signum',
     'AI Agents',
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     'Zapier',
     'Chatbot Development',
     'Headless WooCommerce',
-    'Almari PK',
+    'Wonderlyf',
     'Next.js 14',
     'React',
     'Growth Engineer',

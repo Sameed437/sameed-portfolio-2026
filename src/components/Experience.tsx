@@ -78,7 +78,7 @@ export default function Experience() {
                 </header>
 
                 {job.blurb && (
-                  <p className="mt-5 text-sm sm:text-base leading-relaxed text-pretty text-fg-muted">
+                  <p className="mt-5 text-sm sm:text-base leading-relaxed text-pretty text-slate-300">
                     {job.blurb}
                   </p>
                 )}
@@ -87,7 +87,7 @@ export default function Experience() {
                   {job.bullets.map((b) => (
                     <li
                       key={b}
-                      className="relative pl-5 text-xs sm:text-sm leading-relaxed text-pretty text-fg-muted before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent/60"
+                      className="relative pl-5 text-xs sm:text-sm leading-relaxed text-pretty text-slate-300 before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-accent/60"
                     >
                       {b}
                     </li>

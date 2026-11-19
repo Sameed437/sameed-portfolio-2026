@@ -120,7 +120,7 @@ function SnapshotModal({
               <h4 className="font-mono text-xs uppercase tracking-label text-accent">
                 System Overview
               </h4>
-              <p className="text-sm leading-relaxed text-fg-muted">
+              <p className="text-sm leading-relaxed text-slate-300">
                 {project.description}
               </p>
 
@@ -131,7 +131,7 @@ function SnapshotModal({
                   </h5>
                   <ul className="space-y-1.5">
                     {project.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-fg-muted">
+                      <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
                         <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-accent" />
                         <span>{h}</span>
                       </li>
@@ -204,12 +204,12 @@ function Card({ project, onZoom }: { project: Project; onZoom: (p: Project) => v
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <p className="label">{project.kicker}</p>
         <h3 className="sc-display mt-2.5 text-xl font-semibold tracking-tight text-fg">{project.title}</h3>
-        <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-fg-muted">{project.description}</p>
+        <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-slate-300">{project.description}</p>
         <div className="mt-auto flex items-center gap-3 pt-5">
           <button
             type="button"
             onClick={() => onZoom(project)}
-            className="inline-flex items-center gap-1.5 rounded-md border border-line bg-base px-3 py-1.5 text-xs font-medium text-fg-muted transition-colors hover:border-accent/40 hover:text-accent"
+            className="inline-flex items-center gap-1.5 rounded-md border border-line bg-base px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-accent/40 hover:text-accent"
           >
             <Maximize2 size={12} />
             Details

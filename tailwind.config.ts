@@ -16,8 +16,8 @@ const config: Config = {
         },
         fg: {
           DEFAULT: '#F8FAFC', // brilliant crisp headings
-          muted: '#94A3B8', // balanced slate body
-          faint: '#64748B', // meta & technical labels
+          muted: '#CBD5E1', // bright, highly-readable slate-300 (was #94A3B8)
+          faint: '#94A3B8', // balanced slate-400 meta & labels (was #64748B)
         },
         accent: {
           DEFAULT: '#00D2EE', // Electric Cyan — high-tech AI authority

@@ -116,15 +116,15 @@ export default function About() {
 
           {/* Bio & Skills Matrix Column */}
           <Reveal className="md:col-span-7" delay={120}>
-            <div className="space-y-5 text-base sm:text-lg leading-relaxed text-pretty text-fg-muted">
+            <div className="space-y-5 text-base sm:text-lg leading-relaxed text-pretty text-slate-300">
               <p>
-                I&apos;m an <span className="text-fg font-semibold">AI Automation Specialist</span> based in {PROFILE.location}. I
+                I&apos;m an <span className="text-fg font-semibold">Automation Engineer</span> based in {PROFILE.location}. I
                 architect and deploy autonomous AI workflows, multi-agent pipelines, and webhook systems
                 that eliminate repetitive manual bottlenecks — paired with high-performance
                 headless e-commerce and full-stack web engineering.
               </p>
               <p>
-                Currently, I work full-time as an AI Automation Specialist at{' '}
+                Currently, I work full-time as an Automation Engineer at{' '}
                 <span className="text-fg font-semibold text-accent">360 Signum</span> (Remote),
                 building enterprise-scale automation pipelines, multi-agent architectures, and webhook integrations.
               </p>
@@ -136,15 +136,15 @@ export default function About() {
                 My flagship AI build <span className="text-fg font-medium">BlogBolt</span> automates a
                 seven-phase SEO content workflow from SERP research to WordPress drafts. In headless e-commerce, I engineered{' '}
                 <a
-                  href="https://almaripk.com"
+                  href="https://wonderlyf.co.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-fg font-semibold hover:text-accent transition-colors underline underline-offset-4 decoration-accent/40 inline-flex items-center gap-1"
                 >
-                  Almari PK (almaripk.com)
+                  Wonderlyf (wonderlyf.co.uk)
                   <ArrowUpRight size={13} />
                 </a>{' '}
-                for a client — pairing Next.js 14 and React with a headless WooCommerce backend for instant catalog filtering and streamlined checkouts.
+                for a client — pairing React and headless WordPress &amp; WooCommerce for instant catalog filtering, dynamic cart state, and streamlined checkouts.
               </p>
             </div>
 

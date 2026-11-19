@@ -39,7 +39,7 @@ export default function Pipeline() {
             >
               One topic in. A publish-ready post out.
             </h2>
-            <p className="mt-3 md:mt-5 text-sm sm:text-base max-w-prose text-pretty text-fg-muted">
+            <p className="mt-3 md:mt-5 text-sm sm:text-base max-w-prose text-pretty text-slate-300">
               My flagship AI build: a Python pipeline with a Next.js control panel. Claude does the
               work, n8n orchestrates it, and WordPress receives the draft.
             </p>
@@ -73,7 +73,7 @@ export default function Pipeline() {
                 <span aria-hidden className="pipe-dot relative mt-1.5 h-[15px] w-[15px] shrink-0 rounded-full" />
                 <div>
                   <h3 className="sc-display text-lg font-semibold text-fg md:text-xl">{ph.name}</h3>
-                  <p className="pipe-detail mt-0.5 text-xs text-fg-muted sm:text-sm">{ph.detail}</p>
+                  <p className="pipe-detail mt-0.5 text-xs text-slate-300 sm:text-sm">{ph.detail}</p>
                 </div>
               </li>
             ))}

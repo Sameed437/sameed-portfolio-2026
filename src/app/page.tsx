@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import AutomationSandbox from '@/components/AutomationSandbox';
 import Pipeline from '@/components/Pipeline';
 import Projects from '@/components/Projects';
 import About from '@/components/About';
@@ -12,6 +13,7 @@ export default function Page() {
     <>
       <Hero />
       <Services />
+      <AutomationSandbox />
       <Pipeline />
       <Projects />
       <About />

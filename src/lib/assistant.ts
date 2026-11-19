@@ -38,7 +38,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(rate|rates|price|prices|pricing|cost|costs|fee|fees|budget|charge|charges|how much|quote|quotation|expensive|cheap|hourly)\b/i,
     answer: {
-      text: "Sameed offers flexible engagement models tailored to client needs:\n\n• Hourly Engagements: Typically $35–$60/hour for custom AI engineering, workflow architecture, and technical implementations.\n• Milestone / Fixed-Scope Pipelines: Dedicated automations (e.g., n8n webhook sync, AI content pipelines, or lead triage agents) typically start from $500 to $2,500+ depending on integrations.\n• Headless E-Commerce Builds: Complete custom stores (like Almari PK) range based on catalog scale and custom features.\n\nFor an accurate scope and turnaround estimate, email him directly with what you are looking to automate.",
+      text: "Sameed offers flexible engagement models tailored to client needs:\n\n• Hourly Engagements: Typically $35–$60/hour for custom AI engineering, workflow architecture, and technical implementations.\n• Milestone / Fixed-Scope Pipelines: Dedicated automations (e.g., n8n webhook sync, AI content pipelines, or lead triage agents) typically start from $500 to $2,500+ depending on integrations.\n• Headless E-Commerce Builds: Complete custom stores (like Wonderlyf) range based on catalog scale and custom features.\n\nFor an accurate scope and turnaround estimate, email him directly with what you are looking to automate.",
       links: [
         MAILTO,
         { label: 'Calculate ROI in AI Studio', href: '/studio' },
@@ -50,7 +50,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(what do (you|he) do|services|capabilities|what can (you|he) (do|build|automate)|offerings|solutions)\b/i,
     answer: {
-      text: `Sameed is an ${PROFILE.title} specializing in:\n\n1. AI Automation & Autonomous Agents: Custom workflows engineered with n8n, Claude API, Make, Zapier, and Python to eliminate manual operational tasks.\n2. Autonomous Content Pipelines: Multi-stage SEO engines (like BlogBolt) that research SERPs, generate structured drafts, and auto-publish into WordPress.\n3. Headless E-Commerce Engineering: Ultra-fast React & Next.js 14 frontends backed by WooCommerce REST/GraphQL APIs (like Almari PK).\n4. Intelligent Chatbots & CRM Syncs: Custom bots with RAG for customer support and instant WhatsApp/Slack routing.`,
+      text: `Sameed is an ${PROFILE.title} specializing in:\n\n1. AI Automation & Autonomous Agents: Custom workflows engineered with n8n, Claude API, Make, Zapier, and Python to eliminate manual operational tasks.\n2. Autonomous Content Pipelines: Multi-stage SEO engines (like BlogBolt) that research SERPs, generate structured drafts, and auto-publish into WordPress.\n3. Headless E-Commerce Engineering: Ultra-fast React & Next.js frontends backed by WooCommerce REST/GraphQL APIs (like Wonderlyf).\n4. Intelligent Chatbots & CRM Syncs: Custom bots with RAG for customer support and instant WhatsApp/Slack routing.`,
       links: [
         { label: 'Explore Interactive Studio', href: '/studio' },
         { label: 'View Case Studies', href: '/#work' },
@@ -93,7 +93,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(360\s*signum|signum)\b/i,
     answer: {
-      text: "At 360 Signum (Nov 2026 – Present), Sameed works full-time as an AI Automation Specialist (Remote). He is responsible for engineering autonomous enterprise workflows, designing multi-agent pipeline architectures, and setting up automated webhook integrations connecting CRMs, databases, and LLM APIs to eliminate manual overhead.",
+      text: "At 360 Signum (Nov 2026 – Present), Sameed works full-time as an Automation Engineer (Remote). He is responsible for engineering autonomous enterprise workflows, designing multi-agent pipeline architectures, and setting up automated webhook integrations connecting CRMs, databases, and LLM APIs to eliminate manual overhead.",
     },
   },
 
@@ -114,12 +114,12 @@ const INTENTS: Intent[] = [
     },
   },
 
-  // Almari PK
+  // Wonderlyf
   {
-    pattern: /\b(almari|almaripk)\b/i,
+    pattern: /\b(wonderlyf|wonderlyf\.co\.uk)\b/i,
     answer: {
-      text: "Almari PK (almaripk.com) is a full headless WooCommerce store designed and engineered by Sameed. It features a React & Next.js 14 frontend backed by WooCommerce APIs, sub-second search, slide-out cart drawer, and localized checkout.",
-      links: [{ label: 'Visit almaripk.com', href: 'https://almaripk.com' }],
+      text: "Wonderlyf (wonderlyf.co.uk) is a live headless e-commerce store designed and engineered by Sameed for a UK wellness brand. It features a fully animated React frontend backed by WooCommerce & WordPress REST APIs, instant catalog filtering, dynamic cart drawer, and optimized checkout.",
+      links: [{ label: 'Visit wonderlyf.co.uk', href: 'https://wonderlyf.co.uk' }],
     },
   },
 
@@ -145,7 +145,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(who (is|are)|about (sameed|him|you)|tell me about|introduce|bio|summary|background|who made|who built)\b/i,
     answer: {
-      text: `Sameed Chaudhary is an ${PROFILE.title} and Full-Stack Web Engineer based in Lahore, Pakistan with 4+ years of professional experience across 6 companies/contracts, delivering 25+ projects for 40+ clients worldwide.\n\nCurrently at 360 Signum, he architects autonomous pipelines and webhook systems. His flagship builds include BlogBolt, Almari PK (headless store), and Cure Abroad Health Solutions.`,
+      text: `Sameed Chaudhary is an ${PROFILE.title} and Full-Stack Web Engineer based in Lahore, Pakistan with 4+ years of professional experience across 6 companies/contracts, delivering 25+ projects for 40+ clients worldwide.\n\nCurrently at 360 Signum, he architects autonomous pipelines and webhook systems. His flagship builds include BlogBolt, Wonderlyf (headless store), and Cure Abroad Health Solutions.`,
       links: [
         MAILTO,
         { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
@@ -188,7 +188,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(experience|history|companies|employment|jobs|seniority|past roles|work history)\b/i,
     answer: {
-      text: `Sameed has 4+ years of experience across 6 companies/contracts:\n\n• 360 Signum (Nov 2026 – Present): AI Automation Specialist (Remote)\n• Marham (Dec 2025 – Nov 2026): Growth Engineer / AI Content Developer\n• Animaker Media (Sep 2024 – Nov 2025): SEO Specialist & Web Developer\n• Rocket Bookkeeper (Mar 2024 – Sep 2024): SEO Specialist\n• Kynbix (Aug 2023 – Mar 2024): SEO Specialist & WordPress Developer\n• Internsoft (Sep 2022 – Aug 2023): Web Developer Intern`,
+      text: `Sameed has 4+ years of experience across 6 companies/contracts:\n\n• 360 Signum (Nov 2026 – Present): Automation Engineer (Remote)\n• Marham (Dec 2025 – Nov 2026): Growth Engineer / AI Content Developer\n• Animaker Media (Sep 2024 – Nov 2025): SEO Specialist & Web Developer\n• Rocket Bookkeeper (Mar 2024 – Sep 2024): SEO Specialist\n• Kynbix (Aug 2023 – Mar 2024): SEO Specialist & WordPress Developer\n• Internsoft (Sep 2022 – Aug 2023): Web Developer Intern`,
       links: [{ label: 'View Timeline', href: '/#experience' }],
     },
   },
@@ -251,7 +251,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(who are you|your name|what('s| is) your name|are you sameed)\b/i,
     answer: {
-      text: `I am Sameed's AI assistant! I'm here to answer questions about Sameed Chaudhary's work as an ${PROFILE.title}, his experience at 360 Signum and Marham, his projects (like BlogBolt and Almari PK), his tech stack, and how to hire him.`,
+      text: `I am Sameed's AI assistant! I'm here to answer questions about Sameed Chaudhary's work as an ${PROFILE.title}, his experience at 360 Signum and Marham, his projects (like BlogBolt and Wonderlyf), his tech stack, and how to hire him.`,
       links: [
         MAILTO,
         { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
@@ -271,6 +271,7 @@ const PHRASES: [RegExp, string][] = [
   [/\bword\s*press\b/g, 'wordpress'],
   [/\bwoo\s*commerce\b/g, 'woocommerce'],
   [/\btail\s*wind\b/g, 'tailwind'],
+  [/\bwonderlyf\b/g, 'wonderlyf'],
   [/\balmari\s*pk\b/g, 'almaripk'],
   [/\bcure\s*abroad\b/g, 'cureabroad'],
   [/\b360\s*signum\b/g, 'signum'],
@@ -456,7 +457,7 @@ export function ask(query: string): Answer {
   // Quick greetings
   if (GREETING.test(trimmed) && trimmed.length < 24) {
     return {
-      text: `Hello! I'm happy to help. You can ask me about Sameed's AI automations, projects like BlogBolt or Almari PK, his pricing, or his availability.`,
+      text: `Hello! I'm happy to help. You can ask me about Sameed's AI automations, projects like BlogBolt or Wonderlyf, his pricing, or his availability.`,
       links: [
         { label: 'View Services', href: '/#services' },
         { label: 'Explore AI Studio', href: '/studio' },

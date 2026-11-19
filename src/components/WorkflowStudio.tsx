@@ -176,7 +176,7 @@ Follow strict schema: H2/H3 hierarchy, clinical FAQ accordion, and internal cita
   },
   {
     id: 'ecommerce-sync',
-    badge: 'Almari PK & Wonderlyf Flow',
+    badge: 'Wonderlyf & Headless Commerce Flow',
     title: 'Headless E-Commerce Event & Multi-Channel Sync',
     subtitle:
       'Real-time transaction webhook handling: updates headless Next.js cache, syncs inventory ledgers, and dispatches automated WhatsApp updates.',

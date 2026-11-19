@@ -2,7 +2,7 @@ export const PROFILE = {
   name: 'Sameed Chaudhary',
   firstName: 'Sameed',
   lastName: 'Chaudhary',
-  title: 'AI Automation Specialist',
+  title: 'Automation Engineer',
   tagline:
     'I build end-to-end AI automation systems and autonomous agent workflows that eliminate manual work — paired with high-performance web platforms and headless e-commerce stores that convert.',
   email: 'msameedch437@gmail.com',
@@ -16,12 +16,12 @@ export const PROFILE = {
   },
   availability: 'Available for opportunities',
   rotatingTitles: [
-    'AI Automation Specialist',
+    'Automation Engineer',
     'AI Systems Engineer',
-    'Automation Specialist',
-    'AI Workflow Architect',
+    'AI Automation Architect',
     'Headless E-Commerce Dev',
     'Full-Stack Web Engineer',
+    'Pipeline & Webhook Engineer',
   ],
 };
 
@@ -49,8 +49,8 @@ export const SERVICES = [
   {
     title: 'Headless E-Commerce Engineering',
     blurb:
-      'High-performance client stores: Next.js and React front ends on headless WooCommerce and WordPress backends (such as almaripk.com and wonderlyf.co.uk). Built for speed, instant filtering, dynamic carts, and seamless checkout flows.',
-    items: ['Next.js 14', 'React', 'Headless WooCommerce', 'WordPress REST / GraphQL', 'Tailwind CSS'],
+      'High-performance client stores: React and Next.js front ends on headless WooCommerce and WordPress backends (such as wonderlyf.co.uk). Built for speed, instant filtering, dynamic carts, and seamless checkout flows.',
+    items: ['React', 'Headless WooCommerce', 'WordPress REST API', 'Next.js 14', 'Tailwind CSS'],
   },
   {
     title: 'Growth Engineering & SEO Systems',
@@ -367,13 +367,13 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     company: '360 Signum',
-    role: 'AI Automation Specialist',
+    role: 'Automation Engineer',
     date: 'Nov 2026 – Present',
     location: 'Remote · Full-time',
     blurb:
-      'Leading AI automation architecture and workflow engineering — designing intelligent agent systems, API pipelines, and autonomous business processes.',
+      'Leading automation engineering, workflow architecture, and intelligent agent systems — designing robust API pipelines and autonomous business processes.',
     bullets: [
-      'Design and deploy production-grade AI automation pipelines and multi-step agent workflows using n8n, Claude API, Make, and Zapier.',
+      'Design and deploy production-grade automation pipelines and multi-step agent workflows using n8n, Claude API, Make, and Zapier.',
       'Build custom webhook integrations and REST API connectors linking web apps, CRMs, databases, and AI models.',
       'Develop intelligent chatbots and automated communication pipelines to eliminate manual support and operational overhead.',
       'Engineer autonomous data extraction, processing, and reporting systems to replace repetitive manual operations.',
@@ -473,20 +473,20 @@ export const NAV_LINKS = [
  * quote real facts and never invent anything.
  */
 export const BIO: string[] = [
-  'Sameed Chaudhary is an AI Automation Specialist and Full-Stack Web Engineer based in Lahore, Pakistan. He builds end-to-end AI automation systems, autonomous agent workflows with Claude and n8n, and engineers full headless WooCommerce e-commerce stores with React & Next.js frontend architectures.',
-  'He currently works full-time as an AI Automation Specialist at 360 Signum (Remote), engineering production-grade automation workflows, intelligent agent systems, and webhook integrations.',
+  'Sameed Chaudhary is an Automation Engineer and Full-Stack Web Engineer based in Lahore, Pakistan. He builds end-to-end AI automation systems, autonomous agent workflows with Claude and n8n, and engineers full headless WooCommerce e-commerce stores with React & Next.js frontend architectures.',
+  'He currently works full-time as an Automation Engineer at 360 Signum (Remote), engineering production-grade automation workflows, intelligent agent systems, and webhook integrations.',
   'Previously at Marham (Dec 2025 – Nov 2026), Pakistan’s largest healthcare platform, he built an in-house AI content platform in Python, Next.js, and Oracle Cloud, built an n8n + Claude API content pipeline saving 20+ hours per week, shipped a WhatsApp chatbot, and drove 70% organic traffic growth on a targeted segment within 3 months.',
-  'His flagship projects include Almari PK (almaripk.com — a full headless WooCommerce store with a Next.js / React frontend prepared for a client), Cure Abroad Health Solutions (cureabroadhealthsolutions.com — an international medical tourism platform with custom child theme and dual-funnel architecture), and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress).',
+  'His flagship projects include Wonderlyf (wonderlyf.co.uk — a live headless WooCommerce store with a React frontend engineered for a UK wellness brand), Cure Abroad Health Solutions (cureabroadhealthsolutions.com — an international medical tourism platform with custom child theme and dual-funnel architecture), and BlogBolt (a Python pipeline with a Next.js control panel that runs a 7-phase SEO content workflow with Claude and publishes straight into WordPress).',
 ];
 
 export const FAQS: { q: string; a: string }[] = [
   {
-    q: 'What does Sameed do as an AI Automation Specialist?',
-    a: 'As an AI Automation Specialist, Sameed designs and deploys autonomous AI workflows, multi-agent systems, and API pipelines using n8n, Claude API, Make, Zapier, and Python. He connects CRMs, web apps, and databases through automated webhook integrations and builds intelligent chatbots to eliminate manual operational bottlenecks.',
+    q: 'What does Sameed do as an Automation Engineer?',
+    a: 'As an Automation Engineer, Sameed designs and deploys autonomous AI workflows, multi-agent systems, and API pipelines using n8n, Claude API, Make, Zapier, and Python. He connects CRMs, web apps, and databases through automated webhook integrations and builds intelligent chatbots to eliminate manual operational bottlenecks.',
   },
   {
     q: 'What is his current role at 360 Signum?',
-    a: 'Sameed works full-time as an AI Automation Specialist at 360 Signum in a remote capacity. He leads AI automation architecture, developing multi-step agent workflows, CRM and webhook integrations, and automated data pipelines.',
+    a: 'Sameed works full-time as an Automation Engineer at 360 Signum in a remote capacity. He leads automation architecture, developing multi-step agent workflows, CRM and webhook integrations, and automated data pipelines.',
   },
   {
     q: 'What did he accomplish at Marham?',
@@ -497,8 +497,8 @@ export const FAQS: { q: string; a: string }[] = [
     a: 'Cure Abroad Health Solutions (cureabroadhealthsolutions.com) is a live medical tourism platform engineered by Sameed. It connects international patients in the UK and Europe with accredited hospital networks in Asia for cardiac surgery, robotic joint replacement, precision oncology, and IVF. Sameed developed the custom WordPress child theme, dual-funnel lead architecture, WebP optimization pipeline, and SMTP deliverability setup.',
   },
   {
-    q: 'What is Almari PK (almaripk.com)?',
-    a: 'Almari PK (almaripk.com) is a full headless WooCommerce store prepared for a client. Sameed built it using a high-performance React / Next.js 14 frontend integrated with a headless WooCommerce & WordPress API backend, featuring instant faceted filtering, real-time cart state management, and optimized checkout flows.',
+    q: 'What is Wonderlyf (wonderlyf.co.uk)?',
+    a: 'Wonderlyf (wonderlyf.co.uk) is a live headless e-commerce store engineered by Sameed for a UK wellness brand. He built a fully animated React frontend integrated with a headless WooCommerce and WordPress backend via REST & Store APIs, delivering instant product discovery, dynamic cart state management, and streamlined checkouts.',
   },
   {
     q: 'Where can I find his GitHub and open-source code?',

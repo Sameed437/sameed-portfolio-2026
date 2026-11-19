@@ -94,10 +94,10 @@ export default function Services() {
                           <span className="font-mono text-[11px] uppercase tracking-wider text-accent font-semibold">
                             {meta.badge}
                           </span>
-                          <p className="text-[11px] text-fg-faint">Production Grade</p>
+                          <p className="text-[11px] font-mono text-slate-400">Production Grade</p>
                         </div>
                       </div>
-                      <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-white/[0.03] px-2.5 py-1 text-[11px] font-mono text-fg-muted border border-white/5">
+                      <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-slate-300 border border-white/10">
                         <Zap size={11} className="text-accent" />
                         Automated
                       </span>
@@ -107,7 +107,7 @@ export default function Services() {
                     <h3 className="mt-6 text-xl sm:text-2xl font-semibold tracking-tight text-fg transition-colors duration-200 group-hover:text-accent">
                       {s.title}
                     </h3>
-                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-fg-muted text-pretty">
+                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-200/95 font-normal text-pretty">
                       {s.blurb}
                     </p>
 
@@ -117,7 +117,7 @@ export default function Services() {
                         <CheckCircle2 size={14} className="text-accent shrink-0" />
                         <span className="font-medium text-fg">{meta.highlight}</span>
                       </div>
-                      <span className="hidden sm:inline-block font-mono text-[10px] text-accent/80 font-medium">{meta.telemetry}</span>
+                      <span className="hidden sm:inline-block font-mono text-[10px] text-accent font-medium">{meta.telemetry}</span>
                     </div>
 
                     <a
@@ -131,14 +131,14 @@ export default function Services() {
 
                   {/* Tech Stack Micro-Pills */}
                   <div className="mt-6 pt-5 border-t border-line/70">
-                    <p className="font-mono text-[10px] uppercase tracking-label text-fg-faint mb-2.5">
+                    <p className="font-mono text-[10px] uppercase tracking-label text-slate-400 mb-2.5">
                       Engineered with:
                     </p>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {s.items.map((item) => (
                         <span
                           key={item}
-                          className="rounded-md border border-white/10 bg-base/80 px-2.5 py-1 font-mono text-xs text-fg-muted transition-colors duration-200 group-hover:border-accent/25 group-hover:text-fg"
+                          className="rounded-md border border-white/10 bg-base/80 px-2.5 py-1 font-mono text-xs text-slate-300 transition-colors duration-200 group-hover:border-accent/30 group-hover:text-fg"
                         >
                           {item}
                         </span>

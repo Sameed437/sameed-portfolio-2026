@@ -21,7 +21,7 @@ export default function SectionHeader({ index, eyebrow, title, description }: Pr
         {title}
       </h2>
       {description && (
-        <p className="mt-5 max-w-prose text-lead text-pretty text-fg-muted">
+        <p className="mt-5 max-w-prose text-lead text-pretty text-slate-300">
           {description}
         </p>
       )}

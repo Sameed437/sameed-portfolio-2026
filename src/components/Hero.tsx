@@ -62,7 +62,7 @@ export default function Hero() {
           <h1 className="sc-display hero-h1 mt-2.5 sm:mt-4" data-sc-kinetic="lines">
             I engineer AI automation systems and high-speed web platforms.
           </h1>
-          <p className="hero-tagline mt-3.5 sm:mt-6 max-w-prose text-lead text-pretty text-fg-muted">
+          <p className="hero-tagline mt-3.5 sm:mt-6 max-w-prose text-lead text-pretty text-slate-300">
             Autonomous workflows that eliminate manual work, intelligent agent pipelines, and storefronts that load
             before you blink.
           </p>
