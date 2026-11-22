@@ -111,6 +111,10 @@ export default function Contact() {
       });
       if (!res.ok) throw new Error('send failed');
       setStatus('sent');
+      // GA4 conversion: shows up as the `generate_lead` event once GA is configured.
+      (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('event', 'generate_lead', {
+        method: 'contact_form',
+      });
       setForm({ name: '', email: '', subject: '', message: '', company_site: '' });
     } catch {
       // The intake service is unavailable: fall back to the visitor's mail client.

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Assistant from '@/components/Assistant';
 import BackToTop from '@/components/BackToTop';
 import ScrollCraftMount from '@/components/scroll/ScrollCraftMount';
+import Analytics from '@/components/Analytics';
 import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
@@ -85,6 +86,11 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
   },
   robots: { index: true, follow: true },
+  // Google Search Console HTML-tag verification. Set NEXT_PUBLIC_GSC_VERIFICATION
+  // to the `content` value of the meta tag Search Console gives you.
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -120,6 +126,7 @@ export default function RootLayout({
         <Assistant />
         <BackToTop />
         <ScrollCraftMount />
+        <Analytics />
       </body>
     </html>
   );
