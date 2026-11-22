@@ -13,6 +13,7 @@ import {
 import { PROFILE, SKILL_GROUPS } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
+import LiveStats from './LiveStats';
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
   'AI & Automation': Bot,
@@ -25,7 +26,7 @@ const IMPACT_METRICS = [
   { value: '3+', label: 'Years Experience', icon: Clock },
   { value: '50+', label: 'Automations Built', icon: Bot },
   { value: '20+', label: 'Hrs Saved Weekly', icon: Sparkles },
-  { value: '100K+', label: 'SEO Impressions', icon: TrendingUp },
+  { value: '70%', label: 'Organic Traffic Growth', icon: TrendingUp },
 ];
 
 export default function About() {
@@ -70,6 +71,8 @@ export default function About() {
             })}
           </div>
         </Reveal>
+
+        <LiveStats />
 
         <div className="grid gap-12 md:grid-cols-12 md:gap-14 items-start">
           {/* Portrait Column with High-Tech Frame */}

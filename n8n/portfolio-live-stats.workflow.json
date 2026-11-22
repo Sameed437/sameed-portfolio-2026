@@ -1,0 +1,303 @@
+{
+  "name": "Portfolio live stats",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 3
+            }
+          ]
+        }
+      },
+      "name": "Daily 03:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/users/Sameed437",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "portfolio-live-stats"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "name": "GitHub profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/search/commits?q=author:Sameed437+author-date:>{{ $now.minus({ days: 30 }).toFormat('yyyy-MM-dd') }}&per_page=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "portfolio-live-stats"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "name": "GitHub commits 30d",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        0
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/search/commits?q=author:Sameed437&per_page=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "portfolio-live-stats"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "name": "GitHub commits total",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "https://sameed-portfolio-2026.vercel.app/"
+            },
+            {
+              "name": "strategy",
+              "value": "mobile"
+            },
+            {
+              "name": "category",
+              "value": "performance"
+            },
+            {
+              "name": "category",
+              "value": "accessibility"
+            },
+            {
+              "name": "category",
+              "value": "best-practices"
+            },
+            {
+              "name": "category",
+              "value": "seo"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "name": "PageSpeed mobile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 4,
+      "waitBetweenTries": 30000
+    },
+    {
+      "parameters": {
+        "resource": "execution",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "name": "n8n executions",
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        0
+      ],
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Collects the measurements from earlier nodes. Anything that failed or is\n// missing becomes null, which the website hides instead of showing a guess.\nconst sd = $getWorkflowStaticData('global');\nconst first = (name) => { try { return $(name).first().json; } catch (e) { return null; } };\n\nconst profile = first('GitHub profile');\nconst c30 = first('GitHub commits 30d');\nconst cAll = first('GitHub commits total');\nconst psi = first('PageSpeed mobile');\n\nconst total = (j) => (j && typeof j.total_count === 'number' ? j.total_count : null);\nconst score = (k) => {\n  const v = psi && psi.lighthouseResult && psi.lighthouseResult.categories && psi.lighthouseResult.categories[k];\n  return v && typeof v.score === 'number' ? Math.round(v.score * 100) : null;\n};\n\n// Executions: skip this workflow itself, manual test runs, and anything older than 30 days.\nconst all = $input.all().map((i) => i.json).filter((e) => e && e.id);\nconst cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;\nconst runs = all.filter(\n  (e) => String(e.workflowId) !== String($workflow.id) && e.mode !== 'manual' && Date.parse(e.startedAt) >= cutoff\n);\nconst apiWorked = all.length > 0;\n\nconst stats = {\n  updatedAt: new Date().toISOString(),\n  github: {\n    commits30d: total(c30),\n    commitsTotal: total(cAll),\n    publicRepos: profile && typeof profile.public_repos === 'number' ? profile.public_repos : null,\n  },\n  n8n: {\n    runs30d: apiWorked ? runs.length : null,\n    successRate: apiWorked && runs.length ? Math.round((runs.filter((e) => e.status === 'success').length / runs.length) * 100) : null,\n  },\n  lighthouse: {\n    url: psi && psi.lighthouseResult ? psi.lighthouseResult.finalUrl : null,\n    performance: score('performance'),\n    accessibility: score('accessibility'),\n    bestPractices: score('best-practices'),\n    seo: score('seo'),\n  },\n};\n\n// Only saved when the workflow is active (production runs), not on manual test runs.\nsd.stats = stats;\nreturn [{ json: stats }];\n"
+      },
+      "name": "Build stats JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "portfolio-stats",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode",
+        "options": {
+          "responseData": "firstEntryJson"
+        }
+      },
+      "name": "Stats webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        260
+      ],
+      "webhookId": "portfolio-stats"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const sd = $getWorkflowStaticData('global');\nreturn [{ json: sd.stats || { updatedAt: null } }];\n"
+      },
+      "name": "Read saved stats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        260
+      ]
+    }
+  ],
+  "connections": {
+    "Daily 03:00": {
+      "main": [
+        [
+          {
+            "node": "GitHub profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub profile": {
+      "main": [
+        [
+          {
+            "node": "GitHub commits 30d",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub commits 30d": {
+      "main": [
+        [
+          {
+            "node": "GitHub commits total",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub commits total": {
+      "main": [
+        [
+          {
+            "node": "PageSpeed mobile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PageSpeed mobile": {
+      "main": [
+        [
+          {
+            "node": "n8n executions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n executions": {
+      "main": [
+        [
+          {
+            "node": "Build stats JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stats webhook": {
+      "main": [
+        [
+          {
+            "node": "Read saved stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

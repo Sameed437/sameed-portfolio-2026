@@ -1,0 +1,12 @@
+{
+  "updatedAt": null,
+  "github": { "commits30d": null, "commitsTotal": null, "publicRepos": null },
+  "n8n": { "runs30d": null, "successRate": null },
+  "lighthouse": {
+    "url": null,
+    "performance": null,
+    "accessibility": null,
+    "bestPractices": null,
+    "seo": null
+  }
+}
