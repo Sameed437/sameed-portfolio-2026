@@ -36,7 +36,9 @@ export default function Contact() {
     email: '',
     subject: '',
     message: '',
+    company_site: '', // honeypot, hidden from people
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'fallback'>('idle');
 
   const copyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -85,8 +87,7 @@ export default function Contact() {
     setForm((f) => ({ ...f, subject: topic }));
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const openMailClient = () => {
     const subject = form.subject.trim() || 'Project enquiry from ' + form.name;
     const body = form.message + '\n\n—\n' + form.name + '\n' + form.email;
     window.location.href =
@@ -96,6 +97,26 @@ export default function Contact() {
       encodeURIComponent(subject) +
       '&body=' +
       encodeURIComponent(body);
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setStatus('sent');
+      setForm({ name: '', email: '', subject: '', message: '', company_site: '' });
+    } catch {
+      // The intake service is unavailable: fall back to the visitor's mail client.
+      setStatus('fallback');
+      openMailClient();
+    }
   };
 
   return (
@@ -276,16 +297,34 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Honeypot: off-screen and skipped by keyboards and screen readers. */}
+              <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="company_site">Leave this field empty</label>
+                <input
+                  id="company_site"
+                  name="company_site"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.company_site}
+                  onChange={set('company_site')}
+                />
+              </div>
+
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pt-2">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-xs font-semibold text-base transition-all hover:bg-accent-dim shadow-glow"
+                  disabled={status === 'sending'}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-xs font-semibold text-base transition-all hover:bg-accent-dim shadow-glow disabled:opacity-60"
                 >
                   <Send size={14} />
-                  Send Discovery Inquiry
+                  {status === 'sending' ? 'Sending…' : 'Send Discovery Inquiry'}
                 </button>
-                <p className="text-xs text-fg-faint font-mono">
-                  Opens directly in your mail client addressed to {PROFILE.email}.
+                <p className="text-xs text-fg-faint font-mono" role="status" aria-live="polite">
+                  {status === 'sent'
+                    ? 'Message received. A confirmation is on its way to your inbox.'
+                    : status === 'fallback'
+                      ? `Opening your mail client addressed to ${PROFILE.email}.`
+                      : `Goes straight to my inbox, or email ${PROFILE.email}.`}
                 </p>
               </div>
             </form>

@@ -1,0 +1,215 @@
+{
+  "name": "Portfolio contact intake",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "portfolio-contact",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Contact webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "portfolio-contact"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Re-validates the lead, strips anything unsafe, and labels it.\nconst raw = $input.first().json.body || {};\nconst line = (v, max) => String(v == null ? '' : v).replace(/[\\u0000-\\u001f\\u007f]/g, ' ').replace(/\\s+/g, ' ').trim().slice(0, max);\nconst esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;');\n\nconst name = line(raw.name, 80);\nconst email = line(raw.email, 120);\nconst subject = line(raw.subject, 140);\nconst message = String(raw.message == null ? '' : raw.message).replace(/[\\u0000-\\u0009\\u000b-\\u001f\\u007f]/g, '').trim().slice(0, 4000);\n\nconst emailOk = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(email);\nconst links = (message.match(/https?:\\/\\//gi) || []).length;\nconst spamWords = /(backlinks?|guest post|crypto|casino|viagra|forex|loan offer|seo services|rank your site|cheap traffic|whatsapp me|telegram)/i;\nconst spam = !name || !emailOk || message.length < 10 || /https?:\\/\\//i.test(name) || links > 2 || spamWords.test(name + ' ' + subject + ' ' + message);\n\nconst hay = (subject + ' ' + message).toLowerCase();\nlet category = 'General';\nif (/(n8n|make\\.com|zapier|automat|agent|webhook|chatbot|claude|workflow|pipeline|\\bai\\b)/.test(hay)) category = 'AI automation';\nelse if (/(woocommerce|shopify|store|e-?commerce|headless|checkout)/.test(hay)) category = 'E-commerce';\nelse if (/\\bseo\\b|search engine|rankings?|organic/.test(hay)) category = 'SEO / growth';\nelse if (/(wordpress|website|landing page|elementor|web ?app|react|next\\.?js)/.test(hay)) category = 'Web build';\n\nconst signals = [];\nif (message.length >= 200) signals.push('detailed brief');\nif (/(\\$|usd|\u00a3|\u20ac|budget|rs\\.?\\s?\\d|pkr)/i.test(message)) signals.push('mentions budget');\nif (/(asap|urgent|this week|next week|deadline|by (monday|friday|end of))/i.test(message)) signals.push('time pressure');\nif (category !== 'General') signals.push(category.toLowerCase());\nconst priority = signals.length >= 3 ? 'HOT' : signals.length === 2 ? 'WARM' : 'NEW';\n\nreturn [{ json: {\n  spam, name, email, subject, message, category, priority, signals,\n  safeName: esc(name), safeSubject: esc(subject || '(no subject)'), safeEmail: esc(email),\n  safeMessage: esc(message).replace(/\\n/g, '<br>'),\n  receivedAt: new Date().toISOString(),\n} }];\n"
+      },
+      "name": "Shape and label lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.spam }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "Is spam?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "msameedch437@gmail.com",
+        "subject": "=[Portfolio \u00b7 {{ $json.priority }}] {{ $json.category }} \u2014 {{ $json.name }}",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#111\"><p><b>{{ $json.priority }}</b> \u00b7 {{ $json.category }}{{ $json.signals.length ? \" \u00b7 \" + $json.signals.join(\", \") : \"\" }}</p><p><b>From:</b> {{ $json.safeName }} &lt;{{ $json.safeEmail }}&gt;<br><b>Subject:</b> {{ $json.safeSubject }}<br><b>Received:</b> {{ $json.receivedAt }}</p><hr style=\"border:none;border-top:1px solid #ddd\"><p>{{ $json.safeMessage }}</p><hr style=\"border:none;border-top:1px solid #ddd\"><p style=\"color:#666\">Reply to this email to answer them directly. Sent by the portfolio contact flow.</p></div>",
+        "options": {
+          "replyTo": "={{ $json.email }}",
+          "appendAttribution": false
+        }
+      },
+      "name": "Email me the lead",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        660,
+        120
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $('Shape and label lead').item.json.email }}",
+        "subject": "Got your message \u2014 Sameed Chaudhary",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#111\"><p>Hi {{ $('Shape and label lead').item.json.safeName }},</p><p>Thanks for getting in touch. I have received your message about &ldquo;{{ $('Shape and label lead').item.json.safeSubject }}&rdquo; and I will reply to you personally. I usually respond within 24 hours.</p><p>If it is urgent, you can also reach me on <a href=\"https://www.linkedin.com/in/sameed-chaudhary\">LinkedIn</a>.</p><p>Sameed Chaudhary<br>Automation Engineer<br><a href=\"https://www.sameed.work\">sameed.work</a></p></div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "name": "Acknowledge visitor",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        120
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"ok\": true}",
+        "options": {}
+      },
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"ok\": true}",
+        "options": {}
+      },
+      "name": "Respond OK (spam, nothing sent)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"ok\": false}",
+        "options": {
+          "responseCode": 502
+        }
+      },
+      "name": "Respond error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Contact webhook": {
+      "main": [
+        [
+          {
+            "node": "Shape and label lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape and label lead": {
+      "main": [
+        [
+          {
+            "node": "Is spam?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is spam?": {
+      "main": [
+        [
+          {
+            "node": "Respond OK (spam, nothing sent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email me the lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email me the lead": {
+      "main": [
+        [
+          {
+            "node": "Acknowledge visitor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledge visitor": {
+      "main": [
+        [
+          {
+            "node": "Respond OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
