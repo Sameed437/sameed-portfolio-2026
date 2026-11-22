@@ -76,7 +76,7 @@ export default function Navbar() {
           <Link href={pathname === '/' ? '#top' : '/'} className="group flex items-center gap-2.5 rounded-full pr-2">
             <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-lg border border-accent/35 bg-surface/90 shadow-sm transition-all duration-200 group-hover:scale-105 group-hover:border-accent">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt={PROFILE.name}
                 width={36}
                 height={36}

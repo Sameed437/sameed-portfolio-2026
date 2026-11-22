@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex items-center gap-2.5">
             <span className="relative grid h-8 w-8 place-items-center overflow-hidden rounded-lg border border-accent/30 bg-surface">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt={PROFILE.name}
                 width={32}
                 height={32}

@@ -8,6 +8,8 @@ import Assistant from '@/components/Assistant';
 import BackToTop from '@/components/BackToTop';
 import ScrollCraftMount from '@/components/scroll/ScrollCraftMount';
 import Analytics from '@/components/Analytics';
+import ScrollProgress from '@/components/ScrollProgress';
+import PointerSpotlight from '@/components/PointerSpotlight';
 import { SITE_URL } from '@/lib/site';
 
 const inter = Inter({
@@ -120,6 +122,8 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <ScrollProgress />
+        <PointerSpotlight />
         <Navbar />
         <main id="main">{children}</main>
         <Footer />

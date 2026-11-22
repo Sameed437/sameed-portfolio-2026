@@ -50,7 +50,7 @@ export default function Pipeline() {
               data-sc-reveal-at="0.72 0.96"
             >
               <Image
-                src="/projects/blogbolt.png"
+                src="/projects/blogbolt.webp"
                 alt="BlogBolt control panel, the dashboard that starts a pipeline run"
                 width={1912}
                 height={839}

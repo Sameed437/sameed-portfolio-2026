@@ -81,7 +81,7 @@ export default function About() {
 
               <figure className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-accent/30 bg-surface shadow-lift">
                 <Image
-                  src="/sameed.jpg"
+                  src="/sameed.webp"
                   alt={PROFILE.name + ', ' + PROFILE.title}
                   fill
                   sizes="(max-width: 768px) 90vw, 400px"

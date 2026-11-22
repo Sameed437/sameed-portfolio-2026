@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Bot, Sparkles, ShoppingCart, Code2, ArrowUpRight } from 'lucide-react';
 import { SERVICES } from '@/lib/data';
 import SectionHeader from './SectionHeader';
@@ -10,24 +11,34 @@ const SERVICE_META = [
     discipline: 'Autonomous Agents',
     highlight: 'Reclaims 20+ manual operational hours every week',
     telemetry: '99.9% uptime · automated failover',
+    image: {
+      src: '/images/services/autonomous-agents.webp',
+      alt: 'Network of metal nodes joined by thin cyan lines, with one node glowing, representing connected autonomous AI agents',
+    },
   },
   {
     icon: Sparkles,
     discipline: 'Content Pipelines',
     highlight: 'From SERP research to WordPress drafts, hands-free',
     telemetry: '100K+ impressions · SERP mapped',
+    image: {
+      src: '/images/services/content-pipelines.webp',
+      alt: 'Fine cyan lines flowing in a smooth curve across dark slabs, representing an automated content pipeline',
+    },
   },
   {
     icon: ShoppingCart,
     discipline: 'Headless Commerce',
     highlight: 'Sub-second catalog search and instant checkout',
     telemetry: '< 1s load · React frontend',
+    image: null,
   },
   {
     icon: Code2,
     discipline: 'Growth Engineering',
     highlight: 'Production APIs, webhooks and Core Web Vitals',
     telemetry: '100/100 mobile vitals · Next.js 14',
+    image: null,
   },
 ];
 
@@ -54,7 +65,8 @@ export default function Services() {
                   <a
                     href="#contact"
                     aria-label={`Enquire about ${s.title}`}
-                    className="group relative grid gap-8 py-10 md:py-14 lg:grid-cols-12 lg:gap-10 transition-colors duration-500 hover:bg-white/[0.015]"
+                    data-spot
+                    className="spot group relative grid gap-8 py-10 md:py-14 lg:grid-cols-12 lg:gap-10 transition-colors duration-500"
                   >
                     {/* Accent rule that draws in on hover */}
                     <span
@@ -62,17 +74,31 @@ export default function Services() {
                       className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-700 ease-out group-hover:w-full"
                     />
 
-                    {/* Index + discipline */}
-                    <div className="flex items-start gap-5 lg:col-span-3 lg:flex-col lg:gap-6">
-                      <span className="text-5xl md:text-6xl font-light leading-none tracking-tighter text-white/55 tabular-nums transition-colors duration-500 group-hover:text-accent">
-                        {String(idx + 1).padStart(2, '0')}
-                      </span>
-                      <div className="flex items-center gap-2.5 pt-1 lg:pt-0 text-fg-faint">
-                        <Icon size={15} strokeWidth={1.5} />
-                        <span className="text-[11px] uppercase tracking-label">
-                          {meta.discipline}
+                    {/* Index + discipline + visual */}
+                    <div className="flex flex-col gap-6 lg:col-span-3">
+                      <div className="flex items-start gap-5 lg:flex-col lg:gap-6">
+                        <span className="text-5xl md:text-6xl font-light leading-none tracking-tighter text-white/55 tabular-nums transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-accent">
+                          {String(idx + 1).padStart(2, '0')}
                         </span>
+                        <div className="flex items-center gap-2.5 pt-1 lg:pt-0 text-fg-faint">
+                          <Icon size={15} strokeWidth={1.5} />
+                          <span className="text-[11px] uppercase tracking-label">
+                            {meta.discipline}
+                          </span>
+                        </div>
                       </div>
+
+                      {meta.image && (
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-surface">
+                          <Image
+                            src={meta.image.src}
+                            alt={meta.image.alt}
+                            fill
+                            sizes="(min-width: 1024px) 22vw, (min-width: 640px) 60vw, 100vw"
+                            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+                          />
+                        </div>
+                      )}
                     </div>
 
                     {/* Title + description */}

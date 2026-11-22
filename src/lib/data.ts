@@ -200,7 +200,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'BlogBolt',
     art: 'dashboard',
-    snapshot: '/projects/blogbolt.png',
+    snapshot: '/projects/blogbolt.webp',
     category: 'automation',
     domain: 'Built for Marham · Self-hosted',
     kicker: 'SEO content tool built for Marham · Python + Claude',

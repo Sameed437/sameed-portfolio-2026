@@ -15,7 +15,7 @@ export default function SectionHeader({ index, eyebrow, title, description }: Pr
           {index}
         </span>
         <span className="label">{eyebrow}</span>
-        <span className="h-px flex-1 accent-rule opacity-40" />
+        <span className="rule-draw h-px flex-1 accent-rule opacity-50" />
       </div>
       <h2 className="mt-6 max-w-3xl text-title font-semibold text-balance text-fg">
         {title}

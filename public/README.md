@@ -1,6 +1,6 @@
 # public/
 
-Drop your portrait photo here as **`sameed.jpg`** (or `sameed.png` — then update the `src` in `src/components/About.tsx`).
+Drop your portrait photo here as **`sameed.webp`** (then update the `src` in `src/components/About.tsx`).
 
 Recommended:
 - **Format:** JPG or WebP
