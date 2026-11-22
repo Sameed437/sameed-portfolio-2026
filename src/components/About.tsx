@@ -22,7 +22,7 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
 };
 
 const IMPACT_METRICS = [
-  { value: '4+', label: 'Years Experience', icon: Clock },
+  { value: '3+', label: 'Years Experience', icon: Clock },
   { value: '50+', label: 'Automations Built', icon: Bot },
   { value: '20+', label: 'Hrs Saved Weekly', icon: Sparkles },
   { value: '100K+', label: 'SEO Impressions', icon: TrendingUp },

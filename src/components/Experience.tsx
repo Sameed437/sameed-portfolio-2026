@@ -10,7 +10,7 @@ export default function Experience() {
         index="04"
         eyebrow="Career Timeline"
         title="Where I've delivered high-impact engineering."
-        description="4+ years of professional engineering experience across autonomous AI pipelines, healthcare platforms, and full-stack headless architectures."
+        description="3+ years of professional engineering experience across autonomous AI pipelines, healthcare platforms, and full-stack headless architectures."
       />
 
       <ol className="relative">

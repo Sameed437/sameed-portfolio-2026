@@ -12,7 +12,6 @@ export const PROFILE = {
     linkedin: 'https://www.linkedin.com/in/sameed-chaudhary',
     github: 'https://github.com/Sameed437',
     githubRepo: 'https://github.com/Sameed437/sameed-portfolio-2026',
-    upwork: 'https://www.upwork.com/freelancers/',
   },
   availability: 'Available for opportunities',
   rotatingTitles: [
@@ -26,7 +25,7 @@ export const PROFILE = {
 };
 
 export const STATS = [
-  { value: '4+', label: 'Years Experience' },
+  { value: '3+', label: 'Years Experience' },
   { value: '50+', label: 'Automations Built' },
   { value: '25+', label: 'Projects Delivered' },
   { value: '40+', label: 'Clients Served' },
@@ -151,7 +150,7 @@ export const PROJECTS: Project[] = [
     domain: 'almaripk.com',
     kicker: 'Headless WooCommerce Store · React / Next.js',
     description:
-      'Full headless e-commerce store prepared for a client at almaripk.com. Features a lightning-fast React / Next.js 14 frontend backed by a headless WooCommerce and WordPress REST/GraphQL API. Built with instant server-rendered catalog listings, dynamic faceted filtering, real-time cart state management with optimistic UI, integrated Pakistani & international payment gateways, and sub-second page transitions.',
+      'Full headless e-commerce store prepared for a client at almaripk.com. Features a lightning-fast React / Next.js 14 frontend backed by a headless WooCommerce and WordPress REST/GraphQL API. Built with instant server-rendered catalog listings, dynamic faceted filtering, real-time cart state management with optimistic UI, integrated Pakistani & international payment gateways, and fast page transitions.',
     tags: [
       'Next.js 14',
       'React',
@@ -164,9 +163,9 @@ export const PROJECTS: Project[] = [
     badge: 'Client Store',
     highlights: [
       'Headless architecture: Next.js frontend with WooCommerce REST / GraphQL backend',
-      'Sub-50ms instant client-side page navigation with Next.js ISR',
+      'Instant client-side page navigation with Next.js ISR',
       'Real-time slide-out cart drawer with optimistic state updates',
-      'Multi-currency and localized payment gateway integration (Cards, EasyPaisa, JazzCash)',
+      'Localized payment gateway integration for Pakistani and international customers',
     ],
   },
   {
@@ -193,7 +192,7 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Dual-funnel conversion architecture: dedicated pathways for Patient Quotes and Hospital Partnership Agreements',
       'Custom child theme engineering (cureabroad-child): container CSS decoupled from Elementor for brand governance',
-      'Ultra-optimized WebP asset pipeline: complete landing page imagery compressed to ≈360 KB, delivering sub-second LCP',
+      'Ultra-optimized WebP asset pipeline: complete landing page imagery compressed to ≈360 KB for a fast Largest Contentful Paint',
       'UK/EU GDPR & Medical Compliance: non-emergency healthcare facilitation disclosures and consent-managed data handling',
       'Full DNS & SMTP infrastructure: SPF, DKIM, DMARC, and PrivateEmail integration for automated office notifications and sender receipts',
     ],
@@ -203,10 +202,10 @@ export const PROJECTS: Project[] = [
     art: 'dashboard',
     snapshot: '/projects/blogbolt.png',
     category: 'automation',
-    domain: 'blogbolt.io',
-    kicker: 'AI content automation engine · Python + Claude',
+    domain: 'Built for Marham · Self-hosted',
+    kicker: 'SEO content tool built for Marham · Python + Claude',
     description:
-      'End-to-end AI content pipeline built in Python with a Next.js control panel. Picks a topic, runs a 7-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — and pushes the finished post into WordPress as a draft, ready for editorial review.',
+      'End-to-end SEO content tool I built for Marham, self-hosted on private infrastructure and used by the team in production. A Python pipeline with a Next.js control panel that picks a topic, runs a 7-phase SEO content workflow with Claude — research, outline, draft, on-page SEO, image selection with auto alt-text, format, publish — and pushes the finished post into WordPress as a draft, ready for editorial review.',
     tags: ['Python', 'Claude AI', 'Next.js', 'SEO Automation', 'WordPress API', 'n8n'],
     badge: 'Flagship AI',
     highlights: [
@@ -229,7 +228,7 @@ export const PROJECTS: Project[] = [
     badge: 'Live Store',
     highlights: [
       'Bespoke React storefront decoupled from WooCommerce backend',
-      'Sub-second catalog browsing and instant cart interactions',
+      'Fast catalog browsing and instant cart interactions',
       'Integrated Stripe & PayPal UK payment processing',
     ],
   },
@@ -256,7 +255,7 @@ export const PROJECTS: Project[] = [
     art: 'records',
     snapshot: '/projects/fee-system.svg',
     category: 'fullstack',
-    domain: 'portal.edufee.internal',
+    domain: 'Private build',
     kicker: 'Full-stack system · Database-backed',
     description:
       'Fee management system built for an educational institution, backed by a relational database. Covers the full fee lifecycle — student records, fee structures, payment collection, fee vouchers, and outstanding balances — behind an admin dashboard used for day-to-day operations and reporting.',
@@ -273,14 +272,14 @@ export const PROJECTS: Project[] = [
     art: 'vision',
     snapshot: '/projects/ai-attendance.svg',
     category: 'automation',
-    domain: 'visionattend.ai',
+    domain: 'Final-year project',
     kicker: 'Computer vision · Final-year project',
     description:
       'AI-based facial recognition for automated attendance, paired with a parental control dashboard for monitoring and policy enforcement. Built in Python with OpenCV and deep learning face embeddings.',
     tags: ['Python', 'OpenCV', 'AI', 'Machine Learning', 'Twilio API'],
     badge: 'Computer Vision',
     highlights: [
-      'Sub-30ms real-time facial recognition inference on live video feeds',
+      'Real-time facial recognition on live video feeds',
       'Automated SMS & push notifications dispatched to parents on gate check-in',
       'Secure analytics dashboard for administrative oversight',
     ],
@@ -299,7 +298,7 @@ export const PROJECTS: Project[] = [
     badge: 'Live Client',
     highlights: [
       'Integrated consultation booking engine with calendar sync',
-      'Mobile-first responsive layouts with sub-second page loads',
+      'Mobile-first responsive layouts built for fast page loads',
       'Full local SEO configuration targeting Pacific Northwest businesses',
     ],
   },
@@ -329,10 +328,10 @@ export const PROJECTS: Project[] = [
     domain: 'goldengateaccounting.com',
     kicker: 'Business site · WordPress',
     description:
-      'Corporate accounting and advisory firm website featuring a clean editorial layout, optimized image delivery, and 100/100 Lighthouse performance metrics.',
+      'Corporate accounting and advisory firm website featuring a clean editorial layout, optimized image delivery, and a performance-focused WordPress build.',
     tags: ['WordPress', 'Elementor', 'Performance', 'SEO'],
     highlights: [
-      'Flawless Lighthouse 100 performance score on mobile and desktop',
+      'Performance-focused build with optimized image delivery on mobile and desktop',
       'Modular practice area showcases with structured schema markup',
     ],
   },
@@ -341,15 +340,15 @@ export const PROJECTS: Project[] = [
     art: 'portfolio',
     snapshot: '/projects/react-portfolio.svg',
     category: 'fullstack',
-    domain: 'sameed437.github.io',
-    kicker: 'Front end · React & TypeScript',
+    domain: 'sameed-portfolio-2026.vercel.app',
+    kicker: 'Front end · Next.js & TypeScript',
     description:
-      'Interactive developer portfolio built with React, showcasing modern animations, a dynamic project filter showcase, and an interactive skills matrix.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+      'This site — a Next.js 14 and TypeScript portfolio with scroll-driven animation, a project showcase, an interactive automation sandbox, and an on-site assistant.',
+    tags: ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS'],
     href: 'https://github.com/Sameed437/sameed-portfolio-2026',
     badge: 'Open Source',
     highlights: [
-      'Component-driven architecture with buttery smooth transitions',
+      'Component-driven architecture with scroll-driven transitions',
       'Full GitHub repository open-sourced and connected',
     ],
   },
@@ -514,6 +513,6 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much experience does he have?',
-    a: '4+ years of professional experience across six companies/contracts, with 25+ projects delivered for 40+ clients.',
+    a: '3+ years of professional experience across six companies/contracts, with 25+ projects delivered for 40+ clients.',
   },
 ];

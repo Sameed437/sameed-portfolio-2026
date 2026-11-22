@@ -1,6 +1,6 @@
 # Sameed Chaudhary — Portfolio
 
-Premium personal portfolio site built with **Next.js 14 (App Router)**, **Tailwind CSS**, **Framer Motion**, and **TypeScript**. Dark, glassmorphic, fully animated, and Vercel-ready.
+Premium personal portfolio site built with **Next.js 14 (App Router)**, **Tailwind CSS**, and **TypeScript**. Dark, glassmorphic, fully animated, and Vercel-ready.
 
 Live Link: https://sameed-portfolio-2026.vercel.app/
 
@@ -9,9 +9,9 @@ Live Link: https://sameed-portfolio-2026.vercel.app/
 - Next.js 14 · App Router
 - React 18 · TypeScript
 - Tailwind CSS 3 · custom design tokens
-- Framer Motion 11 · scroll & enter animations
+- ScrollCraft (vendored in `src/scrollcraft/`) · scroll-driven animation
 - Lucide Icons
-- `next/font` · Inter + Playfair Display
+- `next/font` · Inter, Archivo, JetBrains Mono
 
 ## Local development
 
@@ -39,7 +39,7 @@ vercel        # preview
 vercel --prod # production
 ```
 
-No environment variables required. Update `SITE_URL` inside `src/app/layout.tsx`, `src/app/robots.ts`, and `src/app/sitemap.ts` to your own domain after deploy.
+Optionally set `NEXT_PUBLIC_SITE_URL` (see `.env.production` and `src/lib/site.ts`) to your custom domain; it feeds metadata, `robots.ts` and `sitemap.ts`.
 
 ## Project structure
 
@@ -47,28 +47,19 @@ No environment variables required. Update `SITE_URL` inside `src/app/layout.tsx`
 src/
 ├── app/
 │   ├── layout.tsx        # fonts, metadata, OG tags, global chrome
-│   ├── page.tsx          # composition: hero → contact
-│   ├── globals.css       # Tailwind + design tokens + cursor rules
-│   ├── icon.svg          # auto-served favicon
+│   ├── page.tsx          # hero → services → sandbox → pipeline → work → about → experience → education → contact
+│   ├── studio/page.tsx   # AI Studio: workflow inspector + ROI calculator
+│   ├── globals.css       # Tailwind + design tokens
 │   ├── robots.ts
 │   └── sitemap.ts
-├── components/
-│   ├── Cursor.tsx        # custom glowing cursor with spring lag
-│   ├── Navbar.tsx        # scroll-aware, hide-on-scroll, mobile menu
-│   ├── NoiseOverlay.tsx  # global SVG grain
-│   ├── Particles.tsx     # canvas particle network for hero
-│   ├── SectionReveal.tsx # reusable scroll-reveal motion wrapper
-│   ├── SectionHeader.tsx
-│   ├── Hero.tsx          # typewriter, availability badge, CTAs
-│   ├── About.tsx         # bio + animated stats + glowing avatar
-│   ├── Skills.tsx        # 4 grouped skill chips with hover glow
-│   ├── Projects.tsx      # bento grid with 3D tilt + spotlight
-│   ├── Experience.tsx    # vertical timeline with scroll-drawn line
-│   ├── Education.tsx
-│   ├── Contact.tsx       # glassmorphic form with floating labels
-│   └── Footer.tsx
+├── components/           # Hero, Services, AutomationSandbox, Pipeline, Projects, ProjectCover,
+│                         # About, Experience, Education, Contact, Navbar, Footer,
+│                         # Assistant (on-site chatbot), WorkflowStudio, VideoBriefing, ...
+├── scrollcraft/          # vendored scroll engine
 └── lib/
-    └── data.ts           # all content lives here — edit freely
+    ├── data.ts           # all content lives here
+    ├── assistant.ts      # rule-based assistant; answers derive from data.ts
+    └── site.ts           # SITE_URL resolution
 ```
 
 ## Editing content
@@ -77,8 +68,7 @@ All copy, projects, experience, skills and links are in **`src/lib/data.ts`**. C
 
 ## Notes
 
-- The custom cursor is automatically disabled on touch devices.
-- All motion respects `prefers-reduced-motion`.
+- The assistant has no LLM behind it: it matches rules and facts from `data.ts`, so keep that file accurate.
 - The contact form is presentational — wire it to Resend / Formspree / your own API route before going live.
 
 ---

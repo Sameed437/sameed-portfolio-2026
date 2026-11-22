@@ -38,7 +38,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(rate|rates|price|prices|pricing|cost|costs|fee|fees|budget|charge|charges|how much|quote|quotation|expensive|cheap|hourly)\b/i,
     answer: {
-      text: "Sameed offers flexible engagement models tailored to client needs:\n\n• Hourly Engagements: Typically $35–$60/hour for custom AI engineering, workflow architecture, and technical implementations.\n• Milestone / Fixed-Scope Pipelines: Dedicated automations (e.g., n8n webhook sync, AI content pipelines, or lead triage agents) typically start from $500 to $2,500+ depending on integrations.\n• Headless E-Commerce Builds: Complete custom stores (like Wonderlyf) range based on catalog scale and custom features.\n\nFor an accurate scope and turnaround estimate, email him directly with what you are looking to automate.",
+      text: "Pricing depends on scope — the number of integrations, the systems involved, and the timeline — so there is no fixed rate card. The fastest way to get an accurate estimate is to email Sameed with what you want to automate or build.",
       links: [
         MAILTO,
         { label: 'Calculate ROI in AI Studio', href: '/studio' },
@@ -75,7 +75,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(process|steps|how (do we|to) start|onboard|turnaround|how long|timeline|deliver|delivery time)\b/i,
     answer: {
-      text: "Working with Sameed is swift and structured:\n\n1. Discovery & Audit (1–2 days): Quick consultation to review your existing tools, data flow, and bottlenecks.\n2. Architecture Blueprint: Detailed mapping of API endpoints, n8n nodes, prompt schemas, and webhook fail-safes.\n3. Build & Integration: Most custom automation pipelines are completed in 3 to 10 days; full web platforms in 2 to 4 weeks.\n4. Handover & Testing: Full documentation, video walkthrough, and live deployment with ongoing reliability monitoring.",
+      text: "A typical engagement starts with a short discovery conversation about your tools, data flow and bottlenecks, followed by an architecture plan (API endpoints, workflow nodes, prompts, failure handling), the build and integration, and then testing, documentation and handover. Timelines depend on scope — email Sameed with your requirements for an estimate.",
       links: [MAILTO],
     },
   },
@@ -84,7 +84,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(tech stack|technologies|tools|languages|frameworks|what stack|what tools|what do you use|toolkit)\b/i,
     answer: {
-      text: "Sameed's core production stack:\n\n• AI & Agents: Claude API, Claude Code, n8n, Make, Zapier, Python, LangChain, OpenAI API\n• Frontend: Next.js 14 (App Router), React, TypeScript, Tailwind CSS, REST & GraphQL APIs\n• CMS & E-Commerce: Headless WooCommerce, WordPress REST API, Sanity CMS\n• Backend & Data: Node.js, Webhooks, Python, Supabase, PostgreSQL, Docker\n• Growth & Performance: Technical On-Page SEO, Core Web Vitals, Schema markup",
+      text: `Sameed's stack:\n\n${SKILL_GROUPS.map((g) => `• ${g.title}: ${g.items.join(', ')}`).join('\n')}`,
       links: [{ label: 'View Selected Projects', href: '/#work' }],
     },
   },
@@ -101,7 +101,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(marham)\b/i,
     answer: {
-      text: "At Marham (Dec 2025 – Nov 2026), Sameed was a Growth Engineer & AI Content Developer. He built Marham's in-house AI content platform and integrated automated n8n + Claude API pipelines, saving 20+ hours of manual editorial effort each week while generating 100K+ organic impressions.",
+      text: "At Marham (Dec 2025 – Nov 2026), Sameed was a Digital Growth Specialist (SEO Content Writer). He built Marham's in-house AI content platform (Python, Next.js, Oracle Cloud), an n8n + Claude API content pipeline saving 20+ hours per week, and a WhatsApp chatbot, and grew organic traffic 70% in 3 months on a targeted segment.",
     },
   },
 
@@ -145,7 +145,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(who (is|are)|about (sameed|him|you)|tell me about|introduce|bio|summary|background|who made|who built)\b/i,
     answer: {
-      text: `Sameed Chaudhary is an ${PROFILE.title} and Full-Stack Web Engineer based in Lahore, Pakistan with 4+ years of professional experience across 6 companies/contracts, delivering 25+ projects for 40+ clients worldwide.\n\nCurrently at 360 Signum, he architects autonomous pipelines and webhook systems. His flagship builds include BlogBolt, Wonderlyf (headless store), and Cure Abroad Health Solutions.`,
+      text: `Sameed Chaudhary is an ${PROFILE.title} and Full-Stack Web Engineer based in Lahore, Pakistan with 3+ years of professional experience across ${EXPERIENCE.length} companies/contracts, delivering 25+ projects for 40+ clients worldwide.\n\nCurrently at 360 Signum, he architects autonomous pipelines and webhook systems. His flagship builds include BlogBolt, Wonderlyf (headless store), and Cure Abroad Health Solutions.`,
       links: [
         MAILTO,
         { label: 'LinkedIn Profile', href: PROFILE.socials.linkedin },
@@ -158,7 +158,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(hire|hiring|available|availability|freelance|contract|full-?time|open to|collaborate)\b/i,
     answer: {
-      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to freelance client projects (AI automation pipelines, autonomous agent systems, headless web development) as well as collaborative roles, usually replying within 24 hours.`,
+      text: `Yes — ${PROFILE.availability.toLowerCase()}. He is open to freelance client projects (AI automation pipelines, autonomous agent systems, headless web development) as well as collaborative roles.`,
       links: [MAILTO],
     },
   },
@@ -180,7 +180,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(location|where (is|are)|live|based|timezone|relocate|remote|lahore|pakistan)\b/i,
     answer: {
-      text: `Sameed is based in ${PROFILE.location} (PKT / UTC+5). He has extensive experience working remotely with clients across the US, UK, Europe, and Middle East, providing regular video check-ins and time-zone overlapping hours.`,
+      text: `Sameed is based in ${PROFILE.location} (PKT / UTC+5). He works remotely with global teams and clients across the UK, US, and Pakistan.`,
     },
   },
 
@@ -188,7 +188,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(experience|history|companies|employment|jobs|seniority|past roles|work history)\b/i,
     answer: {
-      text: `Sameed has 4+ years of experience across 6 companies/contracts:\n\n• 360 Signum (Nov 2026 – Present): Automation Engineer (Remote)\n• Marham (Dec 2025 – Nov 2026): Growth Engineer / AI Content Developer\n• Animaker Media (Sep 2024 – Nov 2025): SEO Specialist & Web Developer\n• Rocket Bookkeeper (Mar 2024 – Sep 2024): SEO Specialist\n• Kynbix (Aug 2023 – Mar 2024): SEO Specialist & WordPress Developer\n• Internsoft (Sep 2022 – Aug 2023): Web Developer Intern`,
+      text: `Sameed has 3+ years of experience across ${EXPERIENCE.length} companies/contracts:\n\n${EXPERIENCE.map((e) => `• ${e.company} (${e.date}): ${e.role}`).join('\n')}`,
       links: [{ label: 'View Timeline', href: '/#experience' }],
     },
   },
@@ -218,7 +218,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(website|websites|web dev(elopment)?|web app|frontend|e-?commerce|store|storefront|headless|wordpress|woocommerce)\b/i,
     answer: {
-      text: 'Yes! Sameed is a specialist in high-speed web platforms and headless e-commerce. He builds ultra-fast frontends using Next.js 14 (App Router), React, TypeScript, and Tailwind CSS, backed by headless WooCommerce, WordPress REST API, or custom backend services. Sites load in under a second with 95+ Core Web Vitals.',
+      text: 'Yes! Sameed is a specialist in high-speed web platforms and headless e-commerce. He builds ultra-fast frontends using Next.js 14 (App Router), React, TypeScript, and Tailwind CSS, backed by headless WooCommerce, WordPress REST API, or custom backend services. Performance and Core Web Vitals are part of the build, not an afterthought.',
       links: [
         { label: 'View E-Commerce Case Studies', href: '/#work' },
         MAILTO,
@@ -242,7 +242,7 @@ const INTENTS: Intent[] = [
   {
     pattern: /\b(seo|search engine|rankings?|organic traffic|serp|on-page seo)\b/i,
     answer: {
-      text: 'Sameed has 4+ years of professional technical SEO experience. At Marham, he drove over 100,000 organic search impressions using AI content pipelines. His builds incorporate automated schema markup, semantic HTML, sub-second TTFB, and SERP intent analysis built directly into the engineering stack.',
+      text: 'Sameed has hands-on technical SEO experience. At Marham, he grew organic traffic 70% in 3 months on a targeted segment and built AI content pipelines with GSC, GA4 and Semrush connected. His builds incorporate automated schema markup, semantic HTML, and SERP intent analysis built directly into the engineering stack.',
       links: [{ label: 'View Work', href: '/#work' }],
     },
   },

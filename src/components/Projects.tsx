@@ -96,7 +96,7 @@ function SnapshotModal({
               </div>
               <div className="flex items-center gap-1.5 font-mono text-[11px] text-fg-muted">
                 <Globe size={11} className="text-accent" />
-                <span>https://{project.domain || 'project.live'}</span>
+                <span>{project.href ? `https://${project.domain ?? ''}` : project.domain ?? project.title}</span>
               </div>
               <span className="w-10" />
             </div>
