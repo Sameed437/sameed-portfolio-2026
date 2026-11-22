@@ -107,7 +107,6 @@ function SnapshotModal({
                 src={project.snapshot}
                 alt={`${project.title} High-Resolution Snapshot`}
                 fill
-                unoptimized
                 sizes="(max-width: 1200px) 95vw, 1200px"
                 className="object-contain object-top"
               />

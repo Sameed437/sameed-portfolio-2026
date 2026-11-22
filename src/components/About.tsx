@@ -164,9 +164,9 @@ export default function About() {
                       <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent-wash text-accent border border-accent/20">
                         <Icon size={14} />
                       </span>
-                      <h4 className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
+                      <h3 className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
                         {group.title}
-                      </h4>
+                      </h3>
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {group.items.map((item) => (

@@ -299,7 +299,8 @@ body {
 /* ------------------------------------------------------------ pipeline -- */
 .pipe-phase {
   --on: clamp(0, (var(--sc-p, 0) - var(--t)) * 14, 1);
-  opacity: calc(0.28 + var(--on) * 0.72);
+  /* Floor kept high enough that dimmed phases still meet 4.5:1 text contrast. */
+  opacity: calc(0.62 + var(--on) * 0.38);
   transition: color 160ms ease-out, opacity 160ms ease-out;
 }
 .pipe-dot {

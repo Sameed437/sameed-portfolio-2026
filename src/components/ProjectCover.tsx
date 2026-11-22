@@ -402,7 +402,6 @@ export default function ProjectCover({
               src={snapshot}
               alt={`${title} snapshot preview`}
               fill
-              unoptimized
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
               className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             />
