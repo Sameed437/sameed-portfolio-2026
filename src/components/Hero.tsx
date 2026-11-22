@@ -24,8 +24,6 @@ export default function Hero() {
     >
       <div data-sc-stage className="hero-stage">
         <div aria-hidden className="hero-plane" data-sc-parallax="-0.5">
-          <div className="hero-glow absolute inset-0" />
-          <div className="grid-lines absolute inset-0 opacity-70" />
         </div>
 
         <div aria-hidden data-sc-parallax="-1.1" className="absolute inset-0">
@@ -50,13 +48,13 @@ export default function Hero() {
         <div className="hero-copy" data-sc-cue="0 0.56 0">
           <div className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent-wash px-3 py-1.5 text-xs font-medium text-accent">
-              <span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-accent" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               {PROFILE.availability}
             </span>
             <span className="label">{PROFILE.location}</span>
           </div>
 
-          <p className="mt-5 sm:mt-8 font-mono text-[11px] uppercase tracking-label text-accent">
+          <p className="mt-5 sm:mt-8 text-[11px] uppercase tracking-label text-accent">
             {PROFILE.name} · {PROFILE.title}
           </p>
           <h1 className="sc-display hero-h1 mt-2.5 sm:mt-4" data-sc-kinetic="lines">

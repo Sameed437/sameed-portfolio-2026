@@ -38,7 +38,7 @@ export default function Education() {
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-line/60">
-                      <span className="inline-block rounded-md border border-white/5 bg-base/80 px-2.5 py-1 font-mono text-[11px] text-accent">
+                      <span className="inline-block rounded-md border border-white/5 bg-base/80 px-2.5 py-1 text-[11px] text-accent">
                         {e.detail}
                       </span>
                     </div>

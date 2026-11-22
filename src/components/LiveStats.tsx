@@ -45,7 +45,7 @@ export default async function LiveStats() {
 
   return (
     <div className="mb-14" aria-label="Live engineering metrics">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-label text-fg-faint">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-[11px] uppercase tracking-label text-fg-faint">
         <span className="inline-flex items-center gap-2">
           <span className={`h-1.5 w-1.5 rounded-full ${live ? 'bg-accent animate-pulse' : 'bg-fg-faint'}`} />
           {live ? 'Live from my self-hosted n8n' : 'Last measured snapshot'}
@@ -67,7 +67,7 @@ export default async function LiveStats() {
                 </span>
                 <Icon size={15} className="text-accent" />
               </div>
-              <p className="mt-2 font-mono text-[11px] uppercase tracking-label text-fg-muted">{m.label}</p>
+              <p className="mt-2 text-[11px] uppercase tracking-label text-fg-muted">{m.label}</p>
               {m.hint && <p className="mt-1 text-[11px] text-fg-faint">{m.hint}</p>}
             </div>
           );
@@ -75,7 +75,7 @@ export default async function LiveStats() {
       </div>
 
       {lh.url && (
-        <p className="mt-2 font-mono text-[11px] text-fg-faint">Lighthouse: mobile, {lh.url}</p>
+        <p className="mt-2 text-[11px] text-fg-faint">Lighthouse: mobile, {lh.url}</p>
       )}
     </div>
   );

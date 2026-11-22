@@ -30,7 +30,7 @@ export default function Pipeline() {
       <div data-sc-stage className="flex items-center">
         <div className="shell grid w-full items-center gap-10 pt-16 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-6">
-            <p className="font-mono text-[11px] uppercase tracking-label text-accent">
+            <p className="text-[11px] uppercase tracking-label text-accent">
               BlogBolt · keep scrolling to run it
             </p>
             <h2

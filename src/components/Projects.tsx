@@ -47,14 +47,14 @@ function SnapshotModal({
         {/* Header Bar */}
         <div className="flex items-center justify-between border-b border-line bg-surface-raised px-5 py-3.5 sm:px-6">
           <div className="flex items-center gap-3">
-            <span className="grid h-7 w-7 place-items-center rounded bg-accent/15 text-accent font-mono text-xs font-bold">
+            <span className="grid h-7 w-7 place-items-center rounded bg-accent/15 text-accent text-xs font-bold">
               <Eye size={14} />
             </span>
             <div>
               <h3 id="modal-title" className="text-base font-semibold text-fg">
                 {project.title}
               </h3>
-              <p className="font-mono text-[11px] text-fg-faint">
+              <p className="text-[11px] text-fg-faint">
                 {project.domain || project.kicker}
               </p>
             </div>
@@ -94,7 +94,7 @@ function SnapshotModal({
                 <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#10B981]" />
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-[11px] text-fg-muted">
+              <div className="flex items-center gap-1.5 text-[11px] text-fg-muted">
                 <Globe size={11} className="text-accent" />
                 <span>{project.href ? `https://${project.domain ?? ''}` : project.domain ?? project.title}</span>
               </div>
@@ -116,7 +116,7 @@ function SnapshotModal({
           {/* Project Details Grid */}
           <div className="grid gap-6 md:grid-cols-12">
             <div className="md:col-span-7 space-y-3">
-              <h4 className="font-mono text-xs uppercase tracking-label text-accent">
+              <h4 className="text-xs uppercase tracking-label text-accent">
                 System Overview
               </h4>
               <p className="text-sm leading-relaxed text-slate-300">
@@ -125,7 +125,7 @@ function SnapshotModal({
 
               {project.highlights && project.highlights.length > 0 && (
                 <div className="pt-2">
-                  <h5 className="font-mono text-[11px] uppercase tracking-label text-fg-faint mb-2">
+                  <h5 className="text-[11px] uppercase tracking-label text-fg-faint mb-2">
                     Key Highlights &amp; Architectural Features
                   </h5>
                   <ul className="space-y-1.5">
@@ -142,14 +142,14 @@ function SnapshotModal({
 
             <div className="md:col-span-5 space-y-4">
               <div>
-                <h4 className="font-mono text-xs uppercase tracking-label text-accent mb-2">
+                <h4 className="text-xs uppercase tracking-label text-accent mb-2">
                   Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded border border-line bg-base px-2 py-0.5 font-mono text-[11px] text-fg-faint"
+                      className="rounded border border-line bg-base px-2 py-0.5 text-[11px] text-fg-faint"
                     >
                       {t}
                     </span>
@@ -195,7 +195,7 @@ function Card({ project, onZoom }: { project: Project; onZoom: (p: Project) => v
           className="aspect-[16/10] w-full"
         />
         {project.badge && (
-          <span className="absolute left-3 top-10 rounded-md border border-accent/30 bg-base/90 px-2 py-0.5 font-mono text-[10px] uppercase tracking-label text-accent">
+          <span className="absolute left-3 top-10 rounded-md border border-accent/30 bg-base/90 px-2 py-0.5 text-[10px] uppercase tracking-label text-accent">
             {project.badge}
           </span>
         )}
@@ -247,7 +247,7 @@ export default function Projects() {
       <div data-sc-stage className="flex flex-col justify-center pt-16">
         <div className="work-rail" data-sc-pan="0.04">
           <div className="work-lead flex flex-col justify-center pr-4">
-            <p className="font-mono text-[11px] uppercase tracking-label text-accent">
+            <p className="text-[11px] uppercase tracking-label text-accent">
               Selected work · {PROJECTS.length} projects
             </p>
             <h2 className="sc-display mt-4 text-title font-semibold text-balance text-fg">

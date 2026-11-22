@@ -11,7 +11,7 @@ export default function SectionHeader({ index, eyebrow, title, description }: Pr
   return (
     <Reveal className="mb-12 md:mb-16">
       <div className="flex items-center gap-4">
-        <span className="font-mono text-[11px] uppercase tracking-label text-accent">
+        <span className="text-[11px] uppercase tracking-label text-accent">
           {index}
         </span>
         <span className="label">{eyebrow}</span>

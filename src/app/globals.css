@@ -85,7 +85,7 @@ body {
   }
 
   .label {
-    @apply font-mono text-[11px] uppercase tracking-label text-fg-faint;
+    @apply text-[11px] font-medium uppercase tracking-label text-fg-faint;
   }
 
   .shell {

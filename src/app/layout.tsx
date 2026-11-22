@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, Inter, JetBrains_Mono } from 'next/font/google';
+import { Instrument_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 import '@/scrollcraft/engine/scrollcraft.css';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -16,7 +16,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const display = Archivo({
+const display = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',

@@ -32,11 +32,6 @@ const IMPACT_METRICS = [
 export default function About() {
   return (
     <section id="about" className="relative border-t border-line bg-surface/30">
-      {/* Subtle background glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[100px]"
-      />
 
       <div className="shell py-20 md:py-28">
         <SectionHeader
@@ -63,7 +58,7 @@ export default function About() {
                       <Icon size={15} />
                     </span>
                   </div>
-                  <p className="font-mono text-xs text-fg-muted mt-2 uppercase tracking-label">
+                  <p className="text-xs text-fg-muted mt-2 uppercase tracking-label">
                     {m.label}
                   </p>
                 </div>
@@ -102,7 +97,7 @@ export default function About() {
 
                 {/* Floating Active Role Badge */}
                 <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-base/85 px-3 py-1 text-[11px] font-mono font-medium text-accent border border-accent/30 backdrop-blur-md shadow-sm">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-base/85 px-3 py-1 text-[11px] font-medium text-accent border border-accent/30 backdrop-blur-md shadow-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                     360 Signum · Full-Time
                   </span>
@@ -110,7 +105,7 @@ export default function About() {
 
                 <figcaption className="absolute inset-x-5 bottom-4">
                   <p className="text-base font-semibold text-fg">{PROFILE.name}</p>
-                  <p className="font-mono text-xs text-accent mt-0.5">{PROFILE.title}</p>
+                  <p className="text-xs text-accent mt-0.5">{PROFILE.title}</p>
                   <p className="text-xs text-fg-faint mt-1">Based in {PROFILE.location} · Available Worldwide</p>
                 </figcaption>
               </figure>
@@ -164,7 +159,7 @@ export default function About() {
                       <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent-wash text-accent border border-accent/20">
                         <Icon size={14} />
                       </span>
-                      <h3 className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
+                      <h3 className="text-xs uppercase tracking-wider text-accent font-semibold">
                         {group.title}
                       </h3>
                     </div>
@@ -172,7 +167,7 @@ export default function About() {
                       {group.items.map((item) => (
                         <span
                           key={item}
-                          className="rounded-md border border-white/5 bg-base/60 px-2 py-1 font-mono text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-fg"
+                          className="rounded-md border border-white/5 bg-base/60 px-2 py-1 text-[11px] text-fg-muted transition-colors hover:border-accent/30 hover:text-fg"
                         >
                           {item}
                         </span>

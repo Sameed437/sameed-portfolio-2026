@@ -370,7 +370,7 @@ export default function ProjectCover({
         </div>
 
         {/* Address Pill */}
-        <div className="flex items-center gap-1.5 rounded-full border border-[#232A38] bg-[#0A0D14]/80 px-2.5 py-0.5 font-mono text-[10px] text-fg-faint">
+        <div className="flex items-center gap-1.5 rounded-full border border-[#232A38] bg-[#0A0D14]/80 px-2.5 py-0.5 text-[10px] text-fg-faint">
           <Lock size={9} className="text-accent" />
           <span className="truncate max-w-[140px] sm:max-w-[200px] text-fg-muted">{displayDomain}</span>
         </div>
@@ -421,7 +421,7 @@ export default function ProjectCover({
                 }}
                 className="absolute inset-0 flex items-center justify-center bg-base/60 backdrop-blur-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor-pointer"
               >
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-base/90 px-3.5 py-1.5 font-mono text-xs font-medium text-accent shadow-glow">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-base/90 px-3.5 py-1.5 text-xs font-medium text-accent shadow-glow">
                   <Maximize2 size={13} />
                   View Snapshot
                 </span>

@@ -128,7 +128,7 @@ export default function VideoBriefing() {
                   <Play size={14} className="ml-0.5 fill-base" />
                 </span>
               </div>
-              <span className="absolute bottom-1 right-1 rounded bg-base/80 px-1 py-0.5 font-mono text-[9px] font-semibold text-accent">
+              <span className="absolute bottom-1 right-1 rounded bg-base/80 px-1 py-0.5 text-[9px] font-semibold text-accent">
                 0:10
               </span>
             </button>
@@ -138,7 +138,7 @@ export default function VideoBriefing() {
                 <span className="inline-flex items-center gap-1 rounded-full bg-accent-wash px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent border border-accent/30">
                   <Sparkles size={11} /> 10s AI Avatar Briefing
                 </span>
-                <span className="hidden md:inline font-mono text-xs text-fg-faint">
+                <span className="hidden md:inline text-xs text-fg-faint">
                   Audio + Live Captions
                 </span>
               </div>
@@ -179,7 +179,7 @@ export default function VideoBriefing() {
             <div className="flex items-center justify-between border-b border-line bg-base/60 px-4 py-3">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-mono font-medium uppercase tracking-label text-fg">
+                <span className="text-xs font-medium uppercase tracking-label text-fg">
                   Sameed Chaudhary · AI Briefing
                 </span>
               </div>
@@ -269,7 +269,7 @@ export default function VideoBriefing() {
                     </button>
                   </div>
 
-                  <span className="font-mono text-[11px] text-fg-faint">
+                  <span className="text-[11px] text-fg-faint">
                     0:0{Math.floor(currentTime)} / 0:{Math.floor(duration)}
                   </span>
                 </div>

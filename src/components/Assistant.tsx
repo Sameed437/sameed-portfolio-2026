@@ -159,7 +159,7 @@ export default function Assistant() {
                           rel={
                             l.href.startsWith('http') ? 'noopener noreferrer' : undefined
                           }
-                          className="font-mono text-xs text-accent underline underline-offset-2"
+                          className="text-xs text-accent underline underline-offset-2"
                         >
                           {l.label}
                         </a>

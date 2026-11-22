@@ -45,14 +45,14 @@ export default function Experience() {
                       </h3>
 
                       {i === 0 && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 text-[11px] font-mono font-medium text-accent border border-accent/30 shadow-sm">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 text-[11px] font-medium text-accent border border-accent/30 shadow-sm">
                           <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                           Current Full-Time Role
                         </span>
                       )}
 
                       {job.company === 'Marham' && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-mono text-fg-muted border border-white/10">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/[0.04] px-2.5 py-0.5 text-[11px] text-fg-muted border border-white/10">
                           <Sparkles size={11} className="text-accent" />
                           Key Impact: 20+ hrs/wk saved
                         </span>
@@ -64,7 +64,7 @@ export default function Experience() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3 sm:text-right text-xs font-mono text-fg-faint">
+                  <div className="flex flex-wrap items-center gap-3 sm:text-right text-xs text-fg-faint">
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar size={12} className="text-accent" />
                       {job.date}

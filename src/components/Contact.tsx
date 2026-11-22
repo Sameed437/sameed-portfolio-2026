@@ -125,11 +125,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative isolate overflow-hidden border-t border-line">
-      {/* Background ambient lighting */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 bottom-0 -translate-x-1/2 h-[30rem] w-[50rem] max-w-full rounded-full bg-accent/5 blur-[140px]"
-      />
 
       <div className="shell py-20 md:py-28">
         <SectionHeader
@@ -151,12 +146,12 @@ export default function Contact() {
                   <span className="grid h-11 w-11 place-items-center rounded-xl border border-accent/30 bg-accent-wash text-accent shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-accent">
                     <Mail size={19} />
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 text-[10px] font-mono text-accent border border-accent/30">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 text-[10px] text-accent border border-accent/30">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                     Direct Email
                   </span>
                 </div>
-                <p className="font-mono text-xs uppercase tracking-wider text-fg-faint mt-4">Fastest Response</p>
+                <p className="text-xs uppercase tracking-wider text-fg-faint mt-4">Fastest Response</p>
                 <div className="mt-1 flex items-center justify-between gap-2">
                   <p className="break-all text-sm sm:text-base font-semibold text-fg transition-colors group-hover:text-accent">
                     {PROFILE.email}
@@ -164,7 +159,7 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-base/80 px-2.5 py-1 text-xs font-mono text-slate-300 transition-colors hover:border-accent hover:text-accent shrink-0"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-base/80 px-2.5 py-1 text-xs text-slate-300 transition-colors hover:border-accent hover:text-accent shrink-0"
                     title="Copy email address"
                   >
                     {copiedEmail ? (
@@ -191,7 +186,7 @@ export default function Contact() {
                   className="group flex items-center justify-between rounded-xl border border-white/10 bg-gradient-to-br from-surface to-base px-6 py-4 transition-all duration-200 hover:border-accent/40"
                 >
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">{c.label}</p>
+                    <p className="text-[11px] uppercase tracking-wider text-fg-faint">{c.label}</p>
                     <p className="mt-0.5 text-sm font-medium text-fg transition-colors group-hover:text-accent">
                       {c.value}
                     </p>
@@ -203,7 +198,7 @@ export default function Contact() {
                 </a>
               ))}
 
-              <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-base/60 px-6 py-4 text-xs font-mono text-fg-muted">
+              <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-base/60 px-6 py-4 text-xs text-fg-muted">
                 <MapPin size={15} className="shrink-0 text-accent" />
                 <span>{PROFILE.location} · Remote Worldwide</span>
               </div>
@@ -218,7 +213,7 @@ export default function Contact() {
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                  <label htmlFor="name" className="block text-xs uppercase tracking-wider text-fg-faint mb-2">
                     Your name
                   </label>
                   <input
@@ -232,7 +227,7 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                  <label htmlFor="email" className="block text-xs uppercase tracking-wider text-fg-faint mb-2">
                     Your email
                   </label>
                   <input
@@ -250,7 +245,7 @@ export default function Contact() {
 
               {/* One-Click Topic Selector Pills */}
               <div className="mt-5">
-                <label className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                <label className="block text-xs uppercase tracking-wider text-fg-faint mb-2">
                   Select Project Focus (or type below):
                 </label>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -259,7 +254,7 @@ export default function Contact() {
                       key={topic}
                       type="button"
                       onClick={() => setTopic(topic)}
-                      className={`rounded-lg border px-2.5 py-1 text-xs font-mono transition-all ${
+                      className={`rounded-lg border px-2.5 py-1 text-xs transition-all ${
                         form.subject === topic
                           ? 'border-accent bg-accent/15 text-accent font-medium shadow-sm'
                           : 'border-white/10 bg-base/60 text-fg-muted hover:border-accent/30 hover:text-fg'
@@ -272,7 +267,7 @@ export default function Contact() {
               </div>
 
               <div className="mt-4">
-                <label htmlFor="subject" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                <label htmlFor="subject" className="block text-xs uppercase tracking-wider text-fg-faint mb-2">
                   Subject
                 </label>
                 <input
@@ -286,7 +281,7 @@ export default function Contact() {
               </div>
 
               <div className="mt-5">
-                <label htmlFor="message" className="block font-mono text-xs uppercase tracking-wider text-fg-faint mb-2">
+                <label htmlFor="message" className="block text-xs uppercase tracking-wider text-fg-faint mb-2">
                   Project Details &amp; Goals
                 </label>
                 <textarea
@@ -323,7 +318,7 @@ export default function Contact() {
                   <Send size={14} />
                   {status === 'sending' ? 'Sending…' : 'Send Discovery Inquiry'}
                 </button>
-                <p className="text-xs text-fg-faint font-mono" role="status" aria-live="polite">
+                <p className="text-xs text-fg-faint" role="status" aria-live="polite">
                   {status === 'sent'
                     ? 'Message received. A confirmation is on its way to your inbox.'
                     : status === 'fallback'

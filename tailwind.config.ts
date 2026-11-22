@@ -48,7 +48,7 @@ const config: Config = {
       boxShadow: {
         card: '0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.7)',
         lift: '0 2px 4px rgba(0,0,0,0.4), 0 24px 48px -20px rgba(0,0,0,0.85)',
-        glow: '0 0 0 1px rgba(0, 210, 238, 0.25), 0 14px 40px -14px rgba(0, 210, 238, 0.38)',
+        glow: '0 1px 2px rgba(0,0,0,0.35), 0 8px 20px -10px rgba(0,0,0,0.6)',
       },
       keyframes: {
         marquee: {
