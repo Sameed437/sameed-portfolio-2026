@@ -1,13 +1,5 @@
 import Link from 'next/link';
-import {
-  Bot,
-  Sparkles,
-  ShoppingCart,
-  Code2,
-  ArrowRight,
-  CheckCircle2,
-  Zap,
-} from 'lucide-react';
+import { Bot, Sparkles, ShoppingCart, Code2, ArrowUpRight } from 'lucide-react';
 import { SERVICES } from '@/lib/data';
 import SectionHeader from './SectionHeader';
 import Reveal from './Reveal';
@@ -15,165 +7,140 @@ import Reveal from './Reveal';
 const SERVICE_META = [
   {
     icon: Bot,
-    badge: '01 // AUTONOMOUS AGENTS',
-    accentColor: 'text-accent',
-    bgGlow: 'from-accent/15 via-accent/5 to-transparent',
-    highlight: 'Reclaims 20+ manual operational hours / week',
-    telemetry: '99.9% Uptime · Automated Failover',
-    topic: 'AI Automation & n8n Workflows',
+    discipline: 'Autonomous Agents',
+    highlight: 'Reclaims 20+ manual operational hours every week',
+    telemetry: '99.9% uptime · automated failover',
   },
   {
     icon: Sparkles,
-    badge: '02 // CONTENT PIPELINES',
-    accentColor: 'text-cyan-400',
-    bgGlow: 'from-cyan-500/15 via-cyan-500/5 to-transparent',
-    highlight: 'Automated SERP research to WordPress drafts',
-    telemetry: '100K+ Impressions · SERP Mapped',
-    topic: 'AI Content Engine (BlogBolt style)',
+    discipline: 'Content Pipelines',
+    highlight: 'From SERP research to WordPress drafts, hands-free',
+    telemetry: '100K+ impressions · SERP mapped',
   },
   {
     icon: ShoppingCart,
-    badge: '03 // HEADLESS COMMERCE',
-    accentColor: 'text-accent',
-    bgGlow: 'from-accent/15 via-accent/5 to-transparent',
-    highlight: 'Sub-second catalog search & instant checkout',
-    telemetry: '< 1s Load Time · React Frontend',
-    topic: 'Headless WooCommerce / React Store',
+    discipline: 'Headless Commerce',
+    highlight: 'Sub-second catalog search and instant checkout',
+    telemetry: '< 1s load · React frontend',
   },
   {
     icon: Code2,
-    badge: '04 // FULL-STACK ARCHITECTURE',
-    accentColor: 'text-cyan-400',
-    bgGlow: 'from-cyan-500/15 via-cyan-500/5 to-transparent',
-    highlight: 'Production APIs, webhooks & Core Web Vitals',
-    telemetry: '100/100 Mobile Vitals · Next.js 14',
-    topic: 'Multi-Agent Systems & Claude API',
+    discipline: 'Growth Engineering',
+    highlight: 'Production APIs, webhooks and Core Web Vitals',
+    telemetry: '100/100 mobile vitals · Next.js 14',
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="relative border-t border-line bg-surface/20">
-      {/* Background ambient lighting */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 h-96 w-[45rem] max-w-full rounded-full bg-accent/5 blur-[120px]"
-      />
-
+    <section id="services" className="relative border-t border-line">
       <div className="shell py-20 md:py-28">
         <SectionHeader
           index="01"
           eyebrow="Core Disciplines"
           title="Automation outcomes, delivered as engineering."
-          description="Four specialized disciplines engineered to compound: intelligent AI automations eliminate manual operational friction, autonomous pipelines scale content, technical SEO captures intent, and high-speed web platforms convert visitors into revenue."
+          description="Four disciplines built to compound: automation removes operational friction, pipelines scale content, technical SEO captures intent, and fast web platforms turn visitors into revenue."
         />
 
-        {/* 4-Card Executive Engineering Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Editorial index: one ruled row per discipline */}
+        <ol className="border-t border-white/15">
           {SERVICES.map((s, idx) => {
             const meta = SERVICE_META[idx] ?? SERVICE_META[0];
             const Icon = meta.icon;
 
             return (
-              <Reveal key={s.title} delay={idx * 80}>
-                <div className="group relative h-full flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface via-[#090D16] to-surface p-7 sm:p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-glow">
-                  {/* Subtle top-right ambient glow on hover */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl transition-opacity duration-300 opacity-30 group-hover:opacity-100"
-                  />
+              <li key={s.title} className="border-b border-white/10">
+                <Reveal delay={idx * 70}>
+                  <a
+                    href="#contact"
+                    aria-label={`Enquire about ${s.title}`}
+                    className="group relative grid gap-8 py-10 md:py-14 lg:grid-cols-12 lg:gap-10 transition-colors duration-500 hover:bg-white/[0.015]"
+                  >
+                    {/* Accent rule that draws in on hover */}
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-0 h-px w-0 bg-accent transition-all duration-700 ease-out group-hover:w-full"
+                    />
 
-                  <div>
-                    {/* Header Row: Icon + Index Badge */}
-                    <div className="flex items-center justify-between border-b border-line/70 pb-5">
-                      <div className="flex items-center gap-3.5">
-                        <span className="grid h-11 w-11 place-items-center rounded-xl border border-accent/30 bg-accent-wash text-accent shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-accent">
-                          <Icon size={20} />
-                        </span>
-                        <div>
-                          <span className="font-mono text-[11px] uppercase tracking-wider text-accent font-semibold">
-                            {meta.badge}
-                          </span>
-                          <p className="text-[11px] font-mono text-slate-400">Production Grade</p>
-                        </div>
-                      </div>
-                      <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-slate-300 border border-white/10">
-                        <Zap size={11} className="text-accent" />
-                        Automated
+                    {/* Index + discipline */}
+                    <div className="flex items-start gap-5 lg:col-span-3 lg:flex-col lg:gap-6">
+                      <span className="text-5xl md:text-6xl font-light leading-none tracking-tighter text-white/55 tabular-nums transition-colors duration-500 group-hover:text-accent">
+                        {String(idx + 1).padStart(2, '0')}
                       </span>
-                    </div>
-
-                    {/* Title & Blurb */}
-                    <h3 className="mt-6 text-xl sm:text-2xl font-semibold tracking-tight text-fg transition-colors duration-200 group-hover:text-accent">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-200/95 font-normal text-pretty">
-                      {s.blurb}
-                    </p>
-
-                    {/* Key Outcome Highlight */}
-                    <div className="mt-5 flex items-center justify-between rounded-lg bg-base/70 border border-line px-3.5 py-2.5 text-xs text-fg">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 size={14} className="text-accent shrink-0" />
-                        <span className="font-medium text-fg">{meta.highlight}</span>
-                      </div>
-                      <span className="hidden sm:inline-block font-mono text-[10px] text-accent font-medium">{meta.telemetry}</span>
-                    </div>
-
-                    <a
-                      href="#contact"
-                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent transition-colors hover:text-accent-dim group-hover:translate-x-1 duration-200"
-                    >
-                      Enquire for this discipline
-                      <ArrowRight size={13} />
-                    </a>
-                  </div>
-
-                  {/* Tech Stack Micro-Pills */}
-                  <div className="mt-6 pt-5 border-t border-line/70">
-                    <p className="font-mono text-[10px] uppercase tracking-label text-slate-400 mb-2.5">
-                      Engineered with:
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {s.items.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-md border border-white/10 bg-base/80 px-2.5 py-1 font-mono text-xs text-slate-300 transition-colors duration-200 group-hover:border-accent/30 group-hover:text-fg"
-                        >
-                          {item}
+                      <div className="flex items-center gap-2.5 pt-1 lg:pt-0 text-fg-faint">
+                        <Icon size={15} strokeWidth={1.5} />
+                        <span className="text-[11px] uppercase tracking-label">
+                          {meta.discipline}
                         </span>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Reveal>
+
+                    {/* Title + description */}
+                    <div className="lg:col-span-5">
+                      <h3 className="text-2xl md:text-[1.75rem] font-medium leading-tight tracking-tight text-fg text-balance">
+                        {s.title}
+                      </h3>
+                      <p className="mt-4 text-[0.95rem] leading-[1.75] text-fg-muted text-pretty">
+                        {s.blurb}
+                      </p>
+                    </div>
+
+                    {/* Outcome + stack */}
+                    <div className="flex flex-col justify-between gap-8 lg:col-span-4">
+                      <div>
+                        <p className="text-[11px] uppercase tracking-label text-fg-faint">
+                          Outcome
+                        </p>
+                        <p className="mt-2.5 text-base font-medium leading-snug text-fg">
+                          {meta.highlight}
+                        </p>
+                        <p className="mt-1.5 text-xs text-fg-faint">{meta.telemetry}</p>
+                      </div>
+
+                      <div className="flex items-end justify-between gap-6">
+                        <p className="text-[13px] leading-relaxed text-fg-faint">
+                          {s.items.join(' · ')}
+                        </p>
+                        <span
+                          aria-hidden
+                          className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/15 text-fg transition-all duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-base"
+                        >
+                          <ArrowUpRight
+                            size={18}
+                            strokeWidth={1.5}
+                            className="transition-transform duration-500 group-hover:rotate-45"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </Reveal>
+              </li>
             );
           })}
-        </div>
+        </ol>
 
-        {/* Studio Discovery Banner */}
-        <Reveal delay={200} className="mt-12">
-          <div className="rounded-2xl border border-accent/30 bg-gradient-to-r from-surface via-[#0A1322] to-surface p-6 sm:p-7 shadow-lift flex flex-col sm:flex-row items-center justify-between gap-5">
-            <div className="flex items-center gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent text-base shadow-glow">
-                <Bot size={22} />
-              </span>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-accent font-semibold">
-                  Interactive AI Architecture &amp; ROI Lab
-                </p>
-                <h4 className="text-base sm:text-lg font-semibold text-fg">
-                  Test live production pipeline schemas and calculate your hours saved.
-                </h4>
-              </div>
+        {/* Studio link */}
+        <Reveal delay={150} className="mt-14">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-xl">
+              <p className="text-[11px] uppercase tracking-label text-fg-faint">
+                AI Architecture &amp; ROI Lab
+              </p>
+              <p className="mt-2 text-lg font-medium leading-snug text-fg">
+                Explore live pipeline schemas and calculate the hours you could save.
+              </p>
             </div>
-
             <Link
               href="/studio"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-xs font-semibold text-base transition-all hover:bg-accent-dim shadow-glow shrink-0 w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-2 self-start rounded-full bg-accent px-6 py-3 text-sm font-semibold text-base transition-colors hover:bg-accent-dim sm:self-auto"
             >
               Open AI Studio
-              <ArrowRight size={14} />
+              <ArrowUpRight
+                size={16}
+                strokeWidth={2}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
           </div>
         </Reveal>
