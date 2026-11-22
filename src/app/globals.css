@@ -314,6 +314,25 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* ------------------------------------------------- reserved act height -- */
+/*
+ * The scroll engine sets the height of each pinned act (span * 100vh) only
+ * after it mounts. Until then these sections are shorter, so everything below
+ * them jumps down when it runs and the page scores a layout shift of ~1.
+ * Reserving the same height up front removes the jump. Values mirror each
+ * section's data-sc-span (desktop) and data-sc-span-mobile; the engine's
+ * inline height replaces these as soon as it mounts. Keep them in sync.
+ */
+#top      { height: 220vh; }
+#pipeline { height: 420vh; }
+#work     { height: 400vh; }
+@media (max-width: 860px), (hover: none) and (pointer: coarse) {
+  #top      { height: 140vh; }
+  #pipeline { height: 180vh; }
+  #work     { height: 220vh; }
+}
+.no-js #top, .no-js #pipeline, .no-js #work { height: auto; }
+
 /* ---------------------------------------------------------------- work -- */
 .work-rail { gap: clamp(1rem, 2vw, 1.75rem); padding-inline: max(1.25rem, calc((100vw - 80rem) / 2 + 3rem)); align-items: stretch; }
 .work-rail > * { flex: 0 0 auto; }
