@@ -109,7 +109,7 @@
     },
     {
       "parameters": {
-        "url": "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+        "url": "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?category=performance&category=accessibility&category=best-practices&category=seo",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -120,28 +120,14 @@
             {
               "name": "strategy",
               "value": "mobile"
-            },
-            {
-              "name": "category",
-              "value": "performance"
-            },
-            {
-              "name": "category",
-              "value": "accessibility"
-            },
-            {
-              "name": "category",
-              "value": "best-practices"
-            },
-            {
-              "name": "category",
-              "value": "seo"
             }
           ]
         },
         "options": {
           "timeout": 120000
-        }
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth"
       },
       "name": "PageSpeed mobile",
       "type": "n8n-nodes-base.httpRequest",
