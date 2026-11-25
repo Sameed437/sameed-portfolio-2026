@@ -237,12 +237,12 @@ export const PROJECTS: Project[] = [
     art: 'school',
     snapshot: '/projects/azhar-school-live.webp',
     category: 'client',
-    domain: 'azhar-foundation-school.vercel.app',
+    domain: 'azharfoundationschool.online',
     kicker: 'School portal · Live React on Vercel',
     description:
       'Live React site for Azhar Foundation School — “Excellence in Education Since 2001”. Built as a fast, clean single-page front end and deployed on Vercel, focused on presenting academic programmes and admission workflows clearly to prospective families.',
     tags: ['React', 'JavaScript', 'Frontend', 'Vercel', 'Responsive'],
-    href: 'https://azhar-foundation-school.vercel.app/',
+    href: 'https://www.azharfoundationschool.online/',
     badge: 'Live',
     highlights: [
       'Lightning-fast single-page React app deployed on Vercel Edge',
