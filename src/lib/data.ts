@@ -143,32 +143,6 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Almari PK',
-    art: 'commerce',
-    snapshot: '/projects/almaripk.svg',
-    category: 'ecommerce',
-    domain: 'almaripk.com',
-    kicker: 'Headless WooCommerce Store · React / Next.js',
-    description:
-      'Full headless e-commerce store prepared for a client at almaripk.com. Features a lightning-fast React / Next.js 14 frontend backed by a headless WooCommerce and WordPress REST/GraphQL API. Built with instant server-rendered catalog listings, dynamic faceted filtering, real-time cart state management with optimistic UI, integrated Pakistani & international payment gateways, and fast page transitions.',
-    tags: [
-      'Next.js 14',
-      'React',
-      'Headless WooCommerce',
-      'WordPress API',
-      'Tailwind CSS',
-      'E-commerce',
-    ],
-    href: 'https://almaripk.com',
-    badge: 'Client Store',
-    highlights: [
-      'Headless architecture: Next.js frontend with WooCommerce REST / GraphQL backend',
-      'Instant client-side page navigation with Next.js ISR',
-      'Real-time slide-out cart drawer with optimistic state updates',
-      'Localized payment gateway integration for Pakistani and international customers',
-    ],
-  },
-  {
     title: 'Cure Abroad Health Solutions',
     art: 'healthcare',
     snapshot: '/projects/cureabroad-live.webp',
@@ -350,6 +324,32 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Component-driven architecture with scroll-driven transitions',
       'Full GitHub repository open-sourced and connected',
+    ],
+  },
+  {
+    title: 'Almari PK',
+    art: 'commerce',
+    snapshot: '/projects/almaripk.svg',
+    category: 'ecommerce',
+    domain: 'almaripk.com',
+    kicker: 'Headless WooCommerce Store · React / Next.js',
+    description:
+      'Full headless e-commerce store prepared for a client at almaripk.com. Features a lightning-fast React / Next.js 14 frontend backed by a headless WooCommerce and WordPress REST/GraphQL API. Built with instant server-rendered catalog listings, dynamic faceted filtering, real-time cart state management with optimistic UI, integrated Pakistani & international payment gateways, and fast page transitions.',
+    tags: [
+      'Next.js 14',
+      'React',
+      'Headless WooCommerce',
+      'WordPress API',
+      'Tailwind CSS',
+      'E-commerce',
+    ],
+    href: 'https://almaripk.com',
+    badge: 'Client Store',
+    highlights: [
+      'Headless architecture: Next.js frontend with WooCommerce REST / GraphQL backend',
+      'Instant client-side page navigation with Next.js ISR',
+      'Real-time slide-out cart drawer with optimistic state updates',
+      'Localized payment gateway integration for Pakistani and international customers',
     ],
   },
 ];
